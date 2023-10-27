@@ -37,13 +37,13 @@ export default function RootLayout({
     <html lang='en'>
       <body
         className={cn(
-          'mx-4 mb-40 mt-8 flex max-w-3xl flex-col bg-white text-black antialiased dark:bg-[#111010] dark:text-white md:flex-row lg:mx-auto',
+          'mx-4 mb-40 mt-8 max-w-3xl bg-white text-black antialiased dark:bg-[#111010] dark:text-white lg:mx-auto',
           display.variable,
           body.variable,
           mono.variable
         )}
       >
-        <div>
+        <div className='float-right mx-auto my-0 max-w-7xl'>
           <ThemeProvider>
             <PreferredThemeSwitch></PreferredThemeSwitch>
           </ThemeProvider>
@@ -90,7 +90,7 @@ export default function RootLayout({
           `,
           }}
         ></script>
-        {children}
+        <div className='flex flex-col md:flex-row'>{children}</div>
       </body>
     </html>
   );
