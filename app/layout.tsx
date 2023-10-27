@@ -1,59 +1,9 @@
 import type { Metadata } from 'next';
-import {
-  Oswald,
-  Source_Serif_4,
-  Fjalla_One,
-  Libre_Baskerville,
-  Karla,
-  Merriweather,
-  Source_Sans_3,
-  Quattrocento,
-  Lora,
-  Quattrocento_Sans,
-  Playfair_Display,
-  Raleway,
-  Open_Sans,
-  Space_Mono,
-  Nunito,
-  Oxygen_Mono,
-} from 'next/font/google';
+import { Open_Sans, Nunito, Oxygen_Mono } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/utils/cn';
 import { ThemeProvider } from '@/components/theme-provider';
 import { PreferredThemeSwitch } from '@/components/preferred-theme-switch';
-import Script from 'next/script';
-
-// const sansSerif = Oswald({ subsets: ['latin'], variable: '--font-sans-serif' });
-// const serif = Source_Serif_4({ subsets: ['latin'], variable: '--font-serif' });
-
-// const sansSerif = Fjalla_One({
-//   subsets: ['latin'],
-//   weight: ['400'],
-//   variable: '--font-sans-serif',
-// }); // Title font
-// const serif = Libre_Baskerville({
-//   subsets: ['latin'],
-//   weight: ['400'],
-//   variable: '--font-serif',
-// }); // Paragraph font
-
-// const sansSerif = Karla({ subsets: ['latin'], variable: '--font-sans-serif' });
-// const serif = Merriweather({
-//   subsets: ['latin'],
-//   weight: ['400'],
-//   variable: '--font-serif',
-// });
-
-// const sansSerif = Libre_Baskerville({
-//   subsets: ['latin'],
-//   weight: ['400'],
-//   variable: '--font-sans-serif',
-// });
-// const serif = Source_Sans_3({
-//   subsets: ['latin'],
-//   weight: ['400'],
-//   variable: '--font-serif',
-// });
 
 const display = Nunito({
   subsets: ['latin'],
@@ -93,6 +43,12 @@ export default function RootLayout({
           mono.variable
         )}
       >
+        <div>
+          <ThemeProvider>
+            <PreferredThemeSwitch></PreferredThemeSwitch>
+          </ThemeProvider>
+        </div>
+
         <script
           id='noThemeFlash'
           dangerouslySetInnerHTML={{
@@ -103,6 +59,12 @@ export default function RootLayout({
                 window.__theme = newTheme;
                 preferredTheme = newTheme;
                 document.documentElement.classList.add(newTheme);
+
+                if (newTheme === 'dark') {
+                  document.getElementById('moon-icon').classList.replace('hidden', 'block');
+                } else if (newTheme === 'light') {
+                  document.getElementById('sun-icon').classList.replace('hidden', 'block');
+                }
                 window.__onThemeChange(newTheme);
               }
 
@@ -128,11 +90,6 @@ export default function RootLayout({
           `,
           }}
         ></script>
-        <div>
-          <ThemeProvider>
-            <PreferredThemeSwitch></PreferredThemeSwitch>
-          </ThemeProvider>
-        </div>
         {children}
       </body>
     </html>

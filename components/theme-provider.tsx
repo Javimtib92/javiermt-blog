@@ -12,10 +12,12 @@ type ThemeType = 'light' | 'dark';
 
 type ThemeProviderContext = {
   switchTheme: () => void;
+  theme: ThemeType | null;
 };
 
 const defaultValue = {
   switchTheme: () => {},
+  theme: null,
 };
 
 export const ThemeProviderContext =
@@ -68,7 +70,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   const value = {
     switchTheme: () => {
-      console.log('here');
       if (theme === 'dark') {
         setTheme('light');
         localStorage.theme = 'light';
@@ -77,6 +78,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         localStorage.theme = 'dark';
       }
     },
+    theme,
   };
 
   return (

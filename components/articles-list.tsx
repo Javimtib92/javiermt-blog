@@ -27,6 +27,7 @@ async function ArticleItem({
           height={300}
           alt={`${article.slug} image thumbnail`}
           className='h-[100px] w-[100px] sm:h-[180px] sm:w-[180px] lg:h-[240px] lg:w-[240px]'
+          priority
         ></Image>
       </Link>
       <div className='relative flex flex-col justify-between max-lg:flex-1'>
@@ -35,7 +36,7 @@ async function ArticleItem({
             {articleData.subtitle}
           </h3>
 
-          <h2 className='font-display w-[90%] text-[26px] leading-7'>
+          <h2 className='w-[90%] font-display text-[26px] leading-7'>
             {articleData.title}
           </h2>
         </header>
