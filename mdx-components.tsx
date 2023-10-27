@@ -1,4 +1,6 @@
 import type { MDXComponents } from 'mdx/types';
+import React from 'react';
+import { cn } from './utils/cn';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -19,6 +21,25 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         >
           {children}
         </ul>
+      );
+    },
+    blockquote: ({ children, ...props }) => {
+      return (
+        <blockquote className='my-4 border-l-4 border-gray-300 bg-gray-50 p-4 dark:border-gray-500 dark:bg-gray-800'>
+          {React.Children.map(children, (child) => {
+            // Checking isValidElement is the safe way and avoids a
+            // typescript error too.
+            if (React.isValidElement<HTMLElement>(child)) {
+              return React.cloneElement(child, {
+                className: cn(
+                  props.className,
+                  'text-xl font-medium italic leading-relaxed text-gray-900 dark:text-white'
+                ),
+              });
+            }
+            return child;
+          })}
+        </blockquote>
       );
     },
   };

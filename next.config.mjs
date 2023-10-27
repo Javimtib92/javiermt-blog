@@ -3,6 +3,7 @@ import createMDX from '@next/mdx';
 import remarkReadingTime from 'remark-reading-time';
 import remarkFrontmatter from 'remark-frontmatter';
 import rehypePrettyCode from 'rehype-pretty-code';
+import remarkEmoji from 'remark-emoji';
 
 const prettyCodeOptions = {
   theme: 'one-dark-pro',
@@ -12,7 +13,7 @@ const prettyCodeOptions = {
 const withMDX = createMDX({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [remarkFrontmatter, remarkReadingTime],
+    remarkPlugins: [remarkFrontmatter, remarkReadingTime, remarkEmoji],
     rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
   },
 });
