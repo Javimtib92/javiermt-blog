@@ -1,7 +1,9 @@
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-     
-    </main>
-  )
+import { ArticlesList } from '@/components/articles-list'
+
+export default async function Home() {
+    return (
+        <main className="overflow-x-hidden bg-neutral">
+            <ArticlesList></ArticlesList>
+        </main>
+    )
 }
