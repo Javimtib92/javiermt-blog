@@ -35,11 +35,11 @@ async function ArticleItem({
             {articleData.subtitle}
           </h3>
 
-          <h2 className='font-roboto w-[90%] text-[26px] leading-7'>
+          <h2 className='font-display w-[90%] text-[26px] leading-7'>
             {articleData.title}
           </h2>
         </header>
-        <div className='font-lora max-w-[80%] leading-6 max-sm:hidden'>
+        <div className='max-w-[80%] leading-6 max-sm:hidden'>
           {articleData.shortDescription}
         </div>
         <footer className='flex justify-between text-sm uppercase text-gray-200 max-sm:hidden'>

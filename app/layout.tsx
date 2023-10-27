@@ -1,9 +1,73 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import {
+  Oswald,
+  Source_Serif_4,
+  Fjalla_One,
+  Libre_Baskerville,
+  Karla,
+  Merriweather,
+  Source_Sans_3,
+  Quattrocento,
+  Lora,
+  Quattrocento_Sans,
+  Playfair_Display,
+  Raleway,
+  Open_Sans,
+  Space_Mono,
+  Nunito,
+  Oxygen_Mono,
+} from 'next/font/google';
 import './globals.css';
 import { cn } from '@/utils/cn';
 
-const inter = Inter({ subsets: ['latin'] });
+// const sansSerif = Oswald({ subsets: ['latin'], variable: '--font-sans-serif' });
+// const serif = Source_Serif_4({ subsets: ['latin'], variable: '--font-serif' });
+
+// const sansSerif = Fjalla_One({
+//   subsets: ['latin'],
+//   weight: ['400'],
+//   variable: '--font-sans-serif',
+// }); // Title font
+// const serif = Libre_Baskerville({
+//   subsets: ['latin'],
+//   weight: ['400'],
+//   variable: '--font-serif',
+// }); // Paragraph font
+
+// const sansSerif = Karla({ subsets: ['latin'], variable: '--font-sans-serif' });
+// const serif = Merriweather({
+//   subsets: ['latin'],
+//   weight: ['400'],
+//   variable: '--font-serif',
+// });
+
+// const sansSerif = Libre_Baskerville({
+//   subsets: ['latin'],
+//   weight: ['400'],
+//   variable: '--font-sans-serif',
+// });
+// const serif = Source_Sans_3({
+//   subsets: ['latin'],
+//   weight: ['400'],
+//   variable: '--font-serif',
+// });
+
+const display = Nunito({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-display',
+});
+const body = Open_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  variable: '--font-body',
+});
+
+const mono = Oxygen_Mono({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-mono',
+});
 
 export const metadata: Metadata = {
   title: 'Javier Muñoz Tous',
@@ -24,7 +88,9 @@ export default function RootLayout({
       <body
         className={cn(
           'mx-4 mb-40 mt-8 flex max-w-3xl flex-col antialiased md:flex-row lg:mx-auto',
-          inter.className
+          display.variable,
+          body.variable,
+          mono.variable
         )}
       >
         {children}
