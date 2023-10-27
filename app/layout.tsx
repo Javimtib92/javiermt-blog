@@ -19,6 +19,9 @@ import {
 } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/utils/cn';
+import { ThemeProvider } from '@/components/theme-provider';
+import { PreferredThemeSwitch } from '@/components/preferred-theme-switch';
+import Script from 'next/script';
 
 // const sansSerif = Oswald({ subsets: ['latin'], variable: '--font-sans-serif' });
 // const serif = Source_Serif_4({ subsets: ['latin'], variable: '--font-serif' });
@@ -81,18 +84,55 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang='en'
-      className='bg-white text-black dark:bg-[#111010] dark:text-white'
-    >
+    <html lang='en'>
       <body
         className={cn(
-          'mx-4 mb-40 mt-8 flex max-w-3xl flex-col antialiased md:flex-row lg:mx-auto',
+          'mx-4 mb-40 mt-8 flex max-w-3xl flex-col bg-white text-black antialiased dark:bg-[#111010] dark:text-white md:flex-row lg:mx-auto',
           display.variable,
           body.variable,
           mono.variable
         )}
       >
+        <script
+          id='noThemeFlash'
+          dangerouslySetInnerHTML={{
+            __html: `
+            (function() {
+              window.__onThemeChange = function() {};
+              function setTheme(newTheme) {
+                window.__theme = newTheme;
+                preferredTheme = newTheme;
+                document.documentElement.classList.add(newTheme);
+                window.__onThemeChange(newTheme);
+              }
+
+              let preferredTheme;
+              try {
+                preferredTheme = localStorage.getItem('theme');
+              } catch (err) { }
+
+              window.__setPreferredTheme = function(newTheme) {
+                setTheme(newTheme);
+                try {
+                  localStorage.setItem('theme', newTheme);
+                } catch (err) {}
+              }
+
+              const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+              darkQuery.addListener(function(e) {
+                window.__setPreferredTheme(e.matches ? 'dark' : 'light')
+              });
+
+              setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
+            })();
+          `,
+          }}
+        ></script>
+        <div>
+          <ThemeProvider>
+            <PreferredThemeSwitch></PreferredThemeSwitch>
+          </ThemeProvider>
+        </div>
         {children}
       </body>
     </html>
