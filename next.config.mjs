@@ -1,11 +1,12 @@
 import remarkFrontmatter from 'remark-frontmatter';
 
 import createMDX from '@next/mdx';
+import remarkReadingTime from 'remark-reading-time';
 
 const withMDX = createMDX({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [remarkFrontmatter],
+    remarkPlugins: [remarkFrontmatter, remarkReadingTime],
     rehypePlugins: [],
   },
 });

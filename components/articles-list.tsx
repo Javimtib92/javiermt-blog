@@ -11,7 +11,9 @@ async function ArticleItem({
     path: string;
   };
 }) {
-  const { frontMatter: articleData } = await getArticleData(article.slug);
+  const { frontMatter: articleData, readingTime } = await getArticleData(
+    article.slug
+  );
 
   return (
     <article className='flex px-0 py-7'>
@@ -42,7 +44,7 @@ async function ArticleItem({
         </div>
         <footer className='flex justify-between text-sm uppercase text-gray-200 max-sm:hidden'>
           <div>26 de junio de 2015</div>
-          <div>por Javier Muñoz Tous</div>
+          <div className='text-xs'>Reading time: {readingTime.text}</div>
         </footer>
       </div>
     </article>
@@ -54,7 +56,7 @@ export async function ArticlesList() {
 
   return (
     <div className='mx-auto my-0 flex max-w-7xl flex-wrap justify-between px-8 pb-0 pt-14 sm:pt-44'>
-      <main className='flex-1 pb-14 lg:flex-[0_0_774px]'>
+      <main className='flex-1 pb-14 lg:flex-[0_0_770px]'>
         <div className='divide-y divide-gray-200 dark:divide-gray-700'>
           {articles.map((article) => (
             <ArticleItem key={article.slug} article={article} />
