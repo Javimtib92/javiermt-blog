@@ -1,3 +1,3 @@
-import { join } from 'path'
+import { join } from 'path';
 
-export const ARTICLES_PATH = join(process.cwd(), '_articles')
+export const ARTICLES_PATH = join(process.cwd(), '_articles');

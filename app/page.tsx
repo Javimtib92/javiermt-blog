@@ -1,9 +1,9 @@
-import { ArticlesList } from '@/components/articles-list'
+import { ArticlesList } from '@/components/articles-list';
 
 export default async function Home() {
-    return (
-        <main className="overflow-x-hidden bg-neutral">
-            <ArticlesList></ArticlesList>
-        </main>
-    )
+  return (
+    <main className='bg-neutral overflow-x-hidden'>
+      <ArticlesList></ArticlesList>
+    </main>
+  );
 }

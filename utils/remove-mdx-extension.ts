@@ -1,3 +1,3 @@
 export function removeMdxExtension(filename: string) {
-    return filename.replace(/\.mdx?$/, '')
+  return filename.replace(/\.mdx?$/, '');
 }

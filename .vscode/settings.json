@@ -1,3 +1,5 @@
 {
-    "mdx.experimentalLanguageServer": true
+  "mdx.experimentalLanguageServer": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
