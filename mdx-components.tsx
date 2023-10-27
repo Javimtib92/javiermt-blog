@@ -25,10 +25,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
     blockquote: ({ children, ...props }) => {
       return (
-        <blockquote className='my-4 border-l-4 border-gray-300 bg-gray-50 p-4 dark:border-gray-500 dark:bg-gray-800'>
+        <blockquote className='my-4 border-l-4 border-gray-300 bg-gray-50 p-4 dark:border-gray-500 dark:bg-[#282c34]'>
           {React.Children.map(children, (child) => {
-            // Checking isValidElement is the safe way and avoids a
-            // typescript error too.
             if (React.isValidElement<HTMLElement>(child)) {
               return React.cloneElement(child, {
                 className: cn(
