@@ -16,8 +16,16 @@ import image from '/public/analisis-final-fantasy-xvi-d-1200x669.jpg';
 
 Final fantasy article
 
-<Image src={image} alt='text' priority />
+<Image src={image} alt='text' priority width={500} />
 
 - this is markdown
 - this is cool
 - nice
+
+```jsx title="app/page.tsx"
+export default async function Page() {
+  const msg = 'Hello World';
+
+  return <div>{msg}</div>;
+}
+```

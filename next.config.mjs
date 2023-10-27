@@ -1,13 +1,19 @@
-import remarkFrontmatter from 'remark-frontmatter';
-
 import createMDX from '@next/mdx';
+
 import remarkReadingTime from 'remark-reading-time';
+import remarkFrontmatter from 'remark-frontmatter';
+import rehypePrettyCode from 'rehype-pretty-code';
+
+const prettyCodeOptions = {
+  theme: 'one-dark-pro',
+  defaultLang: 'jsx',
+};
 
 const withMDX = createMDX({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [remarkFrontmatter, remarkReadingTime],
-    rehypePlugins: [],
+    rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
   },
 });
 

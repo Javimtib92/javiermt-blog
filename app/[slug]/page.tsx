@@ -11,9 +11,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = params;
 
   return (
-    <div>
+    <main className='mt-6 flex min-w-0 flex-auto flex-col px-2 md:px-0'>
       <MarkdownPage slug={slug} />
-    </div>
+    </main>
   );
 }
 
