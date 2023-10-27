@@ -7,10 +7,17 @@ import { removeMdxExtension } from './remove-mdx-extension';
 export function getAllArticles() {
   const articles = [];
 
-  for (const { path, fileName } of fileCrawler(ARTICLES_PATH)) {
+  for (const { path, fileName, createdAt, modifiedAt } of fileCrawler(
+    ARTICLES_PATH
+  )) {
     const slug = removeMdxExtension(fileName);
 
-    articles.push({ slug, path: path.join('/') + '/' + slug });
+    articles.push({
+      slug,
+      path: path.join('/') + '/' + slug,
+      createdAt,
+      modifiedAt,
+    });
   }
 
   return articles;
