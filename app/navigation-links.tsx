@@ -2,10 +2,10 @@
 
 import { cn } from '@/utils/cn';
 import Link from 'next/link';
-import { useSelectedLayoutSegment } from 'next/navigation';
+import { useSelectedLayoutSegments } from 'next/navigation';
 
 export default function NavigationLinks() {
-  const segment = useSelectedLayoutSegment();
+  const segments = useSelectedLayoutSegments();
 
   const activeClass =
     'dark:text-white text-neutral-900 underline underline-offset-8';
@@ -17,7 +17,7 @@ export default function NavigationLinks() {
       <Link
         href='/'
         className={cn(
-          segment === null ? activeClass : inactiveClass,
+          segments.length === 0 ? activeClass : inactiveClass,
           'flex align-middle transition-all'
         )}
       >
@@ -26,7 +26,7 @@ export default function NavigationLinks() {
       <Link
         href='/blog'
         className={cn(
-          segment === 'blog' ? activeClass : inactiveClass,
+          segments.includes('blog') ? activeClass : inactiveClass,
           'flex align-middle transition-all'
         )}
       >

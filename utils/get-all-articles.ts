@@ -14,7 +14,7 @@ export function getAllArticles() {
 
     articles.push({
       slug,
-      path: path.join('/') + '/' + slug,
+      path: '/blog' + path.join('/') + '/' + slug,
       createdAt,
       modifiedAt,
     });
