@@ -56,7 +56,7 @@ export async function ArticlesList() {
   const articles = await getAllArticles();
 
   return (
-    <div className='mx-auto my-0 flex max-w-7xl flex-wrap justify-between px-8 pb-0 pt-14 sm:pt-44'>
+    <div className='mx-auto my-0 flex max-w-7xl flex-wrap justify-between pb-0 '>
       <main className='flex-1 pb-14 lg:flex-[0_0_770px]'>
         <div className='divide-y divide-gray-200 dark:divide-gray-700'>
           {articles.map((article) => (

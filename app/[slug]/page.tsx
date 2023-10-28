@@ -2,6 +2,7 @@ import type { Metadata, ResolvingMetadata } from 'next';
 import { MarkdownPage } from '@/components/markdown-page';
 import { getAllArticles } from '@/utils/get-all-articles';
 import { getArticleData } from '@/utils/get-article-data';
+import { formatDate } from '@/utils/dates';
 
 type ArticlePageProps = {
   params: { slug: string };
@@ -10,10 +11,25 @@ type ArticlePageProps = {
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = params;
 
+  const { frontMatter } = await getArticleData(slug);
+
   return (
-    <main className='mt-6 flex min-w-0 flex-auto flex-col px-2 md:px-0'>
-      <MarkdownPage slug={slug} />
-    </main>
+    <section>
+      <h1 className='max-w-[650px] font-display text-2xl font-bold tracking-tighter'>
+        {frontMatter.title}
+      </h1>
+      <div className='mb-8 mt-2 flex items-center justify-between text-sm'>
+        <p className='text-sm text-neutral-600 dark:text-neutral-400'>
+          {/* Now is computed on the server but probably I need the locale here so that I can format based on locale */}
+          {formatDate(frontMatter.createdAt)}
+        </p>
+        <p className='text-neutral-600 dark:text-neutral-400'>19.796 views</p>
+      </div>
+
+      <article>
+        <MarkdownPage slug={slug} />
+      </article>
+    </section>
   );
 }
 

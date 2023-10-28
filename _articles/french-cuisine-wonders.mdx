@@ -1,0 +1,36 @@
+---
+title: The Art of Fine Dining, Exploring French Cuisine ::food
+titleColor: crimson
+image: https://via.placeholder.com/800x600
+category: culinary
+createdAt: 2023-10-28T12:00:00.000Z
+thumbnail: https://via.placeholder.com/300x200
+subtitle: Savor the Flavors of France
+shortDescription: Indulge in the exquisite world of French cuisine, from escargot to crème brûlée.
+---
+
+import Image from 'next/image';
+
+<Image
+  src='https://via.placeholder.com/800x600'
+  alt='Image'
+  priority
+  width={800}
+  height={600}
+/>
+
+<br />
+
+- Delight your taste buds with French delicacies
+- Learn about the art of culinary presentation
+- Experience the essence of French gastronomy
+
+<br />
+
+```jsx title="app/page.tsx"
+export default async function Page() {
+  const message = 'Bon Appétit!';
+
+  return <div>{message}</div>;
+}
+```

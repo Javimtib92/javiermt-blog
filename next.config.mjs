@@ -21,6 +21,13 @@ const withMDX = createMDX({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  images: {
+    remotePatterns: [
+      {
+        hostname: 'via.placeholder.com',
+      },
+    ],
+  },
 };
 
 export default withMDX(nextConfig);

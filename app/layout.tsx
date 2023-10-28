@@ -4,6 +4,7 @@ import './globals.css';
 import { cn } from '@/utils/cn';
 import { ThemeProvider } from '@/components/theme-provider';
 import { PreferredThemeSwitch } from '@/components/preferred-theme-switch';
+import Link from 'next/link';
 
 const display = Nunito({
   subsets: ['latin'],
@@ -43,11 +44,27 @@ export default function RootLayout({
           mono.variable
         )}
       >
-        <div className='float-right mx-auto my-0 max-w-7xl'>
-          <ThemeProvider>
-            <PreferredThemeSwitch></PreferredThemeSwitch>
-          </ThemeProvider>
-        </div>
+        <main className='mt-6 flex min-w-0 flex-auto flex-col px-2 md:px-0'>
+          <aside className='-ml-[8px] mb-16 tracking-tight'>
+            <div className='lg:sticky lg:top-20'>
+              <nav className='fade relative flex scroll-pr-6 flex-row items-start px-0 pb-0 md:relative md:overflow-auto'>
+                <div className='flex min-w-full flex-row justify-between space-x-0'>
+                  <Link
+                    href='/'
+                    className='flex align-middle text-neutral-500 transition-all hover:text-neutral-800 dark:hover:text-neutral-200'
+                  >
+                    <span className='relative px-2 py-1'>Blog</span>
+                  </Link>
+                  <ThemeProvider>
+                    <PreferredThemeSwitch></PreferredThemeSwitch>
+                  </ThemeProvider>
+                </div>
+              </nav>
+            </div>
+          </aside>
+
+          <div className='flex flex-col md:flex-row'>{children}</div>
+        </main>
 
         <script
           id='noThemeFlash'
@@ -90,7 +107,6 @@ export default function RootLayout({
           `,
           }}
         ></script>
-        <div className='flex flex-col md:flex-row'>{children}</div>
       </body>
     </html>
   );

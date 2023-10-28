@@ -8,7 +8,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h1: (props) => {
       return (
         <h1
-          className='font-display max-w-[650px] text-4xl font-bold tracking-tighter'
+          className='max-w-[650px] font-display text-2xl font-bold tracking-tighter'
           {...props}
         ></h1>
       );
