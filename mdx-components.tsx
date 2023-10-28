@@ -6,12 +6,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
     h1: (props) => {
-      return (
-        <h1
-          className='max-w-[650px] font-display text-2xl font-bold tracking-tighter'
-          {...props}
-        ></h1>
-      );
+      return <h1 className='font-display text-2xl font-bold' {...props}></h1>;
     },
     ul: ({ children, ...props }) => {
       return (

@@ -1,5 +1,3 @@
-import { ArticlesList } from '@/components/articles-list';
-
-export default async function Home() {
-  return <ArticlesList></ArticlesList>;
+export default function HomePage() {
+  return <div>About me</div>;
 }

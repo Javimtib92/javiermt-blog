@@ -45,16 +45,25 @@ export default function RootLayout({
         )}
       >
         <main className='mt-6 flex min-w-0 flex-auto flex-col px-2 md:px-0'>
-          <aside className='-ml-[8px] mb-16 tracking-tight'>
+          <aside className='-ml-[8px] mb-16'>
             <div className='lg:sticky lg:top-20'>
               <nav className='fade relative flex scroll-pr-6 flex-row items-start px-0 pb-0 md:relative md:overflow-auto'>
                 <div className='flex min-w-full flex-row justify-between space-x-0'>
-                  <Link
-                    href='/'
-                    className='flex align-middle text-neutral-500 transition-all hover:text-neutral-800 dark:hover:text-neutral-200'
-                  >
-                    <span className='relative px-2 py-1'>Blog</span>
-                  </Link>
+                  <div className='flex flex-row'>
+                    <Link
+                      href='/'
+                      className='flex align-middle text-neutral-500 transition-all hover:text-neutral-800 dark:hover:text-neutral-200'
+                    >
+                      <span className='relative px-2 py-1'>Me</span>
+                    </Link>
+                    <Link
+                      href='/blog'
+                      className='flex align-middle text-neutral-500 transition-all hover:text-neutral-800 dark:hover:text-neutral-200'
+                    >
+                      <span className='relative px-2 py-1'>Blog</span>
+                    </Link>
+                  </div>
+
                   <ThemeProvider>
                     <PreferredThemeSwitch></PreferredThemeSwitch>
                   </ThemeProvider>
@@ -63,7 +72,7 @@ export default function RootLayout({
             </div>
           </aside>
 
-          <div className='flex flex-col md:flex-row'>{children}</div>
+          {children}
         </main>
 
         <script
