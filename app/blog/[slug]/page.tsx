@@ -3,6 +3,7 @@ import { MarkdownPage } from '@/components/markdown-page';
 import { getAllArticles } from '@/utils/get-all-articles';
 import { getArticleData } from '@/utils/get-article-data';
 import { formatDate } from '@/utils/dates';
+import { MarkdownPageRSC } from '@/components/markdown-page-rsc';
 
 type ArticlePageProps = {
   params: { slug: string };
@@ -25,7 +26,14 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       </div>
 
       <article>
-        <MarkdownPage slug={slug} />
+        {/* We render MDX files on Server Side only in production because in dev there's an issue.
+          See issue: https://github.com/vercel/next.js/issues/49355
+        */}
+        {process.env.NODE_ENV === 'production' ? (
+          <MarkdownPageRSC slug={slug}></MarkdownPageRSC>
+        ) : (
+          <MarkdownPage slug={slug} />
+        )}
       </article>
     </section>
   );
