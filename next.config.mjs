@@ -13,7 +13,11 @@ const prettyCodeOptions = {
 const withMDX = createMDX({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [remarkFrontmatter, remarkReadingTime, remarkEmoji],
+    remarkPlugins: [
+      remarkFrontmatter,
+      remarkReadingTime,
+      [remarkEmoji, { accessible: true }],
+    ],
     rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
   },
 });
@@ -21,13 +25,6 @@ const withMDX = createMDX({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-  images: {
-    remotePatterns: [
-      {
-        hostname: 'via.placeholder.com',
-      },
-    ],
-  },
 };
 
 export default withMDX(nextConfig);
