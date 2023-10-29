@@ -37,7 +37,7 @@ async function ArticleItem({
           </h3>
 
           <h2 className='w-[90%] font-display text-[26px] leading-7'>
-            {articleData.title}
+            <Link href={article.path}>{articleData.title}</Link>
           </h2>
         </header>
         <div className='max-w-[80%] leading-6 max-sm:hidden'>
