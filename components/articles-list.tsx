@@ -1,3 +1,4 @@
+import { formatDate } from '@/utils/dates';
 import { getAllArticles } from '@/utils/get-all-articles';
 import { getArticleData } from '@/utils/get-article-data';
 import Image from 'next/image';
@@ -19,7 +20,7 @@ async function ArticleItem({
     <article className='flex px-0 py-7'>
       <Link
         href={article.path}
-        className='mr-6 block flex-[0_0_100px] sm:flex-[0_0_180px] lg:flex-[0_0_240px]'
+        className='mr-6 block flex-[0_0_100px] max-sm:hidden sm:flex-[0_0_180px] lg:flex-[0_0_240px]'
       >
         <Image
           src={articleData.thumbnail}
@@ -32,20 +33,25 @@ async function ArticleItem({
       </Link>
       <div className='relative flex flex-col justify-between max-lg:flex-1'>
         <header>
-          <h3 className='mb-2 ml-0 mr-10 mt-2 italic leading-5'>
+          <h3 className='mb-2 ml-0 mr-10 mt-2 font-mono text-sm italic leading-5 text-slate-800 dark:text-slate-200'>
             {articleData.subtitle}
           </h3>
 
-          <h2 className='font-display text-[26px] leading-7'>
-            <Link href={article.path}>{articleData.title}</Link>
+          <h2>
+            <Link
+              href={article.path}
+              className='font-display text-[26px] font-bold leading-7'
+            >
+              {articleData.title}
+            </Link>
           </h2>
         </header>
         <div className='leading-6 max-sm:hidden'>
           {articleData.shortDescription}
         </div>
-        <footer className='flex justify-between text-sm uppercase text-gray-200 max-sm:hidden'>
-          <div>26 de junio de 2015</div>
-          <div className='text-xs'>Reading time: {readingTime.text}</div>
+        <footer className='mt-4 flex justify-between text-xs uppercase text-slate-800 dark:text-gray-200'>
+          <div className='font-mono'>{formatDate(articleData.createdAt)}</div>
+          <div className='font-mono text-xs'>{readingTime.text}</div>
         </footer>
       </div>
     </article>

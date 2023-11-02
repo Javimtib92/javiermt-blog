@@ -39,7 +39,7 @@ export default function RootLayout({
     <html lang='en'>
       <body
         className={cn(
-          'mx-4 mb-40 mt-8 max-w-3xl bg-white text-black antialiased dark:bg-[#111010] dark:text-white lg:mx-auto',
+          ' mx-4 mb-40 mt-8 max-w-3xl bg-white text-black antialiased transition-colors dark:bg-[#111010] dark:text-white lg:mx-auto',
           display.variable,
           body.variable,
           mono.variable
