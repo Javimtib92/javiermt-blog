@@ -40,7 +40,7 @@ export default function Home() {
       </p>
       <br />
       <a
-        href='https://ig.me/m/javimtib92'
+        href='https://www.instagram.com/javimtib92'
         aria-label='Javier Instagram Profile'
         className='group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-pink-500 to-orange-400 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-pink-200 group-hover:from-pink-500 group-hover:to-orange-400 dark:text-white dark:focus:ring-pink-800'
       >
