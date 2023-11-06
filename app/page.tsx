@@ -16,26 +16,27 @@ export default function Home() {
           />
         </span>
 
-        <h1 className='font-display text-2xl font-bold'>
-          Hola! My name is Javier! 👋
-        </h1>
+        <div className='flex flex-col place-self-start'>
+          <h1 className='font-display text-2xl font-bold'>Javier Muñoz Tous</h1>
+          <h1 className='font-mono text-sm italic'>Full Stack Developer</h1>
+        </div>
       </div>
-      <p>
-        I&apos;m a Fullstack Software Engineer from an island called Mallorca,
-        located in Spain.
+      <p className='text-justify text-slate-900 dark:text-gray-200'>
+        Hola! 👋 My name is Javier, I&apos;m a Software Engineer with 8+ years
+        of experience.
       </p>
       <br />
-      <p>
+      <p className='text-justify text-slate-900 dark:text-gray-200'>
         I&apos;ve build this blog to create tutorials and share my thoughts on a
         diverse range of topics, including technology, development and personal
         insights. I&apos;ll try to be short, but helpful, and provide some value
         to our community.
       </p>
       <br />
-      <p>
-        If you want to know me a bit better you can find me on instagram//add
-        link, and if you are interested in my professional career you can check
-        me out on Linkedn.
+      <p className='text-justify text-slate-900 dark:text-gray-200'>
+        If you want to know me a bit better you can find me on instagram or, if
+        you are interested in my professional career, you can check me out on
+        Linkedn.
       </p>
       <br />
       <button className='group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-pink-500 to-orange-400 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-pink-200 group-hover:from-pink-500 group-hover:to-orange-400 dark:text-white dark:focus:ring-pink-800'>
@@ -46,7 +47,7 @@ export default function Home() {
       </button>
       <br />
       <br />
-      Cheers! 😄
+      Salut! 😄
     </div>
   );
 }
