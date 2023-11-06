@@ -39,12 +39,16 @@ export default function Home() {
         Linkedn.
       </p>
       <br />
-      <button className='group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-pink-500 to-orange-400 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-pink-200 group-hover:from-pink-500 group-hover:to-orange-400 dark:text-white dark:focus:ring-pink-800'>
+      <a
+        href='https://ig.me/m/javimtib92'
+        aria-label='Javier Instagram Profile'
+        className='group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-pink-500 to-orange-400 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-pink-200 group-hover:from-pink-500 group-hover:to-orange-400 dark:text-white dark:focus:ring-pink-800'
+      >
         <span className='relative flex flex-row items-center gap-2 rounded-md bg-white px-5 py-2.5 font-display text-lg transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900'>
           Instagram
           <CameraIcon className='h-6 w-6' />
         </span>
-      </button>
+      </a>
       <br />
       <br />
       Salut! 😄
