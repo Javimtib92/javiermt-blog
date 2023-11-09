@@ -6,6 +6,7 @@ const colors = {
   blue: '190',
   green: '140',
   red: '10',
+  yellow: '45',
 };
 
 // NOTE: I created this component instead of using the tag in the mdx file and style it through mdx-components because
@@ -14,7 +15,7 @@ export function Highlight({
   color = 'blue',
   children,
 }: {
-  color: 'red' | 'green' | 'blue';
+  color: 'red' | 'green' | 'blue' | 'yellow';
   children: ReactNode;
 }) {
   const ref = useRef(null);
