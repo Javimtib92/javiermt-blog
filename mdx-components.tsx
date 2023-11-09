@@ -8,6 +8,22 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h1: (props) => {
       return <h1 className='font-display text-2xl font-bold' {...props}></h1>;
     },
+    h2: (props) => {
+      return <h1 className='font-display text-xl font-bold' {...props}></h1>;
+    },
+    p: (props) => {
+      return (
+        <p
+          className='text-md font-body text-black dark:text-zinc-300'
+          {...props}
+        ></p>
+      );
+    },
+    a: (props) => {
+      return (
+        <a className='text-md font-body text-blue-400 underline' {...props}></a>
+      );
+    },
     ul: ({ children, ...props }) => {
       return (
         <ul
