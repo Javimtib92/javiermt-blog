@@ -70,16 +70,12 @@ export async function ArticlesList() {
   let viewCountBySlug: {
     slug: string;
     view_count: number;
-  }[] = [];
-
-  if (process.env.NODE_ENV === 'production') {
-    viewCountBySlug = await prisma.views.findMany({
-      select: {
-        view_count: true,
-        slug: true,
-      },
-    });
-  }
+  }[] = await prisma.views.findMany({
+    select: {
+      view_count: true,
+      slug: true,
+    },
+  });
 
   return (
     <div className='mx-auto my-0 flex max-w-7xl flex-wrap justify-between pb-0 '>
