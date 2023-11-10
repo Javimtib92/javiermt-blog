@@ -4,15 +4,50 @@ import { getAllArticles } from '@/utils/get-all-articles';
 import { getArticleData } from '@/utils/get-article-data';
 import { formatDate } from '@/utils/dates';
 import { MarkdownPageRSC } from '@/components/markdown-page-rsc';
+import { PrismaClient } from '@prisma/client';
 
 type ArticlePageProps = {
   params: { slug: string };
+};
+
+const prisma = new PrismaClient();
+
+const updateCounter = async (slug: string, newCount: number) => {
+  'use server';
+
+  try {
+    // Update the count in the database
+
+    const data = await prisma.views.upsert({
+      where: {
+        slug,
+      },
+      update: {
+        view_count: newCount,
+      },
+      create: {
+        slug,
+        view_count: 1,
+      },
+    });
+
+    console.log('Count updated successfully:', data);
+  } catch (error) {
+    console.error('Unexpected error:', error);
+  }
 };
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = params;
 
   const { frontMatter } = await getArticleData(slug);
+
+  const data = await prisma.views.findUnique({ where: { slug } });
+
+  const viewCount = data?.view_count || 0;
+  const newCount = viewCount + 1;
+
+  await updateCounter(slug, newCount);
 
   return (
     <section>
@@ -22,7 +57,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           {/* Now is computed on the server but probably I need the locale here so that I can format based on locale */}
           {formatDate(frontMatter.createdAt)}
         </p>
-        <p className='text-neutral-600 dark:text-neutral-400'>19.796 views</p>
+        <p className='text-neutral-600 dark:text-neutral-400'>{viewCount}</p>
       </div>
 
       <article>
