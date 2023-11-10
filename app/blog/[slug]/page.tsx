@@ -5,31 +5,30 @@ import { getArticleData } from '@/utils/get-article-data';
 import { formatDate } from '@/utils/dates';
 import { MarkdownPageRSC } from '@/components/markdown-page-rsc';
 import prisma from '@/utils/prisma';
+import { ViewCount } from '@/components/view-count';
 
 type ArticlePageProps = {
   params: { slug: string };
 };
 
-const updateCounter = async (slug: string, newCount: number) => {
+const updateCounter = async (slug: string) => {
   'use server';
 
   try {
-    // Update the count in the database
-
-    const data = await prisma.views.upsert({
+    await prisma.views.upsert({
       where: {
         slug,
       },
       update: {
-        view_count: newCount,
+        view_count: {
+          increment: 1,
+        },
       },
       create: {
         slug,
         view_count: 1,
       },
     });
-
-    console.log('Count updated successfully:', data);
   } catch (error) {
     console.error('Unexpected error:', error);
   }
@@ -40,14 +39,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   const { frontMatter } = await getArticleData(slug);
 
-  const data = await prisma.views.findUnique({ where: { slug } });
-
-  const viewCount = data?.view_count || 0;
-  const newCount = viewCount + 1;
-
-  if (process.env.NODE_ENV === 'production') {
-    await updateCounter(slug, newCount);
-  }
+  await updateCounter(slug);
 
   return (
     <section>
@@ -58,7 +50,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           {formatDate(frontMatter.createdAt)}
         </p>
         <p className='text-neutral-600 dark:text-neutral-400'>
-          {newCount} views
+          <ViewCount slug={slug} />
         </p>
       </div>
 
