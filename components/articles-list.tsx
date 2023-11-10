@@ -1,6 +1,7 @@
 import { formatDate } from '@/utils/dates';
 import { getAllArticles } from '@/utils/get-all-articles';
 import { getArticleData } from '@/utils/get-article-data';
+import prisma from '@/utils/prisma';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,7 +12,7 @@ async function ArticleItem({
   article: {
     slug: string;
     path: string;
-    view_count: number;
+    viewCount: number;
   };
 }) {
   const { frontMatter: articleData, readingTime } = await getArticleData(
@@ -54,7 +55,7 @@ async function ArticleItem({
         <footer className='mt-4 flex justify-between text-xs uppercase text-slate-800 dark:text-gray-200'>
           <div className='font-mono'>{formatDate(articleData.createdAt)}</div>
           <div className='flex flex-row gap-4'>
-            <div className='font-mono text-xs'>{article.view_count} Views</div>
+            <div className='font-mono text-xs'>{article.viewCount} Views</div>
             <div className='font-mono text-xs'>{readingTime.text}</div>
           </div>
         </footer>
@@ -64,15 +65,38 @@ async function ArticleItem({
 }
 
 export async function ArticlesList() {
-  const articles = await getAllArticles();
+  const articles = getAllArticles();
+
+  let viewCountBySlug: {
+    slug: string;
+    view_count: number;
+  }[] = [];
+
+  if (process.env.NODE_ENV === 'production') {
+    viewCountBySlug = await prisma.views.findMany({
+      select: {
+        view_count: true,
+        slug: true,
+      },
+    });
+  }
 
   return (
     <div className='mx-auto my-0 flex max-w-7xl flex-wrap justify-between pb-0 '>
       <main className='flex-1 pb-14 lg:flex-[0_0_770px]'>
         <div className='divide-y divide-gray-200 dark:divide-gray-700'>
-          {articles.map((article) => (
-            <ArticleItem key={article.slug} article={article} />
-          ))}
+          {articles.map((article) => {
+            const viewCount =
+              viewCountBySlug.find((item) => item.slug === article.slug)
+                ?.view_count || 0;
+
+            return (
+              <ArticleItem
+                key={article.slug}
+                article={{ ...article, viewCount }}
+              />
+            );
+          })}
         </div>
       </main>
     </div>
