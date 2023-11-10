@@ -1,7 +1,6 @@
 import { formatDate } from '@/utils/dates';
 import { getAllArticles } from '@/utils/get-all-articles';
 import { getArticleData } from '@/utils/get-article-data';
-import prisma from '@/utils/prisma';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,7 +12,6 @@ async function ArticleItem({
   article: {
     slug: string;
     path: string;
-    viewCount: number;
   };
 }) {
   const { frontMatter: articleData, readingTime } = await getArticleData(
@@ -70,31 +68,12 @@ async function ArticleItem({
 export async function ArticlesList() {
   const articles = getAllArticles();
 
-  let viewCountBySlug: {
-    slug: string;
-    view_count: number;
-  }[] = await prisma.views.findMany({
-    select: {
-      view_count: true,
-      slug: true,
-    },
-  });
-
   return (
     <div className='mx-auto my-0 flex max-w-7xl flex-wrap justify-between pb-0 '>
       <main className='flex-1 pb-14 lg:flex-[0_0_770px]'>
         <div className='divide-y divide-gray-200 dark:divide-gray-700'>
           {articles.map((article) => {
-            const viewCount =
-              viewCountBySlug.find((item) => item.slug === article.slug)
-                ?.view_count || 0;
-
-            return (
-              <ArticleItem
-                key={article.slug}
-                article={{ ...article, viewCount }}
-              />
-            );
+            return <ArticleItem key={article.slug} article={article} />;
           })}
         </div>
       </main>
