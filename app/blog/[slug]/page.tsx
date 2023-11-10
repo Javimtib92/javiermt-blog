@@ -6,6 +6,7 @@ import { formatDate } from '@/utils/dates';
 import { MarkdownPageRSC } from '@/components/markdown-page-rsc';
 import prisma from '@/utils/prisma';
 import { ViewCount } from '@/components/view-count';
+import { Suspense } from 'react';
 
 type ArticlePageProps = {
   params: { slug: string };
@@ -50,7 +51,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           {formatDate(frontMatter.createdAt)}
         </p>
         <p className='text-neutral-600 dark:text-neutral-400'>
-          <ViewCount slug={slug} />
+          <Suspense fallback={''}>
+            <ViewCount slug={slug} />
+          </Suspense>
         </p>
       </div>
 

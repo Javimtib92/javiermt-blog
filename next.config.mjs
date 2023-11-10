@@ -4,9 +4,15 @@ import remarkReadingTime from 'remark-reading-time';
 import remarkFrontmatter from 'remark-frontmatter';
 import rehypePrettyCode from 'rehype-pretty-code';
 import remarkEmoji from 'remark-emoji';
+import moonlight from './themes/moonlight-ii.json' assert { type: 'json' };
 
 const prettyCodeOptions = {
-  theme: 'one-dark-pro',
+  keepBackground: false,
+  theme: {
+    dark: moonlight,
+    light: 'github-light',
+  },
+
   defaultLang: 'jsx',
 };
 
