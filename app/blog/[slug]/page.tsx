@@ -57,7 +57,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           {/* Now is computed on the server but probably I need the locale here so that I can format based on locale */}
           {formatDate(frontMatter.createdAt)}
         </p>
-        <p className='text-neutral-600 dark:text-neutral-400'>{viewCount}</p>
+        <p className='text-neutral-600 dark:text-neutral-400'>{newCount}</p>
       </div>
 
       <article>
