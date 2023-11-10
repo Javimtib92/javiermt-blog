@@ -36,6 +36,13 @@ html {
   color: rgb(229 229 229 / var(--tw-text-opacity));
 }
 
+[data-rehype-pretty-code-fragment] {
+  @media (max-width: 640px) {
+    margin-left: -18px;
+    margin-right: -18px;
+  }
+}
+
 [data-rehype-pretty-code-title] + pre {
   margin-top: 0;
   border-top-left-radius: 0;
