@@ -5,5 +5,7 @@ export async function ViewCount({ slug }: { slug: string }) {
   noStore();
   const data = await prisma.views.findUnique({ where: { slug } });
 
+  if (!data) return '';
+
   return `${data.view_count} views`;
 }
