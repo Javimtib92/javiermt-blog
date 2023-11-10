@@ -4,7 +4,6 @@ import { getArticleData } from '@/utils/get-article-data';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { ViewCount } from './view-count';
 
 async function ArticleItem({
   article,
@@ -51,14 +50,11 @@ async function ArticleItem({
         <div className='leading-6 max-sm:hidden'>
           {articleData.shortDescription}
         </div>
-        <footer className='mt-4 flex justify-between text-xs uppercase text-slate-800 dark:text-gray-200'>
-          <div className='font-mono'>{formatDate(articleData.createdAt)}</div>
-          <div className='flex flex-row gap-4'>
-            <div className='font-mono text-xs'>
-              <ViewCount slug={article.slug} />
-            </div>
-            <div className='font-mono text-xs'>{readingTime.text}</div>
+        <footer className='mt-4 flex justify-between font-mono text-xs uppercase text-neutral-600 dark:text-neutral-400 '>
+          <div className='font-mono text-xs'>
+            {formatDate(articleData.createdAt)}
           </div>
+          <div className='font-mono text-xs'>{readingTime.text}</div>
         </footer>
       </div>
     </article>
