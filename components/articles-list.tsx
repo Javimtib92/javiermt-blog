@@ -1,6 +1,7 @@
 import { formatDate } from '@/utils/dates';
 import { getAllArticles } from '@/utils/get-all-articles';
 import { getArticleData } from '@/utils/get-article-data';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -10,6 +11,7 @@ async function ArticleItem({
   article: {
     slug: string;
     path: string;
+    view_count: number;
   };
 }) {
   const { frontMatter: articleData, readingTime } = await getArticleData(
@@ -51,7 +53,10 @@ async function ArticleItem({
         </div>
         <footer className='mt-4 flex justify-between text-xs uppercase text-slate-800 dark:text-gray-200'>
           <div className='font-mono'>{formatDate(articleData.createdAt)}</div>
-          <div className='font-mono text-xs'>{readingTime.text}</div>
+          <div className='flex flex-row gap-4'>
+            <div className='font-mono text-xs'>{article.view_count} Views</div>
+            <div className='font-mono text-xs'>{readingTime.text}</div>
+          </div>
         </footer>
       </div>
     </article>

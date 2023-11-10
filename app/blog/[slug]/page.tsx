@@ -4,13 +4,11 @@ import { getAllArticles } from '@/utils/get-all-articles';
 import { getArticleData } from '@/utils/get-article-data';
 import { formatDate } from '@/utils/dates';
 import { MarkdownPageRSC } from '@/components/markdown-page-rsc';
-import { PrismaClient } from '@prisma/client';
+import prisma from '@/utils/prisma';
 
 type ArticlePageProps = {
   params: { slug: string };
 };
-
-const prisma = new PrismaClient();
 
 const updateCounter = async (slug: string, newCount: number) => {
   'use server';
@@ -47,7 +45,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const viewCount = data?.view_count || 0;
   const newCount = viewCount + 1;
 
-  await updateCounter(slug, newCount);
+  if (process.env.NODE_ENV === 'production') {
+    await updateCounter(slug, newCount);
+  }
 
   return (
     <section>
@@ -57,7 +57,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           {/* Now is computed on the server but probably I need the locale here so that I can format based on locale */}
           {formatDate(frontMatter.createdAt)}
         </p>
-        <p className='text-neutral-600 dark:text-neutral-400'>{newCount}</p>
+        <p className='text-neutral-600 dark:text-neutral-400'>
+          {newCount} views
+        </p>
       </div>
 
       <article>
