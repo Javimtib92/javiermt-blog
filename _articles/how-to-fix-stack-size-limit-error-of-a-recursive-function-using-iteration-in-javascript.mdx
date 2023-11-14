@@ -1,10 +1,10 @@
 ---
-title: 'Fix Stack-Size limit error of a recursive function using iteration'
+title: 'How to fix Stack-Size limit error of a recursive function using iteration in JavaScript'
 createdAt: 2023-11-14
 thumbnail: /thumbnails/abstract.jpeg
 subtitle: Recursive who?
 shortDescription: >
-  Explore an alternative approach in walking through a deep object tree using iteration instead of recursion.
+  Explore an alternative approach in walking through a deep object tree using iteration instead of recursion to fix stack-size limit error.
 ---
 
 import { Highlight } from '@/components/highlight';
@@ -130,12 +130,14 @@ That's how I fixed our Stack-Size Limit error. There might be other alternatives
 but that solution worked well for our use-case.
 
 <br />
+
 To wrap up, in this article, we saw that recursion can throw an error if objects
 are too complex and the call stack of the recursion grows massively. We analyzed
 the function that caused this error and went through a real-world example of how
 we approached the solution. From discovering TCO, figuring out that not all engines
 where onboard with tail call optimization, to eventually realizing that the same
 function could be written using an iteration which finally solved our problem.
+
 <br />
 
 Be careful though and always analyze your problem because, for us, iterative
