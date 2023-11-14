@@ -17,6 +17,10 @@ async function ArticleItem({
     article.slug
   );
 
+  if (process.env.NODE_ENV === 'production' && articleData.draft) {
+    return null;
+  }
+
   return (
     <article className='flex px-0 py-7'>
       <Link
