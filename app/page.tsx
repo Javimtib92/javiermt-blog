@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import image from '/public/me.jpeg';
 import { CameraIcon } from '@heroicons/react/24/outline';
+import { getYearDiff } from '@/utils/dates';
 
 export default function Home() {
   return (
@@ -22,8 +23,8 @@ export default function Home() {
         </div>
       </div>
       <p className='text-justify text-slate-900 dark:text-gray-200'>
-        Hola! 👋 My name is Javier, I&apos;m a Software Engineer with 8+ years
-        of experience.
+        Hola! 👋 My name is Javier, I&apos;m a Software Engineer with{' '}
+        {getYearDiff(new Date('2015-05-01'), new Date())}+ years of experience.
       </p>
       <br />
       <p className='text-justify text-slate-900 dark:text-gray-200'>

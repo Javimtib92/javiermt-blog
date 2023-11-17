@@ -31,3 +31,11 @@ export function formatDate(inputDate: Date) {
 
   return formattedDate;
 }
+
+export function getYearDiff(from: Date, to: Date) {
+  const ms = to.getTime() - from.getTime();
+
+  const date = new Date(ms);
+
+  return Math.abs(date.getFullYear() - 1970);
+}
