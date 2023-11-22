@@ -31,6 +31,9 @@ const withMDX = createMDX({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  experimental: {
+    ppr: true,
+  },
 };
 
 export default withMDX(nextConfig);
