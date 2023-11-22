@@ -1,5 +1,8 @@
 import { formatDate } from '@/utils/dates';
-import { getAllArticles } from '@/utils/get-all-articles';
+import {
+  QueryAllArticlesOptions,
+  getAllArticles,
+} from '@/utils/get-all-articles';
 import { getArticleData } from '@/utils/get-article-data';
 
 import Image from 'next/image';
@@ -11,10 +14,12 @@ async function ArticleItem({
   article: {
     slug: string;
     path: string;
+    category: string;
   };
 }) {
   const { frontMatter: articleData, readingTime } = await getArticleData(
-    article.slug
+    article.slug,
+    article.category
   );
 
   if (process.env.NODE_ENV === 'production' && articleData.draft) {
@@ -38,9 +43,19 @@ async function ArticleItem({
       </Link>
       <div className='relative flex flex-col justify-between max-lg:flex-1'>
         <header>
-          <h3 className='mb-2 ml-0 mr-10 mt-2 font-mono text-sm italic leading-5 text-slate-800 dark:text-slate-200'>
-            {articleData.subtitle}
-          </h3>
+          <div className='flex flex-row items-center justify-between'>
+            <h3 className='mb-2 ml-0 mr-10 mt-2 font-mono text-sm italic leading-5 text-slate-800 dark:text-slate-200'>
+              {articleData.subtitle}
+            </h3>
+            <div className='mb-2 mt-2'>
+              <a
+                className='font-mono text-sm font-extrabold text-yellow-600 dark:text-yellow-300'
+                href={`/blog/${article.category}`}
+              >
+                {article.category}
+              </a>
+            </div>
+          </div>
 
           <h2>
             <Link
@@ -65,8 +80,12 @@ async function ArticleItem({
   );
 }
 
-export async function ArticlesList() {
-  const articles = getAllArticles();
+export async function ArticlesList({
+  query,
+}: {
+  query?: QueryAllArticlesOptions;
+}) {
+  const articles = getAllArticles(query);
 
   return (
     <div className='mx-auto my-0 flex max-w-7xl flex-wrap justify-between pb-0 '>
