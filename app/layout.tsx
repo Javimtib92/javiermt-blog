@@ -4,7 +4,6 @@ import './globals.css';
 import { cn } from '@/utils/cn';
 import { ThemeProvider } from '@/components/theme-provider';
 import { PreferredThemeSwitch } from '@/components/preferred-theme-switch';
-import Link from 'next/link';
 import NavigationLinks from '@/app/navigation-links';
 
 const display = Nunito({
@@ -25,7 +24,7 @@ const mono = Oxygen_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Javier Muñoz Tous',
+  title: 'Blog | Javier Muñoz Tous',
   description:
     "Explore a diverse range of topics, including technology, development, and personal insights on my blog. Join the online community and engage in discussions with me on subjects I'm passionate about.",
 };

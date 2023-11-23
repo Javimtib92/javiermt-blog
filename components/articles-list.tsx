@@ -8,6 +8,26 @@ import { getArticleData } from '@/utils/get-article-data';
 import Image from 'next/image';
 import Link from 'next/link';
 
+export async function ArticlesList({
+  query,
+}: {
+  query?: QueryAllArticlesOptions;
+}) {
+  const articles = getAllArticles(query);
+
+  return (
+    <div className='mx-auto my-0 flex max-w-7xl flex-wrap justify-between pb-0 '>
+      <main className='flex-1 pb-14 lg:flex-[0_0_770px]'>
+        <div className='divide-y divide-gray-200 dark:divide-gray-700'>
+          {articles.map((article) => {
+            return <ArticleItem key={article.slug} article={article} />;
+          })}
+        </div>
+      </main>
+    </div>
+  );
+}
+
 async function ArticleItem({
   article,
 }: {
@@ -77,25 +97,5 @@ async function ArticleItem({
         </footer>
       </div>
     </article>
-  );
-}
-
-export async function ArticlesList({
-  query,
-}: {
-  query?: QueryAllArticlesOptions;
-}) {
-  const articles = getAllArticles(query);
-
-  return (
-    <div className='mx-auto my-0 flex max-w-7xl flex-wrap justify-between pb-0 '>
-      <main className='flex-1 pb-14 lg:flex-[0_0_770px]'>
-        <div className='divide-y divide-gray-200 dark:divide-gray-700'>
-          {articles.map((article) => {
-            return <ArticleItem key={article.slug} article={article} />;
-          })}
-        </div>
-      </main>
-    </div>
   );
 }

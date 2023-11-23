@@ -1,4 +1,5 @@
 import { ArticlesList } from '@/components/articles-list';
+import { CategoriesList } from '@/components/categories-list';
 import { getAllArticles } from '@/utils/get-all-articles';
 
 type CategoryPageProps = {
@@ -10,7 +11,8 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <>
-      <h1 className='pb-2 font-display text-4xl capitalize text-yellow-600 dark:text-yellow-300'>
+      <CategoriesList selected={category} />
+      <h1 className='pb-2 font-display text-4xl font-bold capitalize text-yellow-600 dark:text-yellow-300'>
         {category} blog posts
       </h1>
       <ArticlesList
