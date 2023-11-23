@@ -14,7 +14,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     p: (props) => {
       return (
         <p
-          className='text-md font-body text-black dark:text-zinc-300'
+          className='text-md mb-8 mt-8 font-body text-black dark:text-zinc-300'
           {...props}
         ></p>
       );
