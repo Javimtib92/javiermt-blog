@@ -46,7 +46,7 @@ export function Highlight({
   return (
     <mark
       ref={ref}
-      className='text-black dark:text-zinc-300'
+      className='text-primary-900 dark:text-primary-100'
       // @ts-expect-error
       style={{ '--hue': colors[color], '--highlighted': 0 }}
     >
