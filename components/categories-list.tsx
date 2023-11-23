@@ -11,12 +11,12 @@ export function CategoriesList({ selected }: { selected?: string }) {
 
   return (
     <div className='mb-4 flex flex-shrink flex-row flex-wrap'>
-      <div className='h-12'>
+      <div className='h-auto'>
         <Link
           href={`/blog`}
           className={cn(
             typeof selected === 'undefined' ? activeClass : inactiveClass,
-            'mb-2 me-2 rounded-lg px-5 py-2.5 font-mono text-sm font-medium text-white focus:outline-none focus:ring-4'
+            'mb-2 me-2 inline-block rounded-lg px-5 py-2.5 font-mono text-sm font-medium text-white focus:outline-none focus:ring-4'
           )}
         >
           All
@@ -28,7 +28,7 @@ export function CategoriesList({ selected }: { selected?: string }) {
               href={`/blog/${category}`}
               className={cn(
                 selected === category ? activeClass : inactiveClass,
-                'mb-2 me-2 rounded-lg px-5 py-2.5 font-mono text-sm font-medium text-white  focus:outline-none focus:ring-4'
+                'mb-2  me-2 inline-block h-10 rounded-lg px-5 py-2.5 font-mono text-sm font-medium text-white  focus:outline-none focus:ring-4'
               )}
             >
               {category}

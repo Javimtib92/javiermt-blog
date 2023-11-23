@@ -10,7 +10,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const { category } = params;
 
   return (
-    <>
+    <div className='flex flex-col'>
       <CategoriesList selected={category} />
       <h1 className='pb-2 font-display text-4xl font-bold capitalize text-yellow-600 dark:text-yellow-300'>
         {category} blog posts
@@ -22,7 +22,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           },
         }}
       ></ArticlesList>
-    </>
+    </div>
   );
 }
 
