@@ -18,28 +18,29 @@ export default function Home() {
         </span>
 
         <div className='flex flex-col place-self-start'>
-          <h1 className='font-display text-2xl font-bold'>Javier Muñoz Tous</h1>
-          <h1 className='font-mono text-sm italic'>Full Stack Developer</h1>
+          <h1 className='text-primary-900 dark:text-primary-100 font-display text-2xl font-bold'>
+            Javier Muñoz Tous
+          </h1>
+          <h1 className='text-accent-800 dark:text-accent-400 font-mono text-sm italic'>
+            Full Stack Developer
+          </h1>
         </div>
       </div>
-      <p className='text-justify text-slate-900 dark:text-gray-200'>
+      <p className='text-md dark:text-secondary-300 text-secondary-700 mb-8 mt-8 font-body'>
         Hola! 👋 My name is Javier, I&apos;m a Software Engineer with{' '}
         {getYearDiff(new Date('2015-05-01'), new Date())}+ years of experience.
       </p>
-      <br />
-      <p className='text-justify text-slate-900 dark:text-gray-200'>
+      <p className='text-md dark:text-secondary-300 text-secondary-700 mb-8 mt-8 font-body'>
         I&apos;ve build this blog to create tutorials and share my thoughts on a
         diverse range of topics, including technology, development and personal
         insights. I&apos;ll try to be short, but helpful, and provide some value
         to our community.
       </p>
-      <br />
-      <p className='text-justify text-slate-900 dark:text-gray-200'>
+      <p className='text-md dark:text-secondary-300 text-secondary-700 mb-8 mt-8 font-body'>
         If you want to know me a bit better you can find me on instagram or, if
         you are interested in my professional career, you can check me out on
         Linkedn.
       </p>
-      <br />
       <a
         href='https://www.instagram.com/javimtib92'
         aria-label='Javier Instagram Profile'
@@ -50,9 +51,9 @@ export default function Home() {
           <CameraIcon className='h-6 w-6' />
         </span>
       </a>
-      <br />
-      <br />
-      Salut! 😄
+      <p className='text-md dark:text-secondary-300 text-secondary-700 mb-8 mt-8 font-body'>
+        Salut! 😄
+      </p>
     </div>
   );
 }
