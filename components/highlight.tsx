@@ -3,19 +3,18 @@
 import { ReactNode, useEffect, useRef } from 'react';
 
 const colors = {
-  blue: '190',
-  green: '140',
-  red: '10',
-  yellow: '45',
+  primary: '201',
+  secondary: '187',
+  accent: '160',
 };
 
 // NOTE: I created this component instead of using the tag in the mdx file and style it through mdx-components because
 // for some reason it is not processed that way. 😢  Revisit this in the future.
 export function Highlight({
-  color = 'blue',
+  color = 'primary',
   children,
 }: {
-  color: 'red' | 'green' | 'blue' | 'yellow';
+  color: 'primary' | 'secondary' | 'accent';
   children: ReactNode;
 }) {
   const ref = useRef(null);
