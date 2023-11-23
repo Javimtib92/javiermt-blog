@@ -13,9 +13,9 @@ export function BackButton() {
         onClick={() => router.back()}
       >
         <span>
-          <ArrowLeftIcon className='h-6 w-6 text-yellow-600 dark:text-yellow-300' />
+          <ArrowLeftIcon className='text-secondary-600 dark:text-secondary-300 h-4 w-4' />
         </span>
-        <span className='text-lg font-medium text-yellow-600 dark:text-yellow-300'>
+        <span className='text-secondary-600 dark:text-secondary-300 text-md font-medium'>
           Back
         </span>
       </button>

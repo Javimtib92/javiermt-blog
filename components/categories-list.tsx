@@ -5,9 +5,10 @@ import Link from 'next/link';
 export function CategoriesList({ selected }: { selected?: string }) {
   const categories = getAllCategories();
 
-  const activeClass = 'bg-red-500 focus:ring-red-300 dark:focus:ring-red-700';
+  const activeClass =
+    'bg-secondary-500 focus:ring-secondary-300 dark:focus:ring-secondary-700';
   const inactiveClass =
-    'bg-gray-800 dark:bg-gray-800 hover:bg-gray-900 dark:hover:bg-gray-700 focus:ring-gray-300 dark:focus:ring-gray-700';
+    'bg-background-700 dark:bg-background-700 hover:bg-background-900 dark:hover:bg-background-700 focus:ring-background-300 dark:focus:ring-background-700';
 
   return (
     <div className='mb-4 flex flex-shrink flex-row flex-wrap'>

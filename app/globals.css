@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --color-background-base: #0c2431;
+    --color-primary-base: #0c2431;
+    --color-secondary-base: #194a50;
+    --color-accent-base: #d37556;
+  }
+}
+
 * {
   font-family: var(--font-body);
 }

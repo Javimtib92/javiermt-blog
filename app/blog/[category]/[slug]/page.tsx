@@ -47,7 +47,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   return (
     <section>
-      <h1 className='font-display text-2xl font-bold'>{frontMatter.title}</h1>
+      <h1 className='text-accent-800 dark:text-accent-300 font-display text-3xl font-bold'>
+        {frontMatter.title}
+      </h1>
       <div className='mb-8 mt-2 flex items-center justify-between text-sm'>
         <p className='text-sm text-neutral-600 dark:text-neutral-400'>
           {/* Now is computed on the server but probably I need the locale here so that I can format based on locale */}

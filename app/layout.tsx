@@ -38,7 +38,7 @@ export default function RootLayout({
     <html lang='en'>
       <body
         className={cn(
-          ' mx-4 mb-40 mt-8 max-w-3xl bg-white text-black antialiased transition-colors dark:bg-[#111010] dark:text-white lg:mx-auto',
+          ' dark:bg-background-900 bg-background-100 mx-4 mb-40 mt-8 max-w-3xl text-black antialiased transition-colors dark:text-white lg:mx-auto',
           display.variable,
           body.variable,
           mono.variable
