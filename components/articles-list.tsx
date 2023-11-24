@@ -64,12 +64,12 @@ async function ArticleItem({
       <div className='relative flex flex-col justify-between max-lg:flex-1'>
         <header>
           <div className='flex flex-row items-center justify-between'>
-            <h3 className='text-primary-700 dark:text-primary-300 mb-2 ml-0 mr-10 mt-2 font-mono text-sm italic leading-5'>
+            <h3 className='mb-2 ml-0 mr-10 mt-2 font-mono text-sm italic leading-5 text-primary-700 dark:text-primary-300'>
               {articleData.subtitle}
             </h3>
-            <div className='mb-2 mt-2'>
+            <div className='mb-4 mt-2'>
               <a
-                className='text-accent-800 dark:text-accent-400 font-mono text-sm font-extrabold'
+                className='font-mono text-sm font-extrabold text-accent-800 underline underline-offset-8 dark:text-accent-500 dark:hover:text-accent-400'
                 href={`/blog/${article.category}`}
               >
                 {article.category}
@@ -80,16 +80,16 @@ async function ArticleItem({
           <h2>
             <Link
               href={article.path}
-              className='dark:text-primary-100 text-primary-900 font-display text-[26px] font-bold leading-7'
+              className='font-display text-[26px] font-bold leading-7 text-primary-900 dark:text-primary-100'
             >
               {articleData.title}
             </Link>
           </h2>
         </header>
-        <div className='dark:text-secondary-300 text-secondary-700 leading-6 max-sm:hidden'>
+        <div className='leading-6 text-secondary-700 dark:text-secondary-300 max-sm:hidden'>
           {articleData.shortDescription}
         </div>
-        <footer className='text-secondary-600 dark:text-secondary-400 mt-4 flex justify-between font-mono text-xs uppercase '>
+        <footer className='mt-4 flex justify-between font-mono text-xs uppercase text-secondary-600 dark:text-secondary-400 '>
           <div className='font-mono text-xs'>
             {formatDate(articleData.createdAt)}
           </div>

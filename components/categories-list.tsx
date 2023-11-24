@@ -8,7 +8,7 @@ export function CategoriesList({ selected }: { selected?: string }) {
   const activeClass =
     'bg-secondary-500 focus:ring-secondary-300 dark:focus:ring-secondary-700';
   const inactiveClass =
-    'bg-background-700 dark:bg-background-700 hover:bg-background-900 dark:hover:bg-background-700 focus:ring-background-300 dark:focus:ring-background-700';
+    'bg-background-700 hover:bg-background-400 dark:hover:bg-background-500 focus:ring-background-300 dark:focus:ring-background-600';
 
   return (
     <div className='mb-4 flex flex-shrink flex-row flex-wrap'>

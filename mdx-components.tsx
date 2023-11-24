@@ -8,7 +8,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h1: (props) => {
       return (
         <h1
-          className='dark:text-primary-100 text-primary-900 font-display text-2xl font-bold'
+          className='font-display text-2xl font-bold text-primary-900 dark:text-primary-100'
           {...props}
         ></h1>
       );
@@ -16,7 +16,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h2: (props) => {
       return (
         <h1
-          className='dark:text-primary-100 text-primary-900 font-display text-xl font-bold'
+          className='font-display text-xl font-bold text-primary-900 dark:text-primary-100'
           {...props}
         ></h1>
       );
@@ -24,7 +24,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     p: (props) => {
       return (
         <p
-          className='text-md dark:text-secondary-300 text-secondary-700 mb-8 mt-8 font-body'
+          className='text-md mb-8 mt-8 font-body text-secondary-700 dark:text-secondary-300'
           {...props}
         ></p>
       );
@@ -32,7 +32,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     a: (props) => {
       return (
         <a
-          className='text-md text-accent-400 font-body underline'
+          className='text-md font-body text-accent-400 underline underline-offset-4'
           {...props}
         ></a>
       );
@@ -40,7 +40,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ul: ({ children, ...props }) => {
       return (
         <ul
-          className='text-primary-400 dark:text-primary-400 max-w-md list-inside list-disc space-y-1'
+          className='max-w-md list-inside list-disc space-y-1 text-primary-400 dark:text-primary-400'
           {...props}
         >
           {children}
@@ -49,7 +49,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
     blockquote: ({ children, ...props }) => {
       return (
-        <blockquote className='dark:border-accent-500 dark:bg-background-700 bg-background-50 border-accent-300 my-4 border-l-4 p-4'>
+        <blockquote className='my-4 border-l-4 border-accent-300 bg-background-50 p-4 dark:border-accent-500 dark:bg-background-700'>
           {React.Children.map(children, (child) => {
             if (React.isValidElement<HTMLElement>(child)) {
               return React.cloneElement(child, {
