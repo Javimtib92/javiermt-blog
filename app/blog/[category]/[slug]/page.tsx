@@ -6,6 +6,8 @@ import { MarkdownPageRSC } from '@/components/markdown-page-rsc';
 import prisma from '@/utils/prisma';
 import { ViewCount } from '@/components/view-count';
 import { Suspense } from 'react';
+import { Heading } from '@/lib/ui/heading';
+import { Paragraph } from '@/lib/ui/paragraph';
 
 type ArticlePageProps = {
   params: { slug: string; category: string };
@@ -47,19 +49,17 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   return (
     <section>
-      <h1 className='text-primary-900 dark:text-primary-100 font-display text-3xl font-bold'>
-        {frontMatter.title}
-      </h1>
+      <Heading>{frontMatter.title}</Heading>
       <div className='mb-8 mt-2 flex items-center justify-between text-sm'>
-        <p className='text-primary-700 dark:text-primary-300 text-sm'>
+        <Paragraph className='mb-0 mt-0' subtle mono>
           {/* Now is computed on the server but probably I need the locale here so that I can format based on locale */}
           {formatDate(frontMatter.createdAt)}
-        </p>
-        <p className='text-neutral-600 dark:text-neutral-400'>
+        </Paragraph>
+        <Paragraph className='mb-0 mt-0' subtle mono>
           <Suspense fallback={''}>
             <ViewCount slug={slug} />
           </Suspense>
-        </p>
+        </Paragraph>
       </div>
 
       <article>
@@ -81,7 +81,6 @@ export async function generateMetadata(
 
   const { frontMatter } = await getArticleData(slug, category);
 
-  console.log(slug, category);
   const previousImages = (await parent).openGraph?.images || [];
 
   return {

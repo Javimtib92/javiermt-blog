@@ -4,10 +4,10 @@
 
 @layer base {
   :root {
-    --color-background-base: #0c2431;
-    --color-primary-base: #0c2431;
-    --color-secondary-base: #194a50;
-    --color-accent-base: #10b981;
+    --color-background-base: #161a30;
+    --color-primary-base: #31304d;
+    --color-secondary-base: #b6bbc4;
+    --color-accent-base: #c3073f;
   }
 }
 
@@ -80,6 +80,8 @@ html:not(.dark) [data-rehype-pretty-code-title][data-theme='light'] {
 }
 
 [data-rehype-pretty-code-fragment] {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   margin-left: -18px;
   margin-right: -18px;
 
@@ -90,7 +92,6 @@ html:not(.dark) [data-rehype-pretty-code-title][data-theme='light'] {
 }
 
 [data-rehype-pretty-code-title] + pre {
-  margin-top: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border-top-width: 0;
@@ -128,18 +129,15 @@ html:not(.dark) [data-rehype-pretty-code-title][data-theme='light'] {
 pre {
   overflow-x: auto;
   font-weight: 400;
-  font-size: 0.875em;
   line-height: 1.7142857;
-  margin-top: 1.7142857em;
-  margin-bottom: 1.7142857em;
   border-radius: 0.375rem;
-  padding: 0.8571429em 1.1428571em;
+  padding: 1.5rem;
 }
 
 mark {
   --lightness: 80%;
   --highlighted: 1;
-  --highlight: hsl(var(--hue, 45) 80% var(--lightness));
+  --highlight: hsl(var(--accent-hue, 45) 80% var(--lightness));
   background: transparent;
 }
 

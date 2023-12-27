@@ -1,3 +1,6 @@
+import { Heading } from '@/lib/ui/heading';
+import { Link } from '@/lib/ui/link';
+import { Paragraph } from '@/lib/ui/paragraph';
 import { formatDate } from '@/utils/dates';
 import {
   QueryAllArticlesOptions,
@@ -6,7 +9,6 @@ import {
 import { getArticleData } from '@/utils/get-article-data';
 
 import Image from 'next/image';
-import Link from 'next/link';
 
 export async function ArticlesList({
   query,
@@ -64,36 +66,41 @@ async function ArticleItem({
       <div className='relative flex flex-col justify-between max-lg:flex-1'>
         <header>
           <div className='flex flex-row items-center justify-between'>
-            <h3 className='mb-2 ml-0 mr-10 mt-2 font-mono text-sm italic leading-5 text-primary-700 dark:text-primary-300'>
+            <Heading
+              level={3}
+              className='mb-2 ml-0 mr-10 mt-2 font-mono text-sm font-thin italic leading-5'
+            >
               {articleData.subtitle}
-            </h3>
+            </Heading>
             <div className='mb-4 mt-2'>
-              <a
-                className='font-mono text-sm font-extrabold text-accent-800 underline underline-offset-8 dark:text-accent-500 dark:hover:text-accent-400'
+              <Link
+                className='font-mono text-sm font-extrabold text-accent-700 underline underline-offset-8 hover:text-accent-500 dark:text-accent-400 dark:hover:text-accent-500'
                 href={`/blog/${article.category}`}
               >
                 {article.category}
-              </a>
+              </Link>
             </div>
           </div>
 
-          <h2>
+          <Heading level={2}>
             <Link
               href={article.path}
               className='font-display text-[26px] font-bold leading-7 text-primary-900 dark:text-primary-100'
             >
               {articleData.title}
             </Link>
-          </h2>
+          </Heading>
         </header>
-        <div className='leading-6 text-secondary-700 dark:text-secondary-300 max-sm:hidden'>
+        <Paragraph className='mb-0 mt-0 leading-6 max-sm:hidden'>
           {articleData.shortDescription}
-        </div>
-        <footer className='mt-4 flex justify-between font-mono text-xs uppercase text-secondary-600 dark:text-secondary-400 '>
-          <div className='font-mono text-xs'>
+        </Paragraph>
+        <footer className='mt-4 flex justify-between'>
+          <Paragraph className='m-0' subtle mono>
             {formatDate(articleData.createdAt)}
-          </div>
-          <div className='font-mono text-xs'>{readingTime.text}</div>
+          </Paragraph>
+          <Paragraph className='m-0' subtle mono>
+            {readingTime.text}
+          </Paragraph>
         </footer>
       </div>
     </article>

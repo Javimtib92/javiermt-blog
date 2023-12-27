@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import image from '/public/me.jpeg';
-import { CameraIcon } from '@heroicons/react/24/outline';
 import { getYearDiff } from '@/utils/dates';
+import { Paragraph } from '@/lib/ui/paragraph';
+import { Heading } from '@/lib/ui/heading';
 
 export default function Home() {
   return (
@@ -18,42 +19,28 @@ export default function Home() {
         </span>
 
         <div className='flex flex-col place-self-start'>
-          <h1 className='text-primary-900 dark:text-primary-100 font-display text-2xl font-bold'>
-            Javier Muñoz Tous
-          </h1>
-          <h1 className='text-accent-800 dark:text-accent-400 font-mono text-sm italic'>
+          <Heading>Javier Muñoz Tous</Heading>
+          <Heading className='font-mono text-sm italic text-primary-700 dark:text-primary-300'>
             Full Stack Developer
-          </h1>
+          </Heading>
         </div>
       </div>
-      <p className='text-md dark:text-secondary-300 text-secondary-700 mb-8 mt-8 font-body'>
+      <Paragraph>
         Hola! 👋 My name is Javier, I&apos;m a Software Engineer with{' '}
         {getYearDiff(new Date('2015-05-01'), new Date())}+ years of experience.
-      </p>
-      <p className='text-md dark:text-secondary-300 text-secondary-700 mb-8 mt-8 font-body'>
+      </Paragraph>
+      <Paragraph>
         I&apos;ve build this blog to create tutorials and share my thoughts on a
         diverse range of topics, including technology, development and personal
         insights. I&apos;ll try to be short, but helpful, and provide some value
         to our community.
-      </p>
-      <p className='text-md dark:text-secondary-300 text-secondary-700 mb-8 mt-8 font-body'>
+      </Paragraph>
+      <Paragraph>
         If you want to know me a bit better you can find me on instagram or, if
         you are interested in my professional career, you can check me out on
         Linkedn.
-      </p>
-      <a
-        href='https://www.instagram.com/javimtib92'
-        aria-label='Javier Instagram Profile'
-        className='group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-pink-500 to-orange-400 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-pink-200 group-hover:from-pink-500 group-hover:to-orange-400 dark:text-white dark:focus:ring-pink-800'
-      >
-        <span className='relative flex flex-row items-center gap-2 rounded-md bg-white px-5 py-2.5 font-display text-lg transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900'>
-          Instagram
-          <CameraIcon className='h-6 w-6' />
-        </span>
-      </a>
-      <p className='text-md dark:text-secondary-300 text-secondary-700 mb-8 mt-8 font-body'>
-        Salut! 😄
-      </p>
+      </Paragraph>
+      <Paragraph>Salut! 😄</Paragraph>
     </div>
   );
 }
