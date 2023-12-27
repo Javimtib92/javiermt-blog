@@ -154,9 +154,11 @@ export default function RootLayout({
                 )
               );
           
-              const [hue] = rgbToHsl(...colo);
+              const [h,s,l] = rgbToHsl(...colo);
               
-              document.documentElement.style.setProperty('--accent-hue', hue);
+              document.documentElement.style.setProperty('--accent-hue', h);
+              document.documentElement.style.setProperty('--accent-saturation', s);
+              document.documentElement.style.setProperty('--accent-lightness', l);
             })();
             `,
           }}
