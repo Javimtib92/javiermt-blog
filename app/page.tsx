@@ -19,7 +19,7 @@ export default function Home() {
         </span>
 
         <div className='flex flex-col place-self-start'>
-          <Heading>Javier Muñoz Tous</Heading>
+          <Heading className='text-2xl'>Javier Muñoz Tous</Heading>
           <Heading className='font-mono text-sm italic text-accent-400 dark:text-accent-400'>
             Full Stack Developer
           </Heading>
