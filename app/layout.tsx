@@ -38,7 +38,7 @@ export default function RootLayout({
     <html lang='en'>
       <body
         className={cn(
-          'bg-background-50 text-black antialiased transition-colors dark:bg-background-900 dark:text-white ',
+          'bg-white text-black antialiased transition-colors dark:bg-background-900 dark:text-white ',
           display.variable,
           body.variable,
           mono.variable

@@ -19,7 +19,7 @@ export function Paragraph({
         'mb-6 mt-6',
         mono ? 'font-mono' : 'font-body',
         subtle
-          ? 'text-xs text-primary-700 dark:text-primary-400'
+          ? 'text-xs text-primary-400 dark:text-primary-400'
           : 'text-md text-primary-800 dark:text-primary-200',
         className
       )}

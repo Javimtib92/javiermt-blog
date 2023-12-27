@@ -9,7 +9,7 @@ export function BackButton() {
   return (
     <div className='mb-10 max-w-7xl'>
       <button
-        className='flex items-center space-x-4 text-accent-700 hover:text-accent-500 focus:outline-none dark:text-accent-400 dark:hover:text-accent-500'
+        className='flex items-center space-x-4 text-accent-400 hover:text-accent-300 focus:outline-none'
         onClick={() => router.back()}
       >
         <span>

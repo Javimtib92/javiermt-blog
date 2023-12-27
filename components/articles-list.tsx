@@ -74,7 +74,8 @@ async function ArticleItem({
             </Heading>
             <div className='mb-4 mt-2'>
               <Link
-                className='font-mono text-sm font-extrabold text-accent-700 underline underline-offset-8 hover:text-accent-500 dark:text-accent-400 dark:hover:text-accent-500'
+                className='font-mono text-sm font-extrabold underline-offset-8'
+                underline
                 href={`/blog/${article.category}`}
               >
                 {article.category}
@@ -85,7 +86,7 @@ async function ArticleItem({
           <Heading level={2}>
             <Link
               href={article.path}
-              className='font-display text-[26px] font-bold leading-7 text-primary-900 dark:text-primary-100'
+              className='font-display text-[26px] font-bold leading-7 text-primary-900 hover:text-primary-900 dark:text-primary-100 dark:hover:text-primary-100'
             >
               {articleData.title}
             </Link>
