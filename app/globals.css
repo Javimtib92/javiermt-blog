@@ -41,6 +41,7 @@ html:not(.dark) code[data-theme='dark'] {
 
 .dark code[data-theme='dark']:has(.line),
 html:not(.dark) code[data-theme='light']:has(.line) {
+  white-space: nowrap;
   font-weight: bold;
   padding-top: 2px;
   padding-bottom: 2px;
@@ -107,7 +108,7 @@ html:not(.dark) [data-rehype-pretty-code-title][data-theme='light'] {
   color: rgb(229 229 229 / var(--tw-text-opacity));
 }
 
-[data-rehype-pretty-code-fragment] {
+[data-rehype-pretty-code-fragment]:has(pre) {
   margin-top: 2rem;
   margin-bottom: 2rem;
   margin-left: -18px;

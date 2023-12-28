@@ -60,7 +60,7 @@ If the initial `Object` is very deep and has a lot of properties then you can ge
 ## Buckle up, things are going to get interesting
 
 After some research I found a node v8 option to increase the stack size called `--stack-size`
-but that tweaking that option didn't feel right. I have nothing against that option, if it solves the
+but tweaking that option didn't feel right. I have nothing against that option, if it solves the
 problem it should be fine, right? But that flag is unreliable as discussed in [this github issue](https://github.com/nodejs/node/issues/6360).
 
 So, back to our problem solving, after some more research I came across [this article](https://exploringjs.com/es6/ch_tail-calls.html) about **Tail Call Optimization**.
