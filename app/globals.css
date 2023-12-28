@@ -170,3 +170,8 @@ mark span {
     --highlighted: 1;
   }
 }
+
+.title-link:hover > .anchor,
+.title-link:focus > .anchor {
+  visibility: visible;
+}

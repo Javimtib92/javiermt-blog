@@ -1,25 +1,18 @@
 import type { MDXComponents } from 'mdx/types';
 import React from 'react';
-import { Heading } from './lib/ui/heading';
 import { Paragraph } from './lib/ui/paragraph';
 import { Link } from './lib/ui/link';
 import { Quote } from './lib/ui/quote';
+import { TitleLink } from './components/title-link';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
-    h1: (props) => {
-      return <Heading {...props}></Heading>;
-    },
-    h2: (props) => {
-      return <Heading level={2} {...props}></Heading>;
-    },
-    p: (props) => {
-      return <Paragraph {...props}></Paragraph>;
-    },
-    a: ({ href, ...props }) => {
-      return <Link href={href ?? ''} underline {...props}></Link>;
-    },
+    h1: (props) => <TitleLink level={1} {...props} />,
+    h2: (props) => <TitleLink level={2} {...props} />,
+    h3: (props) => <TitleLink level={3} {...props} />,
+    p: (props) => <Paragraph {...props} />,
+    a: ({ href, ...props }) => <Link href={href ?? ''} underline {...props} />,
     ul: ({ children, ...props }) => {
       return (
         <ul
@@ -30,8 +23,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         </ul>
       );
     },
-    blockquote: (props) => {
-      return <Quote {...props} />;
-    },
+    blockquote: (props) => <Quote {...props} />,
   };
 }

@@ -12,7 +12,7 @@ export function Heading({
   children?: ReactNode;
   level?: HeadingLevel;
   className?: string;
-}) {
+} & React.HTMLAttributes<HTMLHeadingElement>) {
   switch (level) {
     case 1:
       return (
