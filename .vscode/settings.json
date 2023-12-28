@@ -2,6 +2,9 @@
   "mdx.experimentalLanguageServer": true,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[mdx]": {
+    "editor.formatOnSave": false
+  },
   "emojisense.languages": {
     "*": true
   }
