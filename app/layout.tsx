@@ -5,6 +5,8 @@ import { cn } from '@/utils/cn';
 import { ThemeProvider } from '@/components/theme-provider';
 import { PreferredThemeSwitch } from '@/components/preferred-theme-switch';
 import NavigationLinks from '@/app/navigation-links';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/react';
 
 const display = Barlow_Condensed({
   subsets: ['latin'],
@@ -163,6 +165,8 @@ export default function RootLayout({
             `,
           }}
         ></script>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
