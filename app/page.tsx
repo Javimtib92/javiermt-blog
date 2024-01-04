@@ -43,7 +43,7 @@ export default function Home() {
         to our community.
       </Paragraph>
       <Paragraph>
-        I love my wife and my two adorable cats 🩶 🧡 I practice Yoga twice a
+        I love my fiance and my two adorable cats 🩶 🧡 I practice Yoga twice a
         week 🧘‍♂️ I was a very good swimmer when I was younger 🏊 I&apos;m
         passionate about video-games 🎮 and my favorite meal is ramen 🍜
       </Paragraph>
