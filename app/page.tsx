@@ -30,20 +30,27 @@ export default function Home() {
           </Heading>
         </div>
       </div>
+      <Paragraph>Hola! 👋 </Paragraph>
       <Paragraph>
-        Hola! 👋 My name is Javier, I&apos;m a Software Engineer with{' '}
-        {getYearDiff(new Date('2015-05-01'), new Date())}+ years of experience.
+        My name is Javier, I&apos;m a Full Stack Software Engineer with{' '}
+        {getYearDiff(new Date('2015-05-01'), new Date())}+ years of experience
+        with Javascript.
       </Paragraph>
       <Paragraph>
-        I&apos;ve build this blog to create tutorials and share my thoughts on a
+        I&apos;ve built this blog to create tutorials and share my thoughts on a
         diverse range of topics, including technology, development and personal
-        insights. I&apos;ll try to be short, but helpful, and provide some value
+        insights. I&apos;ll try to be short but helpful and provide some value
         to our community.
       </Paragraph>
       <Paragraph>
-        If you want to know me a bit better you can find me on instagram or, if
-        you are interested in my professional career, you can check me out on
-        Linkedn.
+        I love my wife and my two adorable cats 🩶 🧡 I practice Yoga twice a
+        week 🧘‍♂️ I was a very good swimmer when I was younger 🏊 I&apos;m
+        passionate about video-games 🎮 and my favorite meal is ramen 🍜
+      </Paragraph>
+      <Paragraph>
+        If you want to know a bit more about me you can find me on Instagram, or
+        if you are interested in my professional career, you can check me out on
+        LinkedIn.
       </Paragraph>
       <Paragraph>Salut! 😄</Paragraph>
     </div>
