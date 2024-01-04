@@ -26,7 +26,7 @@ export default function Home() {
             level={2}
             className='italic text-accent-secondary-400 underline underline-offset-8 dark:text-accent-secondary-400 sm:text-xl'
           >
-            Full Stack Developer
+            Full Stack Engineer
           </Heading>
         </div>
       </div>
