@@ -1,17 +1,17 @@
 import type { Metadata } from 'next';
-import { Open_Sans, Nunito, Oxygen_Mono } from 'next/font/google';
+import { Oxygen_Mono, Barlow_Condensed, Montserrat } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/utils/cn';
 import { ThemeProvider } from '@/components/theme-provider';
 import { PreferredThemeSwitch } from '@/components/preferred-theme-switch';
 import NavigationLinks from '@/app/navigation-links';
 
-const display = Nunito({
+const display = Barlow_Condensed({
   subsets: ['latin'],
   weight: ['400', '700'],
   variable: '--font-display',
 });
-const body = Open_Sans({
+const body = Montserrat({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
   variable: '--font-body',
@@ -38,7 +38,7 @@ export default function RootLayout({
     <html lang='en'>
       <body
         className={cn(
-          'bg-white text-black antialiased transition-colors dark:bg-background-900 dark:text-white ',
+          'bg-white text-black antialiased transition-colors dark:bg-background-700 dark:text-white ',
           display.variable,
           body.variable,
           mono.variable

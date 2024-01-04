@@ -50,7 +50,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   return (
     <section>
       <Heading>{frontMatter.title}</Heading>
-      <div className='mb-8 mt-2 flex items-center justify-between text-sm'>
+      <div className='mb-8 mt-4 flex items-center justify-between text-sm'>
         <Paragraph className='mb-0 mt-0' subtle mono>
           {/* Now is computed on the server but probably I need the locale here so that I can format based on locale */}
           {formatDate(frontMatter.createdAt)}

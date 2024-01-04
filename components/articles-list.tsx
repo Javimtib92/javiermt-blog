@@ -52,14 +52,14 @@ async function ArticleItem({
     <article className='flex px-0 py-7'>
       <Link
         href={article.path}
-        className='mr-6 block flex-[0_0_100px] max-sm:hidden sm:flex-[0_0_180px] lg:flex-[0_0_240px]'
+        className='mr-6 block flex-[0_0_100px] max-md:hidden md:flex-[0_0_280px]'
       >
         <Image
           src={articleData.thumbnail}
           width={300}
           height={300}
           alt={`${article.slug} image thumbnail`}
-          className='h-[100px] w-[100px] sm:h-[180px] sm:w-[180px] lg:h-[240px] lg:w-[240px]'
+          className='h-[280px] w-[280px]'
           priority
         ></Image>
       </Link>
@@ -68,7 +68,7 @@ async function ArticleItem({
           <div className='flex flex-row items-center justify-between'>
             <Heading
               level={3}
-              className='mb-2 ml-0 mr-10 mt-2 font-mono text-sm font-thin italic leading-5'
+              className='mb-2 ml-0 mr-10 mt-2 font-mono text-sm font-thin italic leading-5 sm:text-sm'
             >
               {articleData.subtitle}
             </Heading>
@@ -83,10 +83,10 @@ async function ArticleItem({
             </div>
           </div>
 
-          <Heading level={2}>
+          <Heading level={2} className='mb-4'>
             <Link
               href={article.path}
-              className='font-display text-[26px] font-bold leading-7 text-primary-900 hover:text-primary-900 dark:text-primary-100 dark:hover:text-primary-100'
+              className='font-display text-4xl font-bold leading-7 text-primary-900 hover:text-primary-900 dark:text-primary-100 dark:hover:text-primary-100'
             >
               {articleData.title}
             </Link>

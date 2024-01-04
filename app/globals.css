@@ -7,8 +7,8 @@
     --color-background-base: #161a30;
     --color-primary-base: #31304d;
     --color-secondary-base: #b6bbc4;
-    --color-accent-base: #073ac5;
-    --color-accent-secondary-base: #ff5733;
+    --color-accent-base: #3e67d8;
+    --color-accent-secondary-base: #508b3e;
   }
 }
 
@@ -197,6 +197,12 @@ mark span {
   to {
     --highlighted: 1;
   }
+}
+
+a {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
 }
 
 .title-link:hover > .anchor,

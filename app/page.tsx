@@ -19,8 +19,11 @@ export default function Home() {
         </span>
 
         <div className='flex flex-col place-self-start'>
-          <Heading className='text-2xl'>Javier Muñoz Tous</Heading>
-          <Heading className='font-mono text-sm italic text-accent-400 dark:text-accent-400'>
+          <Heading className='leading-7 sm:text-4xl'>Javier Muñoz Tous</Heading>
+          <Heading
+            level={2}
+            className='italic text-accent-secondary-400 underline underline-offset-8 dark:text-accent-secondary-400 sm:text-xl'
+          >
             Full Stack Developer
           </Heading>
         </div>

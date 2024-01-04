@@ -18,7 +18,7 @@ export function Heading({
       return (
         <h1
           className={cn(
-            'font-display text-3xl font-bold text-primary-800 dark:text-primary-100',
+            'font-display text-4xl font-bold text-primary-800 dark:text-primary-100 sm:text-5xl',
             className
           )}
           {...props}
@@ -30,7 +30,7 @@ export function Heading({
       return (
         <h2
           className={cn(
-            'font-display text-2xl font-bold text-primary-800 dark:text-primary-100',
+            'font-display text-2xl font-bold text-primary-800 dark:text-primary-100 sm:text-3xl',
             className
           )}
           {...props}
@@ -42,7 +42,7 @@ export function Heading({
       return (
         <h3
           className={cn(
-            'font-display text-xl font-bold text-primary-800 dark:text-primary-100',
+            'font-display text-xl font-bold text-primary-800 dark:text-primary-100 sm:text-2xl',
             className
           )}
           {...props}
