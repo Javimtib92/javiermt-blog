@@ -68,7 +68,7 @@ async function ArticleItem({
           <div className='flex flex-row items-center justify-between'>
             <Heading
               level={3}
-              className='mb-2 ml-0 mr-10 mt-2 font-mono text-sm font-thin italic leading-5 sm:text-sm'
+              className='mb-2 ml-0 mr-10 mt-2 font-mono text-sm font-bold italic leading-5 text-accent-secondary-400 dark:text-accent-secondary-400 sm:text-sm'
             >
               {articleData.subtitle}
             </Heading>

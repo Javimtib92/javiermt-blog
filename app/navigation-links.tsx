@@ -1,8 +1,10 @@
 'use client';
 
 import { cn } from '@/utils/cn';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useSelectedLayoutSegments } from 'next/navigation';
+import Logo from '/public/logo.png';
 
 export default function NavigationLinks() {
   const segments = useSelectedLayoutSegments();
@@ -13,7 +15,14 @@ export default function NavigationLinks() {
     'text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200';
 
   return (
-    <div className='flex flex-row'>
+    <div className='flex flex-row items-center'>
+      <Image
+        alt='website logo'
+        src={Logo}
+        width={48}
+        height={48}
+        className='mr-4'
+      />
       <Link
         href='/'
         className={cn(

@@ -150,7 +150,7 @@ export default function RootLayout({
             (function() {
               const colo = hexToRgb(
                 getComputedStyle(document.documentElement).getPropertyValue(
-                  '--color-accent-base'
+                  '--color-accent-secondary-base'
                 )
               );
           
