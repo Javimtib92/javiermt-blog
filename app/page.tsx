@@ -3,6 +3,10 @@ import image from '/public/me.jpeg';
 import { getYearDiff } from '@/utils/dates';
 import { Paragraph } from '@/lib/ui/paragraph';
 import { Heading } from '@/lib/ui/heading';
+import { SocialLink } from '@/components/social-link';
+import LinkedinLogo from '/public/linkedin_logo.svg';
+import InstagramLogo from '/public/instagram_logo.svg';
+import GithubLogo from '/public/github_logo.svg';
 
 export default function Home() {
   return (
@@ -53,6 +57,23 @@ export default function Home() {
         LinkedIn.
       </Paragraph>
       <Paragraph>Salut! 😄</Paragraph>
+      <div className='flex gap-6'>
+        <SocialLink
+          img={InstagramLogo}
+          name='Instagram'
+          link='https://www.instagram.com/javimtib92'
+        ></SocialLink>
+        <SocialLink
+          img={LinkedinLogo}
+          name='LinkedIn'
+          link='https://www.linkedin.com/in/javier-muñoz-tous/'
+        ></SocialLink>
+        <SocialLink
+          img={GithubLogo}
+          name='Github'
+          link='https://github.com/Javimtib92'
+        ></SocialLink>
+      </div>
     </div>
   );
 }

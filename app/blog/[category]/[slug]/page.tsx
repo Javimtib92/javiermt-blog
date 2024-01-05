@@ -5,7 +5,7 @@ import { formatDate } from '@/utils/dates';
 import { MarkdownPageRSC } from '@/components/markdown-page-rsc';
 import prisma from '@/utils/prisma';
 import { ViewCount } from '@/components/view-count';
-import { Suspense } from 'react';
+import { Suspense, cache } from 'react';
 import { Heading } from '@/lib/ui/heading';
 import { Paragraph } from '@/lib/ui/paragraph';
 
@@ -13,7 +13,7 @@ type ArticlePageProps = {
   params: { slug: string; category: string };
 };
 
-const updateCounter = async (slug: string) => {
+const updateCounter = cache(async (slug: string) => {
   'use server';
 
   try {
@@ -34,7 +34,7 @@ const updateCounter = async (slug: string) => {
   } catch (error) {
     console.error('Unexpected error:', error);
   }
-};
+});
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug, category } = params;
