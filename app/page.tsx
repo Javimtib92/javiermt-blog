@@ -57,7 +57,7 @@ export default function Home() {
         LinkedIn.
       </Paragraph>
       <Paragraph>Salut! 😄</Paragraph>
-      <div className='flex gap-6'>
+      <div className='flex flex-col gap-6 sm:flex-row'>
         <SocialLink
           img={InstagramLogo}
           name='Instagram'

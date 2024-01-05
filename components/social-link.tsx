@@ -11,11 +11,11 @@ export function SocialLink({
   name: string;
 }) {
   return (
-    <div className='group flex'>
+    <div className='group flex w-full sm:w-auto'>
       <a
         href={link}
         target='_blank'
-        className='flex items-center justify-between rounded border border-background-200 bg-background-50 px-4 py-4 dark:border-background-400 dark:bg-background-500'
+        className='flex w-full items-center justify-between rounded border border-background-200 bg-background-50 px-4 py-4 dark:border-background-400 dark:bg-background-500 sm:w-auto'
       >
         <div className='flex items-center space-x-3'>
           <div className='relative h-6 rounded-full bg-white'>
