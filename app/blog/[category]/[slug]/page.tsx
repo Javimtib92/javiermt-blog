@@ -77,26 +77,31 @@ export async function generateMetadata(
 
   const { frontMatter } = await getArticleData(slug, category);
 
-  const previousImages = (await parent).openGraph?.images || [];
+  let ogImage = `https://coding-kittens.com/${frontMatter.thumbnail}`;
+
+  const title = frontMatter.title;
+  const description = frontMatter.shortDescription;
 
   return {
-    metadataBase: new URL('https://coding-kittens.com'),
-    title: frontMatter.title,
-    description: frontMatter.shortDescription,
+    title,
+    description,
     openGraph: {
-      title: frontMatter.title,
-      description: frontMatter.shortDescription,
-      images: [frontMatter.thumbnail, ...previousImages],
+      title,
+      description,
       type: 'article',
       publishedTime: new Date(frontMatter.createdAt).toISOString(),
-      authors: ['Javier Muñoz Tous'],
+      url: `https://coding-kittens/blog/${slug}`,
+      images: [
+        {
+          url: ogImage,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: frontMatter.title,
-      description: frontMatter.shortDescription,
-      creator: '@Javimt_ib',
-      images: [frontMatter.thumbnail, ...previousImages],
+      title,
+      description,
+      images: [ogImage],
     },
   };
 }
