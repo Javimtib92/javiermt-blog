@@ -24,11 +24,12 @@ const mono = Oxygen_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://coding-kittens.com'),
   title: 'Blog | Javier Muñoz Tous',
   description:
     "Explore a diverse range of topics, including technology, development, and personal insights on my blog. Join the online community and engage in discussions with me on subjects I'm passionate about.",
   openGraph: {
-    images: ['https://coding-kittens.com/logo.png'],
+    images: ['/logo.png'],
   },
 };
 
