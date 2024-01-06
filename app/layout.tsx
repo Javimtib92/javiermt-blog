@@ -2,12 +2,9 @@ import type { Metadata } from 'next';
 import { Oxygen_Mono, Barlow_Condensed, Montserrat } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/utils/cn';
-import { ThemeProvider } from '@/components/theme-provider';
-import { PreferredThemeSwitch } from '@/components/preferred-theme-switch';
-import NavigationLinks from '@/app/navigation-links';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
-import { SiteLogo } from './site-logo';
+import { Navbar } from './navbar';
 
 const display = Barlow_Condensed({
   subsets: ['latin'],
@@ -30,6 +27,9 @@ export const metadata: Metadata = {
   title: 'Blog | Javier Muñoz Tous',
   description:
     "Explore a diverse range of topics, including technology, development, and personal insights on my blog. Join the online community and engage in discussions with me on subjects I'm passionate about.",
+  openGraph: {
+    images: ['https://coding-kittens.com/logo.png'],
+  },
 };
 
 export default function RootLayout({
@@ -49,21 +49,7 @@ export default function RootLayout({
       >
         <div className='mb-40 max-w-3xl md:mx-auto'>
           <main className='flex min-w-0 flex-auto flex-col px-2 md:px-0'>
-            {/* Navigation. Think about extracting this component if possible. */}
-            <nav className='sticky top-0 mb-12 mt-4 flex flex-row items-start py-4 pl-2 pr-4 backdrop-blur md:-ml-[8px] md:px-0'>
-              <div className='flex min-w-full flex-row justify-between space-x-0'>
-                <SiteLogo />
-
-                <div className='flex gap-6'>
-                  <NavigationLinks></NavigationLinks>
-                  <ThemeProvider>
-                    <PreferredThemeSwitch></PreferredThemeSwitch>
-                  </ThemeProvider>
-                </div>
-              </div>
-            </nav>
-            {/* End of navigation */}
-
+            <Navbar />
             <div className='mx-4 md:mx-0'>{children}</div>
           </main>
         </div>
