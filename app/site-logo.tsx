@@ -16,7 +16,10 @@ export function SiteLogo() {
           className='mr-4'
         />
         <div className='hidden flex-col sm:flex'>
-          <Heading level={1} className='text-2xl dark:text-2xl'>
+          <Heading
+            level={1}
+            className='text-2xl dark:text-2xl sm:text-2xl sm:dark:text-2xl'
+          >
             Coding Kittens
           </Heading>
           <Paragraph className='m-0' subtle>
