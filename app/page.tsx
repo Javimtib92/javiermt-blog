@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div>
       <div className='mb-6 flex flex-row items-center gap-6'>
-        <span className='bg-default ring-offset-background dark:ring-offset-background-dark relative z-10 box-border flex h-20 w-20 items-center justify-center overflow-hidden rounded-full align-middle outline-none ring-2 ring-slate-500 ring-offset-2 data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-offset-2'>
+        <span className='bg-default ring-offset-background dark:ring-offset-background-dark box-border flex h-20 w-20 items-center justify-center overflow-hidden rounded-full align-middle outline-none ring-2 ring-slate-500 ring-offset-2 data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-offset-2'>
           <Image
             src={image}
             alt='text'
