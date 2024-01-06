@@ -38,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
+    <html lang='en' translate='no'>
       <body
         className={cn(
           'bg-white text-black antialiased transition-colors dark:bg-background-700 dark:text-white ',
