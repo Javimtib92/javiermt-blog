@@ -38,7 +38,7 @@ export default function Home() {
       <Paragraph>
         My name is Javier, I&apos;m a Full Stack Software Engineer with{' '}
         {getYearDiff(new Date('2015-05-01'), new Date())}+ years of experience
-        with Javascript.
+        using Javascript.
       </Paragraph>
       <Paragraph>
         I&apos;ve built this blog to create tutorials and share my thoughts on a
@@ -52,9 +52,9 @@ export default function Home() {
         passionate about video-games 🎮 and my favorite meal is ramen 🍜
       </Paragraph>
       <Paragraph>
-        If you want to know a bit more about me you can find me on Instagram, or
-        if you are interested in my professional career, you can check me out on
-        LinkedIn.
+        If you want to know me a bit better you can find me on Instagram, or if
+        you are interested in my professional career, you can check me out on
+        LinkedIn or Github.
       </Paragraph>
       <Paragraph>Salut! 😄</Paragraph>
       <div className='flex flex-col gap-6 sm:flex-row'>
