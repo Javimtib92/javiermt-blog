@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   description:
     "Explore a diverse range of topics, including technology, development, and personal insights on my blog. Join the online community and engage in discussions with me on subjects I'm passionate about.",
   openGraph: {
-    images: ['/logo.png'],
+    images: '/logo.png',
   },
 };
 

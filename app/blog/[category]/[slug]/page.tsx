@@ -80,6 +80,7 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
+    metadataBase: new URL('https://coding-kittens.com'),
     title: frontMatter.title,
     description: frontMatter.shortDescription,
     openGraph: {
