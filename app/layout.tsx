@@ -23,13 +23,26 @@ const mono = Oxygen_Mono({
   variable: '--font-mono',
 });
 
+const title = 'Blog | Javier Muñoz Tous';
+const description =
+  "Explore a diverse range of topics, including technology, development, and personal insights on my blog. Join the online community and engage in discussions with me on subjects I'm passionate about.";
+const image = 'https://coding-kittens.com/logo.png';
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://coding-kittens.com'),
-  title: 'Blog | Javier Muñoz Tous',
-  description:
-    "Explore a diverse range of topics, including technology, development, and personal insights on my blog. Join the online community and engage in discussions with me on subjects I'm passionate about.",
+  title,
+  description,
   openGraph: {
-    images: '/logo.png',
+    images: [
+      {
+        url: image,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+    images: [image],
   },
 };
 

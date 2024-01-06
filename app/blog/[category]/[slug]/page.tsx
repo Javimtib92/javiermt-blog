@@ -77,7 +77,7 @@ export async function generateMetadata(
 
   const { frontMatter } = await getArticleData(slug, category);
 
-  let ogImage = `https://coding-kittens.com/${frontMatter.thumbnail}`;
+  let image = `https://coding-kittens.com/${frontMatter.thumbnail}`;
 
   const title = frontMatter.title;
   const description = frontMatter.shortDescription;
@@ -93,7 +93,7 @@ export async function generateMetadata(
       url: `https://coding-kittens/blog/${slug}`,
       images: [
         {
-          url: ogImage,
+          url: image,
         },
       ],
     },
@@ -101,7 +101,7 @@ export async function generateMetadata(
       card: 'summary_large_image',
       title,
       description,
-      images: [ogImage],
+      images: [image],
     },
   };
 }
