@@ -5,7 +5,7 @@ import PreferredThemeSwitch from '@/components/preferred-theme-switch';
 
 export function Navbar() {
   return (
-    <nav className='sticky top-0 mb-12 mt-4 flex flex-row items-start py-4 pl-2 pr-4 backdrop-blur md:-ml-[8px] md:px-0'>
+    <nav className='sticky top-0 mb-12 mt-4 flex flex-row items-start py-4 pl-2 pr-4 backdrop-blur md:-mx-[28px] md:px-5'>
       <div className='flex min-w-full flex-row justify-between space-x-0'>
         <SiteLogo />
 

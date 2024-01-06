@@ -77,7 +77,7 @@ export async function generateMetadata(
 
   const { frontMatter } = await getArticleData(slug, category);
 
-  let image = `https://coding-kittens.com/${frontMatter.thumbnail}`;
+  let image = `https://coding-kittens.com${frontMatter.thumbnail}`;
 
   const title = frontMatter.title;
   const description = frontMatter.shortDescription;
@@ -88,8 +88,7 @@ export async function generateMetadata(
     openGraph: {
       title,
       description,
-      type: 'article',
-      publishedTime: new Date(frontMatter.createdAt).toISOString(),
+      type: 'website',
       url: `https://coding-kittens/blog/${slug}`,
       images: [
         {
@@ -98,9 +97,10 @@ export async function generateMetadata(
       ],
     },
     twitter: {
-      card: 'summary_large_image',
       title,
       description,
+      site: 'Coding Kittens',
+      card: 'summary_large_image',
       images: [image],
     },
   };

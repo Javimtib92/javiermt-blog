@@ -32,7 +32,11 @@ export function TitleLink({
       <a key={`link-${slug}`} href={`#${slug}`}>
         {children}
       </a>
-      <LinkIcon className='anchor -mr-2 inline-block h-[28px] w-[28px] cursor-pointer pl-2 no-underline after:text-accent-400 md:invisible' />
+      <LinkIcon
+        width={28}
+        height={28}
+        className='anchor -mr-2 inline-block cursor-pointer pl-2 no-underline after:text-accent-400 md:invisible'
+      />
     </Heading>
   );
 }
