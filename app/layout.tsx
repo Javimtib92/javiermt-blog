@@ -7,6 +7,7 @@ import { PreferredThemeSwitch } from '@/components/preferred-theme-switch';
 import NavigationLinks from '@/app/navigation-links';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
+import { SiteLogo } from './site-logo';
 
 const display = Barlow_Condensed({
   subsets: ['latin'],
@@ -46,27 +47,24 @@ export default function RootLayout({
           mono.variable
         )}
       >
-        <div className='mx-4 mb-40 mt-8 max-w-3xl lg:mx-auto'>
-          <main className='mt-6 flex min-w-0 flex-auto flex-col px-2 md:px-0'>
-            <aside className='-ml-[8px] mb-16'>
-              <div className='lg:sticky lg:top-20'>
-                {/* Navigation. Think about extracting this component if possible. */}
-                <nav className='fade relative flex scroll-pr-6 flex-row items-start px-0 pb-0 md:relative md:overflow-auto'>
-                  <div className='flex min-w-full flex-row justify-between space-x-0'>
-                    <div className='flex flex-row'>
-                      <NavigationLinks></NavigationLinks>
-                    </div>
+        <div className='mb-40 max-w-3xl md:mx-auto'>
+          <main className='flex min-w-0 flex-auto flex-col px-2 md:px-0'>
+            {/* Navigation. Think about extracting this component if possible. */}
+            <nav className='sticky top-0 mb-12 mt-4 flex flex-row items-start py-4 pl-2 pr-4 backdrop-blur md:-ml-[8px] md:px-0'>
+              <div className='flex min-w-full flex-row justify-between space-x-0'>
+                <SiteLogo />
 
-                    <ThemeProvider>
-                      <PreferredThemeSwitch></PreferredThemeSwitch>
-                    </ThemeProvider>
-                  </div>
-                </nav>
-                {/* End of navigation */}
+                <div className='flex gap-6'>
+                  <NavigationLinks></NavigationLinks>
+                  <ThemeProvider>
+                    <PreferredThemeSwitch></PreferredThemeSwitch>
+                  </ThemeProvider>
+                </div>
               </div>
-            </aside>
+            </nav>
+            {/* End of navigation */}
 
-            {children}
+            <div className='mx-4 md:mx-0'>{children}</div>
           </main>
         </div>
 

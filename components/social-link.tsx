@@ -20,7 +20,7 @@ export function SocialLink({
         <div className='flex items-center space-x-3'>
           <div className='relative h-6 rounded-full bg-white'>
             <Image
-              alt={name}
+              alt={name + ' logo'}
               src={img}
               height={64}
               width={64}
