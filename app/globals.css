@@ -119,7 +119,6 @@ html:not(.dark) [data-rehype-pretty-code-title] {
 }
 
 [data-rehype-pretty-code-title] + pre {
-  position: relative;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border-top-width: 0;
