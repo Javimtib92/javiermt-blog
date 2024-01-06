@@ -83,6 +83,18 @@ export async function generateMetadata(
     title: frontMatter.title,
     description: frontMatter.shortDescription,
     openGraph: {
+      title: frontMatter.title,
+      description: frontMatter.shortDescription,
+      images: [frontMatter.thumbnail, ...previousImages],
+      type: 'article',
+      publishedTime: new Date(frontMatter.createdAt).toISOString(),
+      authors: ['Javier Muñoz Tous'],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: frontMatter.title,
+      description: frontMatter.shortDescription,
+      creator: '@Javimt_ib',
       images: [frontMatter.thumbnail, ...previousImages],
     },
   };
