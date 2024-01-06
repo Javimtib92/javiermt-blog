@@ -29,9 +29,16 @@ const description =
 const image = 'https://coding-kittens.com/logo.png';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://coding-kittens.com'),
   title,
   description,
   openGraph: {
+    title,
+    description,
+    url: 'https://coding-kittens.com',
+    siteName: 'Coding Kittens',
+    locale: 'en',
+    type: 'website',
     images: [
       {
         url: image,
