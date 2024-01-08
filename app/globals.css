@@ -177,6 +177,55 @@ mark {
   }
 }
 
+.navbar .img-container {
+  transition: transform 0.3s ease;
+  will-change: transform;
+  transform: translateY(calc(0px - var(--navbar-shrink) * 12px));
+}
+.navbar .backdrop {
+  transition: transform 0.3s ease;
+  will-change: transform;
+  transform: translateY(calc(0px - var(--navbar-shrink) * 24px));
+}
+
+.navbar img {
+  transition: transform 0.3s ease;
+  will-change: transform;
+  transform: scale(calc(1 - var(--navbar-shrink) * 0.2));
+}
+
+.navbar h1 {
+  transition: opacity 0.3s ease;
+  opacity: calc(1 - var(--navbar-shrink));
+}
+
+.navbar p {
+  transition: opacity 0.3s ease;
+  opacity: calc(1 - var(--navbar-shrink));
+}
+
+@supports (animation-timeline: scroll()) {
+  .navbar {
+    --navbar-shrink: 1;
+
+    animation: shrink;
+    animation-timeline: scroll(root block);
+    animation-range-start: 0%;
+    animation-range-end: 10%;
+    animation-timing-function: ease;
+  }
+}
+
+@keyframes shrink {
+  0% {
+    --navbar-shrink: 0;
+  }
+  50%,
+  100% {
+    --navbar-shrink: 1;
+  }
+}
+
 .dark mark {
   --lightness: 35%;
 }
