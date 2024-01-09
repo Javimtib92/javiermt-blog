@@ -49,13 +49,16 @@ function normalizeObject(object) {
 normalizeObject(complexObject);
 ```
 
-The recursion to walk this object tree is simple, some properties might be `Array` and some others might be `Object` &mdash;array and null are of type `Object` in Javascript that's why we check that is not null&mdash;. We don't do anything for functions or primitive types.
+This recursion works as follows:
 
-If the current recursive call value is an `Array` we loop through it and call the recursion
-on each element. On the other hand, if the current value is an `Object` we loop through
-every property and call the recursive function on it's value.
 
-If the initial `Object` is very deep and has a lot of properties then you can get hit by the Stack-Size limit error.
+1. The function takes an `Object` as its parameter.
+
+2. It first checks if the object is an `Array` using `Array.isArray(object)`. If true, it iterates over each element in the array and recursively calls `normalizeObject` on each element.
+
+3. Else if is not `null` and is of type `Object`, it means it's an object. &mdash;array and null are of type `Object` in Javascript that's why we check that is not null&mdash; In this case, it iterates over its properties using a `for...in` loop. For each property, it performs the desired operation and recursively calls `normalizeObject` on the property value.
+
+This approach was working fine until it didn't.
 
 ## Buckle up, things are going to get interesting
 
@@ -105,7 +108,25 @@ function normalizeObject(object) {
 normalizeObject(complexObject);
 ```
 
-That's how I fixed our Stack-Size Limit error. There might be other alternatives I haven't discovered yet
+Here's a breakdown of the code:
+
+1. The function takes an `Object` as its parameter.
+
+2. It initializes a queue `Array` with the input object as its only element.
+
+3. The code enters a `while` loop that continues as long as the queue is not empty.
+
+4. Inside the loop, it dequeues the first element (current) from the queue.
+
+5. If current is an `Array`, its elements are spread into the queue.
+
+6. If current is an `Object` (and not null), it iterates through its properties using a `for...in` loop.
+
+7. For each property, it makes the necessary changes and then enqueues the property value into the queue.
+
+8. The process continues until the queue is empty.
+
+Converting the recursive function into this iterative version fixed the Stack-Size Limit error. There might be other alternatives I haven't discovered yet
 but that solution worked well for our use-case.
 
 To wrap up, in this post we saw that recursion can throw an error if objects

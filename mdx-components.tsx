@@ -23,6 +23,30 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         </ul>
       );
     },
+    ol: ({ children, ...props }) => {
+      return (
+        <ol
+          className='list-inside list-decimal space-y-1 border-y-[1px] border-background-50 py-4 dark:border-background-500'
+          {...props}
+        >
+          {children}
+        </ol>
+      );
+    },
+    li: ({ children }) => {
+      const textChildren: { children: string } | undefined = (
+        (children as []) || []
+      ).find((el: any) => el.props);
+      const text = textChildren
+        ? (textChildren as { props: { children: string } }).props.children
+        : '';
+
+      return (
+        <li className=' text-primary-800 marker:text-accent-secondary-400 dark:text-primary-200'>
+          {text}
+        </li>
+      );
+    },
     blockquote: (props) => <Quote {...props} />,
   };
 }
