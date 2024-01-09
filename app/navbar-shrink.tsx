@@ -6,7 +6,7 @@ export function NavbarShrink({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!CSS.supports('animation-timeline: scroll()')) {
       const navbar = document.querySelector('.navbar') as HTMLElement;
-      const threshold = 200; // Adjust this threshold as needed
+      const threshold = 500; // Adjust this threshold as needed
 
       window.addEventListener('scroll', handleScroll);
 

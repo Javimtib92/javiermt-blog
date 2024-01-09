@@ -22,7 +22,7 @@ RangeError: Maximum call stack size exceeded. (Safari)
 I was using a fancy recursive function to traverse this data and I got hit by the max call stack size defined for the node process.
 Bummer. The worst thing is that this compromised production and because we didn't add error handling to this function our users were experiencing a Black Screen of Death.
 
-<Highlight>By the end of this article you will learn how to avoid this situation by converting a recursive function into its iterative counterpart</Highlight>.
+<Highlight>By the end of this post you will learn how to avoid this situation by converting a recursive function into its iterative counterpart</Highlight>.
 But first I will give you a small introduction to the recursive approach.
 
 ## The shape of disaster, the recursive attempt
@@ -108,7 +108,7 @@ normalizeObject(complexObject);
 That's how I fixed our Stack-Size Limit error. There might be other alternatives I haven't discovered yet
 but that solution worked well for our use-case.
 
-To wrap up, in this article, we saw that recursion can throw an error if objects
+To wrap up, in this post we saw that recursion can throw an error if objects
 are too complex and the call stack of the recursion grows massively. We analyzed
 the function that caused this error and went through a real-world example of how
 we approached the solution. From discovering TCO, figuring out that not all engines
