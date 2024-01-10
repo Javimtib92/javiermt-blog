@@ -7,13 +7,17 @@ import matter from 'gray-matter';
 import getReadingTime from 'reading-time';
 
 export const getArticleData = cache(async (slug: string, category: string) => {
-  const { data, content } = matter.read(
-    join(ARTICLES_PATH, `${category}/${slug}.mdx`)
-  );
+  try {
+    const { data, content } = matter.read(
+      join(ARTICLES_PATH, `${category}/${slug}.mdx`)
+    );
 
-  return {
-    frontMatter: data,
-    readingTime: getReadingTime(content),
-    content,
-  };
+    return {
+      frontMatter: data,
+      readingTime: getReadingTime(content),
+      content,
+    };
+  } catch (e) {
+    return null;
+  }
 });

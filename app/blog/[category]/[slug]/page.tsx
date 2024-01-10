@@ -8,6 +8,7 @@ import { ViewCount } from '@/components/view-count';
 import { Suspense, cache } from 'react';
 import { Heading } from '@/lib/ui/heading';
 import { Paragraph } from '@/lib/ui/paragraph';
+import { notFound } from 'next/navigation';
 
 type ArticlePageProps = {
   params: { slug: string; category: string };
@@ -39,7 +40,13 @@ const updateCounter = cache(async (slug: string) => {
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug, category } = params;
 
-  const { frontMatter } = await getArticleData(slug, category);
+  const post = await getArticleData(slug, category);
+
+  if (!post) {
+    return notFound();
+  }
+
+  const { frontMatter } = post;
 
   await updateCounter(slug);
 
@@ -72,10 +79,16 @@ export async function generateStaticParams() {
 export async function generateMetadata(
   { params }: ArticlePageProps,
   parent: ResolvingMetadata
-): Promise<Metadata> {
+): Promise<Metadata | undefined> {
   const { slug, category } = params;
 
-  const { frontMatter } = await getArticleData(slug, category);
+  const post = await getArticleData(slug, category);
+
+  if (!post) {
+    return;
+  }
+
+  const { frontMatter } = post;
 
   let image = `https://coding-kittens.com${frontMatter.thumbnail}`;
 

@@ -39,10 +39,13 @@ async function ArticleItem({
     category: string;
   };
 }) {
-  const { frontMatter: articleData, readingTime } = await getArticleData(
-    article.slug,
-    article.category
-  );
+  const data = await getArticleData(article.slug, article.category);
+
+  if (!data) {
+    return null;
+  }
+
+  const { frontMatter: articleData, readingTime } = data;
 
   if (process.env.NODE_ENV === 'production' && articleData.draft) {
     return null;
