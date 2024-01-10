@@ -22,7 +22,11 @@ export function PreferredThemeSwitch() {
   }, [theme]);
 
   return (
-    <button aria-label='Switch theme button' onClick={switchTheme}>
+    <button
+      aria-label='Switch theme button'
+      onClick={switchTheme}
+      className='-mx-4 -my-2 px-4 py-2'
+    >
       <MoonIcon ref={moonIconRef} id='moon-icon' className='hidden h-6 w-6' />
       <SunIcon ref={sunIconRef} id='sun-icon' className='hidden h-6 w-6' />
     </button>
