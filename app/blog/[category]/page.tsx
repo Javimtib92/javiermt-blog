@@ -1,6 +1,7 @@
 import { ArticlesList } from '@/components/articles-list';
 import { CategoriesList } from '@/components/categories-list';
-import { getAllArticles } from '@/utils/get-all-articles';
+import { getAllCategories } from '@/utils/get-all-categories';
+import { notFound } from 'next/navigation';
 
 type CategoryPageProps = {
   params: { category: string };
@@ -8,6 +9,12 @@ type CategoryPageProps = {
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { category } = params;
+
+  const categories = getAllCategories();
+
+  if (!categories.includes(category)) {
+    return notFound();
+  }
 
   return (
     <div className='flex flex-col'>
@@ -24,6 +31,5 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 }
 
 export async function generateStaticParams() {
-  //TODO: Change for all categories
-  return getAllArticles();
+  return getAllCategories();
 }
