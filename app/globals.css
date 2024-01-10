@@ -63,29 +63,19 @@ html:not(.dark) code {
 }
 
 [data-rehype-pretty-code-figure] > code > span[data-line] > span {
-  color: color-mix(
-    in srgb,
-    var(--color-accent-secondary-base) 80%,
-    white
-  ) !important;
+  color: color-mix(in srgb, var(--color-accent-secondary-base) 80%, white);
 }
 
-.dark {
-  & [data-rehype-pretty-code-figure] > code:has(span[data-line]) {
-    background-color: color-mix(
-      in srgb,
-      var(--color-accent-secondary-base) 100%,
-      white
-    );
-  }
+.dark [data-rehype-pretty-code-figure] > code:has(span[data-line]) {
+  background-color: color-mix(
+    in srgb,
+    var(--color-accent-secondary-base) 100%,
+    white
+  );
+}
 
-  & [data-rehype-pretty-code-figure] > code > span[data-line] > span {
-    color: color-mix(
-      in srgb,
-      var(--color-accent-secondary-base) 20%,
-      white
-    ) !important;
-  }
+.dark [data-rehype-pretty-code-figure] > code > span[data-line] > span {
+  color: color-mix(in srgb, var(--color-accent-secondary-base) 20%, white);
 }
 
 .dark [data-rehype-pretty-code-title] {
