@@ -16,12 +16,9 @@ export function SiteLogo() {
           className='mr-4'
         />
         <div className='hidden flex-col sm:flex'>
-          <Heading
-            level={1}
-            className='text-2xl dark:text-2xl sm:text-2xl sm:dark:text-2xl'
-          >
+          <Paragraph className='m-0 font-display text-2xl font-bold text-primary-800 dark:text-2xl dark:text-primary-100 sm:text-2xl sm:dark:text-2xl'>
             Coding Kittens
-          </Heading>
+          </Paragraph>
           <Paragraph className='m-0' subtle>
             Curiosity Didn&apos;t Kill The Cat
           </Paragraph>
