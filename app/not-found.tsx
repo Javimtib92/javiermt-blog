@@ -27,7 +27,7 @@ export default async function NotFound() {
       <Heading level={2}>You may be looking for this:</Heading>
       <div className='my-4'>
         {posts.map(async (post) => {
-          const data = await getArticleData(post.slug, post.category);
+          const data = getArticleData(post.slug, post.category);
 
           if (!data) {
             return null;

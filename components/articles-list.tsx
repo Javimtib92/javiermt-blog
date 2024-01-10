@@ -39,7 +39,7 @@ async function ArticleItem({
     category: string;
   };
 }) {
-  const data = await getArticleData(article.slug, article.category);
+  const data = getArticleData(article.slug, article.category);
 
   if (!data) {
     return null;

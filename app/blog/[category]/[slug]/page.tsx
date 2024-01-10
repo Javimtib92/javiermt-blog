@@ -42,7 +42,7 @@ const updateCounter = cache(async (slug: string) => {
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug, category } = params;
 
-  const post = await getArticleData(slug, category);
+  const post = getArticleData(slug, category);
 
   if (!post) {
     return notFound();
@@ -84,7 +84,7 @@ export async function generateMetadata(
 ): Promise<Metadata | undefined> {
   const { slug, category } = params;
 
-  const post = await getArticleData(slug, category);
+  const post = getArticleData(slug, category);
 
   if (!post) {
     return;

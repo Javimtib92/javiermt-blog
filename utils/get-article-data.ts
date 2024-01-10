@@ -6,7 +6,7 @@ import { join } from 'path';
 import matter from 'gray-matter';
 import getReadingTime from 'reading-time';
 
-export const getArticleData = cache(async (slug: string, category: string) => {
+export const getArticleData = cache((slug: string, category: string) => {
   try {
     const { data, content } = matter.read(
       join(ARTICLES_PATH, `${category}/${slug}.mdx`)
