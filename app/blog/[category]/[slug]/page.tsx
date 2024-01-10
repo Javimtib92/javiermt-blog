@@ -17,6 +17,8 @@ type ArticlePageProps = {
 const updateCounter = cache(async (slug: string) => {
   'use server';
 
+  if (process.env.NODE_ENV !== 'production') return;
+
   try {
     await prisma.views.upsert({
       where: {
