@@ -76,7 +76,7 @@ export default function RootLayout({
         </div>
 
         <footer>
-          {/* <div className='h-48 w-full bg-background-600'>Subscribe</div> */}
+          {/* <div className='h-48 w-full bg-background-500'>Subscribe</div> */}
         </footer>
 
         <script
