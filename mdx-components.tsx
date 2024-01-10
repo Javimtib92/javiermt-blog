@@ -42,7 +42,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         : '';
 
       return (
-        <li className=' text-primary-800 marker:text-accent-secondary-400 dark:text-primary-200'>
+        <li className=' text-primary-800 marker:text-accent-600 dark:text-primary-200 dark:marker:text-accent-400'>
           {text}
         </li>
       );

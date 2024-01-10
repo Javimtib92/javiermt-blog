@@ -11,7 +11,7 @@ export function Quote({
 }) {
   return (
     <blockquote
-      className='my-4 border-l-4 border-accent-400 bg-background-50 p-4 dark:bg-background-600'
+      className='my-4 border-l-4 border-accent-secondary-400 bg-background-50 p-4 dark:bg-background-600'
       {...props}
     >
       {React.Children.map(children, (child, index) => {

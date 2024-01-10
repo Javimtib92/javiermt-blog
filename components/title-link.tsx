@@ -26,7 +26,7 @@ export function TitleLink({
     <Heading
       id={slug}
       level={level}
-      className='title-link hover:text-accent-500 dark:hover:text-accent-300  md:inline-flex md:flex-row md:items-center'
+      className='title-link hover:text-accent-500 dark:hover:text-accent-400  md:inline-flex md:flex-row md:items-center'
       data-anchor
     >
       <a key={`link-${slug}`} href={`#${slug}`}>

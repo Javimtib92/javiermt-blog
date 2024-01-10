@@ -6,7 +6,7 @@ export function CategoriesList({ selected }: { selected?: string }) {
   const categories = getAllCategories();
 
   const activeClass =
-    'bg-accent-500 focus:ring-accent-300 dark:focus:ring-accent-700';
+    'bg-accent-secondary-500 focus:ring-accent-secondary-300 dark:focus:ring-accent-secondary-700';
   const inactiveClass =
     'bg-primary-300 dark:bg-primary-800 hover:bg-primary-400 dark:hover:bg-primary-500 focus:ring-primary-300 dark:focus:ring-primary-600';
 

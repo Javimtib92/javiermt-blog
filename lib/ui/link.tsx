@@ -16,7 +16,7 @@ export function Link({
   return (
     <NextLink
       className={cn(
-        'text-md font-body text-accent-400 hover:text-accent-500 dark:hover:text-accent-300',
+        'text-md font-body text-accent-500 hover:text-accent-400 dark:text-accent-400 dark:hover:text-accent-300',
         underline ? 'underline underline-offset-4' : 'no-underline',
         className
       )}

@@ -66,12 +66,12 @@ async function ArticleItem({
           priority
         ></Image>
       </Link>
-      <div className='relative flex flex-col justify-between max-lg:flex-1'>
+      <div className='flex flex-col justify-between max-lg:flex-1'>
         <header>
           <div className='flex flex-row items-center justify-between'>
             <Heading
               level={3}
-              className='mb-2 ml-0 mr-10 mt-2 font-mono text-sm font-bold italic leading-5 text-accent-secondary-400 dark:text-accent-secondary-400 sm:text-sm'
+              className='mb-2 ml-0 mr-10 mt-2 font-mono text-sm font-bold italic leading-5 text-accent-secondary-400 dark:text-accent-secondary-300 sm:text-sm'
             >
               {articleData.subtitle}
             </Heading>
