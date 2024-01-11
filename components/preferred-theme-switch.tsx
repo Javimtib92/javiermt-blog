@@ -1,7 +1,7 @@
 'use client';
 
 import { useContext, useEffect, useRef } from 'react';
-import { ThemeProviderContext } from './theme-provider';
+import { ThemeProviderContext } from '@/providers/theme-provider';
 import { SunIcon } from '@heroicons/react/24/solid';
 import { MoonIcon } from '@heroicons/react/24/solid';
 

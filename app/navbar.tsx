@@ -1,20 +1,26 @@
-import { ThemeProvider } from '@/components/theme-provider';
+import { ThemeProvider } from '@/providers/theme-provider';
 import NavigationLinks from './navigation-links';
 import { SiteLogo } from './site-logo';
 import PreferredThemeSwitch from '@/components/preferred-theme-switch';
 
+import { NavbarProvider } from '@/providers/navbar-provider';
+import { MobileNavMenu } from '@/components/mobile-nav-menu';
+
 export function Navbar() {
   return (
-    <>
+    <NavbarProvider>
       {/* top-[1px] is a little hack for properly detect if element is pinned on
       the top when scrolling // see:
       https://css-tricks.com/how-to-detect-when-a-sticky-element-gets-pinned/ */}
       <nav className='navbar sticky top-[-1px] mb-12 mt-20 flex flex-row items-start py-4 pl-2 pr-4 md:-mx-[28px] md:px-5'>
+        <MobileNavMenu></MobileNavMenu>
+
         <div className='backdrop absolute left-[-8px] right-[-8px] top-0 h-20 min-w-full backdrop-blur md:-mx-[28px]'></div>
+
         <div className='img-container z-10 flex min-w-full flex-row justify-between space-x-0'>
           <SiteLogo />
 
-          <div className='flex gap-6'>
+          <div className='flex flex-row-reverse gap-6 sm:flex-row'>
             <NavigationLinks />
             <ThemeProvider>
               <PreferredThemeSwitch></PreferredThemeSwitch>
@@ -57,6 +63,6 @@ export function Navbar() {
           })()`,
         }}
       ></script>
-    </>
+    </NavbarProvider>
   );
 }
