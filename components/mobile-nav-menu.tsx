@@ -73,7 +73,7 @@ export function MobileNavMenu() {
         onClick={() => setDisplayMobileNavigation(false)}
       >
         <div
-          className='h-64 bg-background-700'
+          className='h-64 bg-white dark:bg-background-700'
           onClick={(e) => e.stopPropagation()}
         >
           <div className='flex flex-row-reverse pr-6 pt-6'>
