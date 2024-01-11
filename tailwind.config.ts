@@ -24,11 +24,11 @@ const config: Config = {
       },
       colors: {
         background: {
-          50: 'color-mix(in srgb, var(--color-background-base) 5%, white)',
-          100: 'color-mix(in srgb, var(--color-background-base) 10%, white)',
-          200: 'color-mix(in srgb, var(--color-background-base) 30%, white)',
-          300: 'color-mix(in srgb, var(--color-background-base) 50%, white)',
-          400: 'color-mix(in srgb, var(--color-background-base) 70%, white)',
+          50: 'color-mix(in srgb, var(--color-background-base) 20%, white)',
+          100: 'color-mix(in srgb, var(--color-background-base) 50%, white)',
+          200: 'color-mix(in srgb, var(--color-background-base) 70%, white)',
+          300: 'color-mix(in srgb, var(--color-background-base) 80%, white)',
+          400: 'color-mix(in srgb, var(--color-background-base) 90%, white)',
           500: 'var(--color-background-base)',
           600: 'color-mix(in srgb, var(--color-background-base), black 10%)',
           700: 'color-mix(in srgb, var(--color-background-base), black 30%)',

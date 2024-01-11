@@ -5,6 +5,7 @@ import { cn } from '@/utils/cn';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 import { Navbar } from './navbar';
+import { Footer } from './footer';
 
 const display = Barlow_Condensed({
   subsets: ['latin'],
@@ -26,7 +27,7 @@ const mono = Oxygen_Mono({
 const title = 'Blog | Javier Muñoz Tous';
 const description =
   "Explore a diverse range of topics, including technology, development, and personal insights on my blog. Join the online community and engage in discussions with me on subjects I'm passionate about.";
-const image = 'https://coding-kittens.com/logo.png';
+const logo = 'https://coding-kittens.com/logo.png';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://coding-kittens.com'),
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: image,
+        url: logo,
       },
     ],
   },
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title,
     description,
-    images: [image],
+    images: [logo],
   },
 };
 
@@ -75,9 +76,7 @@ export default function RootLayout({
           </main>
         </div>
 
-        <footer>
-          {/* <div className='h-48 w-full bg-background-500'>Subscribe</div> */}
-        </footer>
+        <Footer />
 
         <script
           id='noThemeFlash'
