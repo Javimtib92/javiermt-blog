@@ -7,6 +7,7 @@ import { SocialLink } from '@/components/social-link';
 import LinkedinLogo from '/public/linkedin_logo.svg';
 import InstagramLogo from '/public/instagram_logo.svg';
 import GithubLogo from '/public/github_logo.svg';
+import { Highlight } from '@/components/highlight';
 
 export default function Home() {
   return (
@@ -39,28 +40,52 @@ export default function Home() {
           </Heading>
         </div>
       </div>
-      <Paragraph>Hola! 👋 </Paragraph>
       <Paragraph>
-        My name is Javier, I&apos;m a Full Stack Software Engineer with{' '}
-        {getYearDiff(new Date('2015-05-01'), new Date())}+ years of experience
-        using Javascript.
+        <Highlight>
+          <b className='font-display text-2xl'>
+            Hola 👋, Welcome to Coding Kittens!
+          </b>
+        </Highlight>
       </Paragraph>
       <Paragraph>
-        I&apos;ve built this blog to create tutorials and share my thoughts on a
-        diverse range of topics, including technology, development and personal
-        insights. I&apos;ll try to be short but helpful and provide some value
-        to our community.
+        I&apos;m Javier Muñoz Tous and this is my own personal log built with
+        the simple intention of creating tutorials, sharing my thoughts,
+        experimenting with new tools, having fun, and being somehow helpful to
+        our tech community.
       </Paragraph>
       <Paragraph>
-        I love my fiance and my two adorable cats 🩶 🧡 I practice Yoga twice a
-        week 🧘‍♂️ I was a very good swimmer when I was younger 🏊 I&apos;m
-        passionate about video-games 🎮 and my favorite meal is ramen 🍜
+        I&apos;m a Fullstack Software Engineer with over 8 years of experience.
+        I&apos;m currently specialized in JavaScript, but I&apos;m a man of
+        world and I can “speak” many languages.
       </Paragraph>
       <Paragraph>
-        If you want to know me a bit better you can find me on Instagram, or if
-        you are interested in my professional career, you can check me out on
-        LinkedIn or Github.
+        <Highlight>
+          Coding Kittens&apos;s name idea came from my two adorable cats — Loki
+          and Nymeria —
+        </Highlight>{' '}
+        who have been with me a lot of my coding time. One could say they code
+        for me and I just watch them. 🤫 My fiance came up with the name idea,
+        she is my most profound inspiration and a huge source of support. 🧡🖤
       </Paragraph>
+      <Paragraph>
+        I like simple things, I practice Yoga twice a week 🧘‍♂️ I’m passionate
+        about video-games 🎮 I&apos;m a Manga and Anime &quot;Otaku&quot; ⛩️ and
+        my favorite meal is ramen 🍜
+      </Paragraph>
+      <Paragraph>
+        If you want to know me a bit better you can find me on Instagram. I warn
+        you, though, that every now and then I post stories of my cats doing
+        something tremendously silly.
+      </Paragraph>
+      <Paragraph>
+        If my professional career is what interests you, you can check my
+        LinkedIn or Github profiles.
+      </Paragraph>
+      <Paragraph>
+        I hope you find some calm and insight in this little space I&apos;ve
+        built.
+      </Paragraph>
+
       <Paragraph>Salut! 😄</Paragraph>
       <div className='flex flex-col gap-6 sm:flex-row'>
         <SocialLink
