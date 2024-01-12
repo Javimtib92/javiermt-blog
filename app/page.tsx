@@ -33,7 +33,7 @@ export default function Home() {
           </Heading>
           <Heading
             level={2}
-            className='italic text-accent-secondary-400 underline underline-offset-8 dark:text-accent-400 sm:text-xl'
+            className='italic text-accent-500 underline underline-offset-8 dark:text-accent-400 sm:text-xl'
           >
             Full Stack Engineer
           </Heading>
