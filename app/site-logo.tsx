@@ -16,7 +16,7 @@ export function SiteLogo() {
           className='mr-4'
         />
         <div className='flex flex-col'>
-          <Paragraph className='m-0 font-display text-2xl font-bold text-primary-800 dark:text-2xl dark:text-primary-100 sm:text-2xl sm:dark:text-2xl'>
+          <Paragraph className='m-0 font-display text-2xl font-bold text-primary-600 dark:text-2xl dark:text-primary-100 sm:text-2xl sm:dark:text-2xl'>
             Coding Kittens
           </Paragraph>
           <Paragraph className='m-0' subtle>

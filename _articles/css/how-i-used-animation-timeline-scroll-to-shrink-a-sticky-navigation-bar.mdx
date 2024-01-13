@@ -1,0 +1,30 @@
+---
+title: 'How I used animation-timeline:scroll to shrink a sticky navigation bar'
+createdAt: 2024-01-13
+draft: true
+thumbnail: /thumbnails/post_2.jpeg
+subtitle: '"Shrink my sticky navbar" sounded terrible'
+shortDescription: >
+    A future CSS-only solution to shrink a stick navigation bar on scroll. JavaScript polyfill at the end of the post.
+---
+import { Callout } from '@/lib/ui/callout';
+
+<Callout
+title="Warning! Experimental feature" type="warning">At the time of writting this post **`animation-timeline:scroll`** feature is still experimental so make sure you add a fallback. You can check the browser compatibility list [here](https://caniuse.com/mdn-css_properties_animation-timeline_scroll)</Callout>
+
+
+We are trying to build a navigation that sticks to the top and on further scrolling it shrinks it's height. Everything with a smooth animation that doesn't make the UI look junky
+
+## Scroll function and ScrollTimeline explained
+
+The `scroll` function is a CSS function that can be used along with `animation-timeline` to animate the current element based on scroll axis and target. You can find more about how it works in the MDN docs: [animation-timeline:scroll()](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline/scroll#browser_compatibility)
+
+With the `scroll` function you define that an element will have a `ScrollTimeline` which will track the progress of the scroll animation.
+
+The `scroll` function accepts two parameters, the `scroller` and the `axis`.
+
+The `scroller` defines the element that will provide the scroll progress timeline.
+
+The `axis` defines to what scroll direction it tracks progress of.
+
+Imagine it as attaching a scroll listener to an element without JavaScript.

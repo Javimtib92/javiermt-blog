@@ -42,7 +42,7 @@ export default function Home() {
       </div>
       <Paragraph>
         <Highlight>
-          <b className='font-display text-2xl'>
+          <b className='font-display text-2xl text-primary-600 dark:text-primary-100'>
             Hola 👋, Welcome to Coding Kittens!
           </b>
         </Highlight>

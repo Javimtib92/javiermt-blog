@@ -265,3 +265,7 @@ a {
     --navbar-shrink: 1;
   }
 }
+
+.callout a {
+  @apply text-black opacity-60 hover:text-black hover:opacity-40 dark:text-black dark:hover:text-black dark:hover:opacity-40;
+}

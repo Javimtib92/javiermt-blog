@@ -50,6 +50,10 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   const { frontMatter } = post;
 
+  if (process.env.NODE_ENV === 'production' && frontMatter.draft) {
+    return notFound();
+  }
+
   await updateCounter(slug);
 
   return (
