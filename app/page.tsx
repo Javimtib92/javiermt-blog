@@ -48,20 +48,20 @@ export default function Home() {
         </Highlight>
       </Paragraph>
       <Paragraph>
-        I&apos;m Javier Muñoz Tous and this is my own personal log built with
+        I&apos;m Javier Muñoz Tous and this is my own personal blog built with
         the simple intention of creating tutorials, sharing my thoughts,
         experimenting with new tools, having fun, and being somehow helpful to
         our tech community.
       </Paragraph>
       <Paragraph>
         I&apos;m a Fullstack Software Engineer with over 8 years of experience.
-        I&apos;m currently specialized in JavaScript, but I&apos;m a man of
+        I&apos;m currently specialized in JavaScript, but I&apos;m a man of the
         world and I can “speak” many languages.
       </Paragraph>
       <Paragraph>
         <Highlight>
           Coding Kittens&apos;s name idea came from my two adorable cats — Loki
-          and Nymeria —
+          and Nym —
         </Highlight>{' '}
         who have been with me a lot of my coding time. One could say they code
         for me and I just watch them. 🤫 My fiance came up with the name idea,
