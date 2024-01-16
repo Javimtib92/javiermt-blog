@@ -8,12 +8,20 @@ shortDescription: >
     A future CSS-only solution to shrink a stick navigation bar on scroll. JavaScript polyfill at the end of the post.
 ---
 import { Callout } from '@/lib/ui/callout';
+import { CodeSandbox } from '@/components/sandpack';
+import { files } from '@/examples/navigation-shrink';
 
 <Callout
 title="Warning! Experimental feature" type="warning">At the time of writting this post **`animation-timeline:scroll`** feature is still experimental so make sure you add a fallback. You can check the browser compatibility list [here](https://caniuse.com/mdn-css_properties_animation-timeline_scroll)</Callout>
 
 
-We are trying to build a navigation that sticks to the top and on further scrolling it shrinks it's height. Everything with a smooth animation that doesn't make the UI look junky
+In this post we will look at how to build the navigation bar to be sticky and shrink when user scrolls down. I've used this to build this site's navigation bar. I realized that, specially  on mobile, the navigation bar was occuping a lot of space while reading so I assumed that if a user scrolled down is because they are reading and they don't need so much information from the navbar anyway.
+
+// GIF
+
+We'll use some experimental features that are not supported on all browsers. Most of the things we'll use have above 96% support according to [Can I use](https://caniuse.com/). The `animation-timeline:scroll` though is far less supported but we'll add a JavaScript fallback for it.
+
+We'll start by explaining shortly what `animation-timeline:scroll` is.
 
 ## Scroll function and ScrollTimeline explained
 
@@ -28,3 +36,26 @@ The `scroller` defines the element that will provide the scroll progress timelin
 The `axis` defines to what scroll direction it tracks progress of.
 
 Imagine it as attaching a scroll listener to an element without JavaScript.
+
+## Starting with the sticky navigation
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <main>
+            <nav class="
+                sticky top-[-1px]
+                mb-12 mt-20 md:-mx-[28px]
+                flex flex-row items-start
+                py-4 pl-2 pr-4 md:px-5
+            ">
+
+
+            </nav>
+        </main>
+    </body>
+</html>
+```
+
+<CodeSandbox files={files} />
