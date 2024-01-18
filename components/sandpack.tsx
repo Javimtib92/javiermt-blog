@@ -1,7 +1,13 @@
 'use client';
 
-import { Sandpack } from '@codesandbox/sandpack-react';
-import React, { Suspense } from 'react';
+import {
+  SandpackProvider,
+  SandpackLayout,
+  SandpackCodeEditor,
+  SandpackFileExplorer,
+  SandpackPreview,
+} from '@codesandbox/sandpack-react';
+import React, { Suspense, useEffect, useState } from 'react';
 
 class ErrorBoundary extends React.Component<
   { fallback: React.ReactNode; children?: React.ReactNode },
@@ -33,13 +39,32 @@ export function CodeSandbox({ files }: { files: any }) {
   return (
     <Suspense fallback={null}>
       <ErrorBoundary fallback={'There was an error loading the CodeSandbox.'}>
-        <Sandpack
-          theme='auto'
-          template='static'
+        <SandpackProvider
           files={files}
-          options={{ bundlerURL: 'https://sandpack-bundler.pages.dev' }}
-        />
+          theme={'auto'}
+          options={{
+            bundlerURL: 'https://sandpack-static-server.codesandbox.io',
+            classes: {
+              'sp-wrapper': 'custom-wrapper',
+              'sp-preview': 'h-full dark:bg-background-400',
+              'sp-preview-iframe': 'dark:bg-background-400',
+              'sp-preview-container': 'dark:bg-background-400',
+              'sp-preview-actions': 'left-4 bottom-4',
+            },
+          }}
+          template='static'
+        >
+          <div className='h-80 min-h-80 bg-background-300'>
+            <SandpackPreview className='h-full' />
+          </div>
+          <SandpackLayout>
+            <SandpackFileExplorer />
+            <SandpackCodeEditor showTabs={false} />
+          </SandpackLayout>
+        </SandpackProvider>
       </ErrorBoundary>
     </Suspense>
   );
 }
+
+// https://25de18550bdb520-preview.sandpack-static-server.codesandbox.io

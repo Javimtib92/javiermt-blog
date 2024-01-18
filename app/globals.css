@@ -279,3 +279,72 @@ a {
 .callout a {
   @apply text-black opacity-60 hover:text-black hover:opacity-40 dark:text-black dark:hover:text-black dark:hover:opacity-40;
 }
+
+.custom-wrapper {
+  @apply !relative !font-mono;
+}
+
+.custom-wrapper .cm-line {
+  @apply !text-accent-700 dark:!text-[#FFC777];
+}
+
+.custom-wrapper .cm-line span {
+  @apply !font-mono dark:!font-mono;
+}
+
+.custom-wrapper .sp-file-explorer-list span {
+  @apply !font-mono;
+}
+
+.custom-wrapper .sp-syntax-static {
+  @apply !text-accent-500 dark:!text-accent-400;
+}
+
+.custom-wrapper .sp-syntax-property {
+  @apply text-primary-800 dark:!text-primary-100;
+}
+
+.custom-wrapper .sp-syntax-keyword {
+  @apply !text-red-500 dark:!text-[#FF757F];
+}
+
+.custom-wrapper .sp-syntax-punctuation {
+  @apply text-primary-800 dark:!text-primary-300;
+}
+
+.custom-wrapper .sp-syntax-plain {
+  @apply !text-yellow-500 dark:!text-yellow-400;
+}
+
+.custom-wrapper .sp-syntax-definition {
+  @apply !text-lime-600 dark:!text-[#C3E88D];
+}
+
+.custom-wrapper .sp-syntax-string {
+  @apply !text-accent-700 dark:!text-[#FFC777];
+}
+
+.custom-wrapper .sp-layout {
+  @apply !border-none !bg-primary-50 dark:!bg-background-600;
+}
+.custom-wrapper .sp-file-explorer {
+  @apply !bg-primary-50 dark:!bg-background-600;
+}
+
+.custom-wrapper .sp-explorer[data-active='true'] {
+  @apply !font-bold !text-accent-400;
+}
+
+.custom-wrapper .sp-explorer:not([data-active='true']) {
+  @apply hover:!text-primary-800 dark:hover:!text-primary-50;
+}
+
+.custom-wrapper .sp-editor,
+.custom-wrapper .sp-cm,
+.custom-wrapper .cm-editor {
+  @apply dark:!bg-background-600;
+}
+
+.custom-wrapper .cm-activeLine {
+  @apply dark:!bg-background-400;
+}

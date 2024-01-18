@@ -1,25 +1,7 @@
-const CSS = `body {
-    font-family: sans-serif;
-    -webkit-font-smoothing: auto;
-    -moz-font-smoothing: auto;
-    -moz-osx-font-smoothing: grayscale;
-    font-smoothing: auto;
-    text-rendering: optimizeLegibility;
-    font-smooth: always;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-  
-    background-color: color-mix(in srgb, slategrey 100%, black 100%);
-    color: white;
-  }
-  
-  .navbar {
+const CSS = `.navbar {
     display: flex;
     position: sticky;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    padding-left: 0.5rem;
-    padding-right: 1rem;
+    padding: 1rem 0.5rem;
     margin-bottom: 3rem;
     margin-top: 5rem;
     flex-direction: row;
@@ -27,8 +9,7 @@ const CSS = `body {
     top: -1px;
   
     @media (min-width: 768px) {
-      padding-left: 1.25rem;
-      padding-right: 1.25rem;
+      padding: 1rem 1.25rem;
     }
   }
   
@@ -156,14 +137,26 @@ const CSS = `body {
   
   .navigation-links-inner a {
     position: relative;
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding: 0.25rem 0.5rem;
   }
   
   .scrollable-container {
     min-height: 150dvh;
+  }
+
+  body {
+    font-family: sans-serif;
+    -webkit-font-smoothing: auto;
+    -moz-font-smoothing: auto;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: auto;
+    text-rendering: optimizeLegibility;
+    font-smooth: always;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  
+    background-color: color-mix(in srgb, slategrey 100%, black 100%);
+    color: white;
   }
 `;
 
@@ -297,7 +290,6 @@ const HTML = `<!DOCTYPE html>
               }
             }
           } else {
-            console.log(navbar);
             const observer = new IntersectionObserver(
               ([e]) =>
                 e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),

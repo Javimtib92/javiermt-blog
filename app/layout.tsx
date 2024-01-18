@@ -6,6 +6,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 import { Navbar } from './navbar';
 import { Footer } from './footer';
+import { SandpackCSS } from '@/components/sandpack-css';
 
 const display = Barlow_Condensed({
   subsets: ['latin'],
@@ -61,6 +62,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' translate='no'>
+      <head>
+        <SandpackCSS />
+      </head>
       <body
         className={cn(
           'bg-white text-black antialiased transition-colors dark:bg-background-700 dark:text-white ',
