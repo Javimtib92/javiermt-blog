@@ -1,4 +1,4 @@
-const CSS = `.navbar {
+const CSS = (animationStyles: boolean) => `.navbar {
     display: flex;
     position: sticky;
     padding: 1rem 0.5rem;
@@ -28,55 +28,54 @@ const CSS = `.navbar {
     }
   }
   
-  .navbar .inner-container {
-    transition: transform 0.3s ease;
-    will-change: transform;
-    transform: translateY(calc(0px - var(--navbar-shrink) * 12px));
+ ${
+   animationStyles
+     ? `.navbar .inner-container {
+  transition: transform 0.3s ease;
+  will-change: transform;
+  transform: translateY(calc(0px - var(--navbar-shrink) * 12px));
+}
+.navbar .backdrop {
+  transition: transform 0.3s ease;
+  will-change: transform;
+  transform: translateY(calc(0px - var(--navbar-shrink) * 24px));
+}
+
+.navbar svg {
+  transition: transform 0.3s ease;
+  will-change: transform;
+  transform: scale(calc(1 - var(--navbar-shrink) * 0.2));
+}
+
+.navbar h1, .navbar p {
+  transition: opacity 0.3s ease;
+  opacity: calc(1 - var(--navbar-shrink));
+}
+
+@supports (animation-timeline: scroll()) {
+  .navbar.is-pinned {
+    --navbar-shrink: 1;
+
+    animation: shrink;
+    animation-timeline: scroll(root block);
+    animation-range-start: 0%;
+    animation-range-end: 10%;
+    animation-timing-function: ease;
   }
-  .navbar .backdrop {
-    transition: transform 0.3s ease;
-    will-change: transform;
-    transform: translateY(calc(0px - var(--navbar-shrink) * 24px));
+}
+
+@keyframes shrink {
+  0% {
+    --navbar-shrink: 0;
   }
-  
-  .navbar svg {
-    transition: transform 0.3s ease;
-    will-change: transform;
-    transform: scale(calc(1 - var(--navbar-shrink) * 0.2));
+  50%,
+  100% {
+    --navbar-shrink: 1;
   }
-  
-  .navbar h1 {
-    transition: opacity 0.3s ease;
-    opacity: calc(1 - var(--navbar-shrink));
-  }
-  
-  .navbar p {
-    transition: opacity 0.3s ease;
-    opacity: calc(1 - var(--navbar-shrink));
-  }
-  
-  @supports (animation-timeline: scroll()) {
-    .navbar.is-pinned {
-      --navbar-shrink: 1;
-  
-      animation: shrink;
-      animation-timeline: scroll(root block);
-      animation-range-start: 0%;
-      animation-range-end: 10%;
-      animation-timing-function: ease;
-    }
-  }
-  
-  @keyframes shrink {
-    0% {
-      --navbar-shrink: 0;
-    }
-    50%,
-    100% {
-      --navbar-shrink: 1;
-    }
-  }
-  
+}
+ `
+     : ``
+ } 
   .inner-container {
     display: flex;
     z-index: 10;
@@ -173,7 +172,7 @@ const HTML = `<!DOCTYPE html>
       <nav class="navbar">
         <div class="backdrop"></div>
         <div class="inner-container">
-          <a href="" class="logo-link">
+          <a href="/" class="logo-link">
             <svg class="logo" width="48" height="48" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
             <path d="m80 40c0 22.091-17.909 40-40 40s-40-17.909-40-40 17.909-40 40-40 40 17.909 40 40z" fill="#1D2633"/>
             <path d="m69.714 50.213c1.3508 0 2.3116 1.3128 1.8036 2.5644-5.0506 12.446-17.259 21.222-31.517 21.222-14.258 0-26.467-8.7767-31.517-21.222-0.50797-1.2516 0.45285-2.5644 1.8037-2.5644h59.427z" fill="#EDEBDE"/>
@@ -353,10 +352,12 @@ const HTML = `<!DOCTYPE html>
 </html>
 `;
 
-export const files = {
+export const getFiles = (
+  options: { animationStyles: boolean } = { animationStyles: false }
+) => ({
   '/styles.css': {
-    code: CSS,
+    code: CSS(options.animationStyles),
     active: true,
   },
   '/index.html': HTML,
-};
+});

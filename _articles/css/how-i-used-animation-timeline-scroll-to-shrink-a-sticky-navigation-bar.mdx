@@ -7,18 +7,44 @@ subtitle: '"Shrink my sticky navbar" sounded terrible'
 shortDescription: >
     A future CSS-only solution to shrink a stick navigation bar on scroll. JavaScript polyfill at the end of the post.
 ---
+import { Highlight } from '@/components/highlight';
 import { Callout } from '@/lib/ui/callout';
 import { CodeSandbox } from '@/components/sandpack';
 
-import { files } from '@/examples/navigation-shrink';
+import { getFiles } from '@/examples/navigation-shrink';
+import { ImageCard } from '@/components/image-card';
+import image01 from '/public/images/post_2_1.png'
 
 <Callout
-title="Warning! Experimental feature" type="warning">At the time of writting this post **`animation-timeline:scroll`** feature is still experimental so make sure you add a fallback. You can check the browser compatibility list [here](https://caniuse.com/mdn-css_properties_animation-timeline_scroll)</Callout>
+title="Warning! Experimental feature" type="warning">At the time of writting this post **`animation-timeline:scroll`** feature is still experimental so make sure you add a fallback. Check the compatibility list [here](https://caniuse.com/mdn-css_properties_animation-timeline_scroll)</Callout>
+
+In this post we'll look through how to build a navigation bar that sticks to the top and shrinks in size when user scrolls down. <Highlight>I've used this technique to build the navigation bar for Coding Kittens.</Highlight>
+
+I wanted the logo and the navigation menu to stand out and be always visible so I've added a considerable height to the navigation bar. Then while testing the site on my phone I noticed that the navigation bar was occuping a lot of the reading space, specially on my 4,7 inches phone. 😓
+
+<ImageCard id="image01" key="image01" src={image01} width={250} height={450} caption={{ text: 'Navbar occupies a big percentage of the screen on small devices'}}/>
 
 
-In this post we will look at how to build the navigation bar to be sticky and shrink when user scrolls down. I've used this to build this site's navigation bar. I realized that, specially  on mobile, the navigation bar was occuping a lot of space while reading so I assumed that if a user scrolled down is because they are reading and they don't need so much information from the navbar anyway.
+I decided to decrease the navigation bar height after user scrolls down. The simple solution is easy. Something like this could do the job: 
 
-// GIF
+```js
+// When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+    document.getElementById("navbar").style.padding = "30px 10px";
+    document.getElementById("logo").style.fontSize = "25px";
+  } else {
+    document.getElementById("navbar").style.padding = "80px 10px";
+    document.getElementById("logo").style.fontSize = "35px";
+  }
+}
+```
+
+<small>Code snippet taken from [How TO - Shrink Navigation Menu on Scroll](https://www.w3schools.com/howto/howto_js_navbar_shrink_scroll.asp)</small>
+
+The problem is... where is the fun in doing it like this? Coding Kittens is my space to experiment and test new things. <Highlight>I wanted to find something more performant, extensible and CSS-only.</Highlight>
 
 We'll use some experimental features that are not supported on all browsers. Most of the things we'll use have above 96% support according to [Can I use](https://caniuse.com/). The `animation-timeline:scroll` though is far less supported but we'll add a JavaScript fallback for it.
 
@@ -26,11 +52,26 @@ We'll start by explaining shortly what `animation-timeline:scroll` is.
 
 ## Scroll function and ScrollTimeline explained
 
-The `scroll` function is a CSS function that can be used along with `animation-timeline` to animate the current element based on scroll axis and target. You can find more about how it works in the MDN docs: [animation-timeline:scroll()](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline/scroll#browser_compatibility)
+The `scroll` function is a CSS function that can be used along with `animation-timeline` to animate the current element based on scroll axis and target. You can find more about how it works in the MDN documentation page: [animation-timeline:scroll()](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline/scroll#browser_compatibility)
 
-With the `scroll` function you define that an element will have a `ScrollTimeline` which will track the progress of the scroll animation.
+With the `scroll` function you attach a `ScrollTimeline` instance to an element to track the progress of the scroll animation.
 
-The `scroll` function accepts two parameters, the `scroller` and the `axis`.
+```css
+#element {
+  animation-name: animation;
+  animation-duration: 1ms;
+  animation-timeline: scroll();
+}
+```
+The `scroll` function can accept two parameters, the `scroller` and the `axis`.
+
+```css
+#element {
+  animation-name: animation;
+  animation-duration: 1ms;
+  animation-timeline: scroll(block nearest);
+}
+```
 
 The `scroller` defines the element that will provide the scroll progress timeline.
 
@@ -38,24 +79,329 @@ The `axis` defines to what scroll direction it tracks progress of.
 
 Imagine it as attaching a scroll listener to an element without JavaScript.
 
-## Starting with the sticky navigation
+You can specify the scrolling range within the animation takes place using the `animation-range` property.
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-    <body>
-        <main>
-            <nav class="
-                sticky top-[-1px]
-                mb-12 mt-20 md:-mx-[28px]
-                flex flex-row items-start
-                py-4 pl-2 pr-4 md:px-5
-            ">
-
-
-            </nav>
-        </main>
-    </body>
-</html>
+```css
+#element {
+  animation-name: animation;
+  animation-duration: 1ms;
+  animation-timeline: scroll(block nearest);
+  animation-range-start: 0%;
+  animation-range-end: 10%;
+}
 ```
-<CodeSandbox files={files} />
+
+With this simple code we can animate something on scroll. Now lets see how to use this to animate a Navigation bar.
+
+## Are you a Wizard?
+
+The Navigation Bar I styled for this example has the following structure:
+
+```html title="index.html"
+... html code here
+<nav class="navbar">
+  <div class="backdrop"></div>
+  <div class="inner-container">
+    <a href="/" class="logo-link">
+      <!--Logo SVG or image goes here -->       
+      <div class="site-name">
+        <p>Your site</p>
+      </div>
+    </a>
+    <div class="navigation-links">
+      <div class="navigation-links-inner">
+        <a>Home</a>
+        <a>Blog</a>
+      </div>
+    </div>
+  </div>
+</nav>
+... more html code here
+```
+
+And the styles for this navbar are the following.
+
+```css title="styles.css"
+.navbar {
+    display: flex;
+    position: sticky;
+    padding: 1rem 0.5rem;
+    margin-bottom: 3rem;
+    margin-top: 5rem;
+    flex-direction: row;
+    align-items: flex-start;
+    top: -1px;
+  
+    @media (min-width: 768px) {
+      padding: 1rem 1.25rem;
+    }
+  }
+  
+  .backdrop {
+    position: absolute;
+    top: 0;
+    min-width: 100%;
+    height: 5rem;
+    backdrop-filter: blur(8px);
+    left: -8px;
+    right: -8px;
+  
+    @media (min-width: 768px) {
+      margin-right: -28px;
+      margin-left: -28px;
+    }
+  }
+
+  .inner-container {
+    display: flex;
+    z-index: 10;
+    margin-left: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    min-width: 100%;
+  }
+  
+  .logo {
+    margin-right: 1rem;
+  }
+  
+  .logo-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .site-name {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .site-name p {
+    color: white;
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+  
+    @media (min-width: 640px) {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+  }
+  
+  .navigation-links {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1.5rem;
+  
+    @media (min-width: 640px) {
+      flex-direction: row;
+    }
+  }
+  
+  .navigation-links-inner {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+  
+    @media (min-width: 640px) {
+      display: flex;
+    }
+  }
+  
+  .navigation-links-inner a {
+    position: relative;
+    padding: 0.25rem 0.5rem;
+  }
+```
+
+You can see it in action in this code sandbox:
+
+<CodeSandbox files={
+  getFiles({ animationStyles: false})
+} />
+
+Now we have our first version of the navbar. It doesn't animate and occupies a considerable amount of the screen. We can do better.
+
+We are going to apply some CSS magic to it.
+
+```css title="styles.css"
+@keyframes shrink { /* [!code focus]*/
+  0% {/* [!code focus]*/
+    --navbar-shrink: 0;/* [!code focus]*/
+  }/* [!code focus]*/
+  50%,/* [!code focus]*/
+  100% {/* [!code focus]*/
+    --navbar-shrink: 1;/* [!code focus]*/
+  }/* [!code focus]*/
+}/* [!code focus]*/
+
+.navbar {
+    display: flex;
+    position: sticky;
+    padding: 1rem 0.5rem;
+    margin-bottom: 3rem;
+    margin-top: 5rem;
+    flex-direction: row;
+    align-items: flex-start;
+    top: -1px;
+  
+    @media (min-width: 768px) {
+      padding: 1rem 1.25rem;
+    }
+
+    --navbar-shrink: 1; /* [!code focus]*/
+    animation: shrink; /* [!code focus]*/
+    animation-timing-function: ease; /* [!code focus]*/
+    animation-timeline: scroll(root block); /* [!code focus]*/
+    animation-range-start: 0%; /* [!code focus]*/
+    animation-range-end: 10%; /* [!code focus]*/
+}
+```
+
+I'll explain step by step what we are doing here:
+
+1. First we define our animation `keyframes` that our scroll animation will use. The keyframes will change a CSS variable called `--navbar-shrink`. We'll use this value as our `boolean` to toggle shrink on and off.
+
+2. Then we intialize `--navbar-shrink` to `1`
+
+3. We assign `shrink` to be the animation.
+
+4. As timing function we will use `ease`, but you can use anything you want.
+
+5. We define the `animation-timeline` to call the `scroll` CSS function with **root** as the `scrollable` and **block** as the `axis`.
+
+6. Then we specify that the range of this animation will be between `0%` and `10%` of the page scroll. <Highlight>You can play with this values and the keyframe intermediate steps to animate on the scroll position you want.</Highlight>
+
+
+What we did here is changing a CSS property based on how much we scrolled down and this allows us to have two different states for the navbar styles. How cool is that?
+
+Now we are able to apply some magic like this:
+
+
+```css title="styles.css"
+...
+
+.navbar .inner-container {
+  transition: transform 0.3s ease;
+  transform: translateY(calc(0px - var(--navbar-shrink) * 12px));
+}
+.navbar .backdrop {
+  transition: transform 0.3s ease;
+  transform: translateY(calc(0px - var(--navbar-shrink) * 24px));
+}
+
+.navbar svg {
+  transition: transform 0.3s ease;
+  transform: scale(calc(1 - var(--navbar-shrink) * 0.2));
+}
+
+.navbar h1, .navbar p {
+  transition: opacity 0.3s ease;
+  opacity: calc(1 - var(--navbar-shrink));
+}
+...
+```
+
+I'm using the CSS property along with the `calc` CSS function to dynamically compute the values of these styles. I can scale the logo, change the height of the container by moving the inner-container off the screen, change the opacity of text. Anything.
+
+## Dude, I'm using the oldest version of Safari I can and this is not working
+
+As I mentioned at the begining of this post, the `animation-timeline: scroll()` is not supported in all browsers. In fact by the time of writing this it's only supported in Chromium browsers.
+
+Fear nothing, I have the solution for you. We'll do some changes to our CSS and add a bit of JavaScript. And before I continue, yes, the whole point of this was to avoid adding JavaScript, but there are other benefits to use the scroll CSS function. I will mention the benefits later on.
+
+We'll start by adding a CSS Supports at rule to check if there's browser support.
+
+```css title="styles.css"
+.navbar {
+    display: flex;
+    position: sticky;
+    padding: 1rem 0.5rem;
+    margin-bottom: 3rem;
+    margin-top: 5rem;
+    flex-direction: row;
+    align-items: flex-start;
+    top: -1px;
+  
+    @media (min-width: 768px) {
+      padding: 1rem 1.25rem;
+    }
+
+    @supports (animation-timeline: scroll()) {/* [!code focus]*/
+      --navbar-shrink: 1;/* [!code focus]*/
+
+      animation: shrink;/* [!code focus]*/
+      animation-timeline: scroll(root block);/* [!code focus]*/
+      animation-range-start: 0%;/* [!code focus]*/
+      animation-range-end: 10%;/* [!code focus]*/
+      animation-timing-function: ease;/* [!code focus]*/
+    }/* [!code focus]*/
+}
+```
+
+This will add the animation to the `.navbar` class only if the feature is supported by the browser.
+
+Next if there's no support we need to toggle the `--navbar-shrink` property anyway as it is used in to dynamically change the styles of the navbar elements.
+
+We'll add a bit of JavaScript at the bottom of the `nav` element so that it gets executed after the element is rendered into the page.
+
+```html title="index.html" {23, 36, 38}
+... html code here
+<nav class="navbar">
+  <div class="backdrop"></div>
+  <div class="inner-container">
+    <a href="/" class="logo-link">
+      <!--Logo SVG or image goes here -->       
+      <div class="site-name">
+        <p>Your site</p>
+      </div>
+    </a>
+    <div class="navigation-links">
+      <div class="navigation-links-inner">
+        <a>Home</a>
+        <a>Blog</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<script>/* [!code focus]*/
+  (function () {/* [!code focus]*/
+    const navbar = document.querySelector(".navbar");/* [!code focus]*/
+
+    if (!CSS.supports("animation-timeline: scroll()")) {/* [!code focus]*/
+      const threshold = 500; // Adjust this threshold as needed/* [!code focus]*/
+
+      window.addEventListener("scroll", handleScroll);/* [!code focus]*/
+
+      function handleScroll() {/* [!code focus]*/
+        if (!navbar) {/* [!code focus]*/
+          return;/* [!code focus]*/
+        }/* [!code focus]*/
+
+        const scrollY = window.scrollY || window.pageYOffset;/* [!code focus]*/
+
+        if (scrollY > threshold) {/* [!code focus]*/
+          navbar.style.setProperty("--navbar-shrink", "1");/* [!code focus]*/
+        } else {/* [!code focus]*/
+          navbar.style.setProperty("--navbar-shrink", "0");/* [!code focus]*/
+        }/* [!code focus]*/
+      }/* [!code focus]*/
+    }/* [!code focus]*/
+  })();/* [!code focus]*/
+</script>/* [!code focus]*/
+... more html code here
+```
+
+Now we have a fully supported animation for the Navigation bar!
+
+You can play with it in the following CodeSandbox.
+
+<CodeSandbox files={
+  getFiles({ animationStyles: true})
+} />
+
+The problem with it is that when there's no scrollable content the `animation-timeline: scroll()` triggers as if the content was scrolled through. I didn't find an official way to disable this behavior but I did find a trick to avoid it.
+
+[find link]

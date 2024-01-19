@@ -171,6 +171,18 @@ html:not(.dark) [data-rehype-pretty-code-title] {
     monospace;
 }
 
+.has-focused span[data-line]:not(.focused) {
+  opacity: 0.7;
+  transition:
+    filter 0.35s,
+    opacity 0.35s;
+  filter: blur(0.095rem);
+}
+
+span[data-line][data-highlighted-line] {
+  @apply !bg-primary-100 dark:!bg-background-700;
+}
+
 pre {
   overflow-x: auto;
   font-weight: 400;
@@ -256,11 +268,7 @@ a {
   transform: scale(calc(1 - var(--navbar-shrink) * 0.2));
 }
 
-.navbar h1 {
-  transition: opacity 0.3s ease;
-  opacity: calc(1 - var(--navbar-shrink));
-}
-
+.navbar h1,
 .navbar p {
   transition: opacity 0.3s ease;
   opacity: calc(1 - var(--navbar-shrink));

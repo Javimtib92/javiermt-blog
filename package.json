@@ -14,17 +14,17 @@
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "^2.11.2",
-    "@heroicons/react": "^2.0.18",
+    "@heroicons/react": "^2.1.1",
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
-    "@next/mdx": "^14.0.0",
+    "@next/mdx": "^14.1.1-canary.1",
     "@prisma/client": "^5.5.2",
-    "@types/mdx": "^2.0.9",
-    "@vercel/analytics": "^1.1.1",
-    "@vercel/speed-insights": "^1.0.2",
-    "clsx": "^2.0.0",
+    "@types/mdx": "^2.0.10",
+    "@vercel/analytics": "^1.1.2",
+    "@vercel/speed-insights": "^1.0.5",
+    "clsx": "^2.1.0",
     "gray-matter": "^4.0.3",
-    "next": "14.0.5-canary.64",
+    "next": "14.1.1-canary.1",
     "react": "^18",
     "react-dom": "^18",
     "reading-time": "^1.5.0",
@@ -32,8 +32,8 @@
     "remark-emoji": "^4.0.0",
     "remark-frontmatter": "^5.0.0",
     "remark-reading-time": "^2.0.1",
-    "sharp": "^0.32.6",
-    "shikiji": "0.9.12",
+    "sharp": "^0.33.2",
+    "shikiji": "0.9.14",
     "tailwind-merge": "^2.2.0"
   },
   "devDependencies": {
@@ -47,6 +47,7 @@
     "postcss": "^8",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "prisma": "^5.5.2",
+    "shikiji-transformers": "0.10.0-beta.8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

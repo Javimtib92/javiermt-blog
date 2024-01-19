@@ -4,6 +4,7 @@ import { Paragraph } from './lib/ui/paragraph';
 import { Link } from './lib/ui/link';
 import { Quote } from './lib/ui/quote';
 import { TitleLink } from './components/title-link';
+import Image from 'next/image';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
