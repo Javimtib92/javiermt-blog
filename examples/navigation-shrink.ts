@@ -1,4 +1,4 @@
-const CSS = (animationStyles: boolean) => `.navbar {
+const CSS = (animationStyles: boolean, topTrick: boolean) => `.navbar {
     display: flex;
     position: sticky;
     padding: 1rem 0.5rem;
@@ -6,7 +6,7 @@ const CSS = (animationStyles: boolean) => `.navbar {
     margin-top: 5rem;
     flex-direction: row;
     align-items: flex-start;
-    top: -1px;
+    ${topTrick ? `top: -1px;` : `top: 0;`}
   
     @media (min-width: 768px) {
       padding: 1rem 1.25rem;
@@ -53,7 +53,7 @@ const CSS = (animationStyles: boolean) => `.navbar {
 }
 
 @supports (animation-timeline: scroll()) {
-  .navbar.is-pinned {
+  ${topTrick ? `.navbar.is-pinned` : `.navbar`} {
     --navbar-shrink: 1;
 
     animation: shrink;
@@ -76,90 +76,93 @@ const CSS = (animationStyles: boolean) => `.navbar {
  `
      : ``
  } 
-  .inner-container {
-    display: flex;
-    z-index: 10;
-    margin-left: 0;
-    flex-direction: row;
-    justify-content: space-between;
-    min-width: 100%;
-  }
-  
-  .logo {
-    margin-right: 1rem;
-  }
-  
-  .logo-link {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    text-decoration: none;
-  }
-  
-  .site-name {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .site-name p {
-    color: white;
-    margin: 0;
+.inner-container {
+  display: flex;
+  z-index: 10;
+  margin-left: 0;
+  flex-direction: row;
+  justify-content: space-between;
+  min-width: 100%;
+}
+
+.logo {
+  margin-right: 1rem;
+}
+
+.logo-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+}
+
+.site-name {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-name p {
+  color: white;
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+
+  @media (min-width: 640px) {
     font-size: 1.5rem;
     line-height: 2rem;
-    font-weight: 700;
-  
-    @media (min-width: 640px) {
-      font-size: 1.5rem;
-      line-height: 2rem;
-    }
   }
-  
-  .navigation-links {
-    display: flex;
-    flex-direction: row-reverse;
-    gap: 1.5rem;
-  
-    @media (min-width: 640px) {
-      flex-direction: row;
-    }
-  }
-  
-  .navigation-links-inner {
-    display: none;
-    flex-direction: row;
-    align-items: center;
-  
-    @media (min-width: 640px) {
-      display: flex;
-    }
-  }
-  
-  .navigation-links-inner a {
-    position: relative;
-    padding: 0.25rem 0.5rem;
-  }
-  
-  .scrollable-container {
-    min-height: 150dvh;
-  }
+}
 
-  body {
-    font-family: sans-serif;
-    -webkit-font-smoothing: auto;
-    -moz-font-smoothing: auto;
-    -moz-osx-font-smoothing: grayscale;
-    font-smoothing: auto;
-    text-rendering: optimizeLegibility;
-    font-smooth: always;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-  
-    background-color: color-mix(in srgb, slategrey 100%, black 100%);
-    color: white;
+.navigation-links {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 1.5rem;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
   }
+}
+
+.navigation-links-inner {
+  display: none;
+  flex-direction: row;
+  align-items: center;
+
+  @media (min-width: 640px) {
+    display: flex;
+  }
+}
+
+.navigation-links-inner a {
+  position: relative;
+  padding: 0.25rem 0.5rem;
+}
+
+.scrollable-container {
+  min-height: 150dvh;
+}
+
+body {
+  font-family: sans-serif;
+  -webkit-font-smoothing: auto;
+  -moz-font-smoothing: auto;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: auto;
+  text-rendering: optimizeLegibility;
+  font-smooth: always;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+
+  background-color: color-mix(in srgb, slategrey 100%, black 100%);
+  color: white;
+}
 `;
 
-const HTML = `<!DOCTYPE html>
+const HTML = (
+  topTrick: boolean,
+  noScrollableContent: boolean
+) => `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -227,137 +230,153 @@ const HTML = `<!DOCTYPE html>
                 navbar.style.setProperty("--navbar-shrink", "0");
               }
             }
-          } else {
-            const observer = new IntersectionObserver(
-              ([e]) =>
-                e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
-              { threshold: [1] }
-            );
+          }${
+            topTrick
+              ? ` else {
+              const observer = new IntersectionObserver(
+                ([e]) =>
+                  e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
+                { threshold: [1] }
+              );
 
-            observer.observe(navbar);
-          }
+              observer.observe(navbar);
+            }`
+              : ``
+          } 
         })();
       </script>
-      <div class="scrollable-container">
-        <p>
-          Sociosqu netus hac auctor, pulvinar suscipit dictum consectetur?
-          Sapien odio gravida ante laoreet. Nullam viverra habitant, primis
-          lectus commodo auctor turpis eu netus curabitur? Litora enim fringilla
-          semper at senectus pretium mollis justo consectetur montes. Posuere
-          sed suspendisse pretium elementum tempor cursus amet vel hac ac
-          sociis. Curae; placerat eleifend laoreet posuere venenatis imperdiet
-          mi nisl mauris nisi. Congue platea luctus sem ante sagittis non nulla?
-          Interdum ligula orci enim litora morbi nulla.
-        </p>
-        <p>
-          Dolor sem tempor vitae luctus sem habitant. Consectetur rutrum
-          volutpat non vestibulum porta! Massa luctus est malesuada ullamcorper
-          parturient feugiat nostra conubia. Egestas elementum elementum aliquet
-          turpis dictumst aenean class habitant nullam arcu lacus. Vel posuere
-          diam dapibus etiam. Duis tellus, conubia justo accumsan feugiat. Nisi
-          duis cum auctor sagittis praesent rhoncus vehicula quis dictumst
-          sapien.
-        </p>
-        <p>
-          Dictum ornare erat class tincidunt. Ad vel dis erat morbi. Auctor
-          fusce feugiat potenti porta; volutpat mauris varius maecenas. Blandit
-          porta scelerisque mattis per nullam. Parturient ad magna libero augue
-          mi feugiat bibendum auctor. Urna habitasse ornare volutpat volutpat.
-          Rutrum interdum lacus commodo maecenas arcu taciti. Id libero; dui
-          montes ornare potenti nostra. Praesent volutpat est tortor tincidunt
-          ipsum massa convallis. Per pulvinar facilisis.
-        </p>
-        <p>
-          Velit, potenti ullamcorper ridiculus nisi mauris. Id at proin
-          convallis turpis arcu curabitur. Hendrerit morbi montes praesent
-          vestibulum habitant nunc mattis egestas in consectetur. Sagittis eu
-          posuere vivamus platea fermentum, malesuada amet varius! Arcu lacus
-          conubia venenatis velit mollis eget diam tristique facilisi mus auctor
-          pulvinar. Ac ornare risus duis ullamcorper nulla tortor. Netus nulla
-          habitasse quisque mollis maecenas. Mattis magnis nullam.
-        </p>
-        <p>
-          Nec, porta nulla eleifend nec. Iaculis ante tortor per aptent tempor.
-          Accumsan facilisis etiam lobortis ligula tristique sed. Sapien mus
-          felis nunc proin accumsan dis habitant quam integer cum suscipit.
-          Natoque, cum conubia pretium. Et pulvinar platea massa nunc. Semper
-          aliquam at ultrices dis nibh felis integer lacus pharetra non
-          imperdiet magnis! Rutrum cum massa, morbi imperdiet mauris et
-          lobortis. Magna elementum risus potenti aptent rhoncus per lectus
-          rhoncus et iaculis magna. Orci nam dictum montes sollicitudin semper
-          primis rutrum vitae luctus iaculis! Suspendisse sociis condimentum
-          mus.
-        </p>
-        <p>
-          Libero eu fringilla scelerisque. Magnis fames tristique quisque
-          senectus metus. Vitae arcu habitasse integer et. Diam etiam senectus
-          eu curae; molestie iaculis phasellus eros. Ipsum vel magnis
-          suspendisse libero enim iaculis inceptos. Taciti; ipsum tempor
-          dignissim lobortis urna. Vestibulum et rutrum felis euismod. Nostra
-          magna cursus primis? Nunc eget montes semper bibendum consectetur.
-          Turpis nec elementum turpis nostra neque vulputate mus aenean tempor
-          elit etiam orci? Commodo vivamus taciti mattis nullam.
-        </p>
-        <p>
-          Feugiat ornare massa porttitor interdum velit sagittis faucibus,
-          conubia phasellus cras nulla! Nisi nascetur litora, sollicitudin
-          primis et class mattis. Posuere senectus, ac rutrum massa orci duis
-          leo per leo hendrerit urna. Consectetur sollicitudin sed dictumst
-          ullamcorper erat eget et nisl. Ornare nec aenean hac est. Nostra vitae
-          justo volutpat sociis. At ante elementum netus ac ac curabitur augue
-          at vehicula primis inceptos. Lacinia torquent tempus primis hac hac
-          magnis gravida non. Malesuada fames scelerisque phasellus, consequat
-          porta commodo cursus nam justo posuere! Urna cursus donec scelerisque
-          pulvinar pulvinar id nostra. Commodo.
-        </p>
-        <p>
-          Nostra arcu felis bibendum fusce odio tortor porta. Feugiat erat
-          vehicula hac velit, molestie hac! Tellus donec nisi ridiculus, fames
-          sem purus nec lacinia nunc curae;. Varius nam curae; duis dictum ad
-          ultrices mollis leo nullam est fames bibendum. Quisque purus at curae;
-          commodo dis sed phasellus. Lacinia himenaeos consectetur malesuada.
-          Ultricies sem sociosqu erat; est quam est tortor arcu vitae porta
-          praesent! Luctus fermentum aenean, dictumst eros montes phasellus diam
-          vel. Leo cum, etiam purus est? Vivamus risus pharetra turpis erat
-          aptent. Mollis, turpis nec vel? Porttitor odio inceptos eget penatibus
-          inceptos praesent amet eget.
-        </p>
-        <p>
-          Vel commodo ullamcorper natoque rhoncus volutpat cubilia tincidunt id
-          hac integer. Praesent id consectetur lacinia quam fringilla duis
-          cubilia condimentum! Imperdiet sodales facilisis nulla nam, non
-          maecenas ultrices vehicula luctus lobortis. Facilisis nascetur
-          convallis hac dictum pulvinar eros. Adipiscing suspendisse quam duis
-          platea sociis. Imperdiet nisl velit ultricies senectus dignissim mi
-          lobortis velit. Ullamcorper nascetur inceptos lacinia maecenas
-          vehicula tortor orci. Dis adipiscing nulla cubilia fusce? Accumsan
-          dignissim sem fames sociis. Cursus dictum taciti eleifend consequat
-          rhoncus ultrices elementum morbi? Lobortis rhoncus volutpat ac rhoncus
-          dignissim augue, lectus curabitur elementum.
-        </p>
-        <p>
-          Fames senectus odio vulputate iaculis rutrum felis ad. Habitasse
-          suscipit aliquet eleifend ante maecenas id faucibus in habitant mus.
-          Tempus cubilia morbi ultrices auctor habitasse aenean justo dolor
-          placerat ac bibendum mollis. Est fringilla quis quisque facilisi. Est
-          aliquet commodo ridiculus litora arcu ridiculus integer neque velit
-          imperdiet dignissim. Vehicula vestibulum nulla lectus ad lectus
-          sagittis elit vitae elementum et fermentum. Tellus molestie facilisis
-          mattis taciti. Cursus bibendum est fusce etiam quisque faucibus non
-          metus quis sed commodo. Venenatis habitasse nibh.
-        </p>
-      </div>
+      ${
+        noScrollableContent
+          ? ``
+          : `<div class="scrollable-container">
+      <p>
+        Sociosqu netus hac auctor, pulvinar suscipit dictum consectetur?
+        Sapien odio gravida ante laoreet. Nullam viverra habitant, primis
+        lectus commodo auctor turpis eu netus curabitur? Litora enim fringilla
+        semper at senectus pretium mollis justo consectetur montes. Posuere
+        sed suspendisse pretium elementum tempor cursus amet vel hac ac
+        sociis. Curae; placerat eleifend laoreet posuere venenatis imperdiet
+        mi nisl mauris nisi. Congue platea luctus sem ante sagittis non nulla?
+        Interdum ligula orci enim litora morbi nulla.
+      </p>
+      <p>
+        Dolor sem tempor vitae luctus sem habitant. Consectetur rutrum
+        volutpat non vestibulum porta! Massa luctus est malesuada ullamcorper
+        parturient feugiat nostra conubia. Egestas elementum elementum aliquet
+        turpis dictumst aenean class habitant nullam arcu lacus. Vel posuere
+        diam dapibus etiam. Duis tellus, conubia justo accumsan feugiat. Nisi
+        duis cum auctor sagittis praesent rhoncus vehicula quis dictumst
+        sapien.
+      </p>
+      <p>
+        Dictum ornare erat class tincidunt. Ad vel dis erat morbi. Auctor
+        fusce feugiat potenti porta; volutpat mauris varius maecenas. Blandit
+        porta scelerisque mattis per nullam. Parturient ad magna libero augue
+        mi feugiat bibendum auctor. Urna habitasse ornare volutpat volutpat.
+        Rutrum interdum lacus commodo maecenas arcu taciti. Id libero; dui
+        montes ornare potenti nostra. Praesent volutpat est tortor tincidunt
+        ipsum massa convallis. Per pulvinar facilisis.
+      </p>
+      <p>
+        Velit, potenti ullamcorper ridiculus nisi mauris. Id at proin
+        convallis turpis arcu curabitur. Hendrerit morbi montes praesent
+        vestibulum habitant nunc mattis egestas in consectetur. Sagittis eu
+        posuere vivamus platea fermentum, malesuada amet varius! Arcu lacus
+        conubia venenatis velit mollis eget diam tristique facilisi mus auctor
+        pulvinar. Ac ornare risus duis ullamcorper nulla tortor. Netus nulla
+        habitasse quisque mollis maecenas. Mattis magnis nullam.
+      </p>
+      <p>
+        Nec, porta nulla eleifend nec. Iaculis ante tortor per aptent tempor.
+        Accumsan facilisis etiam lobortis ligula tristique sed. Sapien mus
+        felis nunc proin accumsan dis habitant quam integer cum suscipit.
+        Natoque, cum conubia pretium. Et pulvinar platea massa nunc. Semper
+        aliquam at ultrices dis nibh felis integer lacus pharetra non
+        imperdiet magnis! Rutrum cum massa, morbi imperdiet mauris et
+        lobortis. Magna elementum risus potenti aptent rhoncus per lectus
+        rhoncus et iaculis magna. Orci nam dictum montes sollicitudin semper
+        primis rutrum vitae luctus iaculis! Suspendisse sociis condimentum
+        mus.
+      </p>
+      <p>
+        Libero eu fringilla scelerisque. Magnis fames tristique quisque
+        senectus metus. Vitae arcu habitasse integer et. Diam etiam senectus
+        eu curae; molestie iaculis phasellus eros. Ipsum vel magnis
+        suspendisse libero enim iaculis inceptos. Taciti; ipsum tempor
+        dignissim lobortis urna. Vestibulum et rutrum felis euismod. Nostra
+        magna cursus primis? Nunc eget montes semper bibendum consectetur.
+        Turpis nec elementum turpis nostra neque vulputate mus aenean tempor
+        elit etiam orci? Commodo vivamus taciti mattis nullam.
+      </p>
+      <p>
+        Feugiat ornare massa porttitor interdum velit sagittis faucibus,
+        conubia phasellus cras nulla! Nisi nascetur litora, sollicitudin
+        primis et class mattis. Posuere senectus, ac rutrum massa orci duis
+        leo per leo hendrerit urna. Consectetur sollicitudin sed dictumst
+        ullamcorper erat eget et nisl. Ornare nec aenean hac est. Nostra vitae
+        justo volutpat sociis. At ante elementum netus ac ac curabitur augue
+        at vehicula primis inceptos. Lacinia torquent tempus primis hac hac
+        magnis gravida non. Malesuada fames scelerisque phasellus, consequat
+        porta commodo cursus nam justo posuere! Urna cursus donec scelerisque
+        pulvinar pulvinar id nostra. Commodo.
+      </p>
+      <p>
+        Nostra arcu felis bibendum fusce odio tortor porta. Feugiat erat
+        vehicula hac velit, molestie hac! Tellus donec nisi ridiculus, fames
+        sem purus nec lacinia nunc curae;. Varius nam curae; duis dictum ad
+        ultrices mollis leo nullam est fames bibendum. Quisque purus at curae;
+        commodo dis sed phasellus. Lacinia himenaeos consectetur malesuada.
+        Ultricies sem sociosqu erat; est quam est tortor arcu vitae porta
+        praesent! Luctus fermentum aenean, dictumst eros montes phasellus diam
+        vel. Leo cum, etiam purus est? Vivamus risus pharetra turpis erat
+        aptent. Mollis, turpis nec vel? Porttitor odio inceptos eget penatibus
+        inceptos praesent amet eget.
+      </p>
+      <p>
+        Vel commodo ullamcorper natoque rhoncus volutpat cubilia tincidunt id
+        hac integer. Praesent id consectetur lacinia quam fringilla duis
+        cubilia condimentum! Imperdiet sodales facilisis nulla nam, non
+        maecenas ultrices vehicula luctus lobortis. Facilisis nascetur
+        convallis hac dictum pulvinar eros. Adipiscing suspendisse quam duis
+        platea sociis. Imperdiet nisl velit ultricies senectus dignissim mi
+        lobortis velit. Ullamcorper nascetur inceptos lacinia maecenas
+        vehicula tortor orci. Dis adipiscing nulla cubilia fusce? Accumsan
+        dignissim sem fames sociis. Cursus dictum taciti eleifend consequat
+        rhoncus ultrices elementum morbi? Lobortis rhoncus volutpat ac rhoncus
+        dignissim augue, lectus curabitur elementum.
+      </p>
+      <p>
+        Fames senectus odio vulputate iaculis rutrum felis ad. Habitasse
+        suscipit aliquet eleifend ante maecenas id faucibus in habitant mus.
+        Tempus cubilia morbi ultrices auctor habitasse aenean justo dolor
+        placerat ac bibendum mollis. Est fringilla quis quisque facilisi. Est
+        aliquet commodo ridiculus litora arcu ridiculus integer neque velit
+        imperdiet dignissim. Vehicula vestibulum nulla lectus ad lectus
+        sagittis elit vitae elementum et fermentum. Tellus molestie facilisis
+        mattis taciti. Cursus bibendum est fusce etiam quisque faucibus non
+        metus quis sed commodo. Venenatis habitasse nibh.
+      </p>
+    </div>`
+      }
     </main>
   </body>
 </html>
 `;
 
 export const getFiles = (
-  options: { animationStyles: boolean } = { animationStyles: false }
+  options: {
+    animationStyles: boolean;
+    topTrick: boolean;
+    noScrollableContent: boolean;
+  } = {
+    animationStyles: false,
+    topTrick: false,
+    noScrollableContent: false,
+  }
 ) => ({
   '/styles.css': {
-    code: CSS(options.animationStyles),
+    code: CSS(options.animationStyles, options.topTrick),
     active: true,
   },
-  '/index.html': HTML,
+  '/index.html': HTML(options.topTrick, options.noScrollableContent),
 });

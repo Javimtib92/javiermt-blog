@@ -1,10 +1,10 @@
 import type { MDXComponents } from 'mdx/types';
 import React from 'react';
 import { Paragraph } from './lib/ui/paragraph';
+import NextLink from 'next/link';
 import { Link } from './lib/ui/link';
 import { Quote } from './lib/ui/quote';
 import { TitleLink } from './components/title-link';
-import Image from 'next/image';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -13,7 +13,19 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h2: (props) => <TitleLink level={2} {...props} />,
     h3: (props) => <TitleLink level={3} {...props} />,
     p: (props) => <Paragraph {...props} />,
-    a: ({ href, ...props }) => <Link href={href ?? ''} underline {...props} />,
+    a: ({ href, ...props }) => {
+      if (
+        typeof props.children === 'string' &&
+        props.children?.startsWith('#unstyled')
+      ) {
+        return (
+          <NextLink href={href ?? ''} {...props}>
+            {props.children.replace('#unstyled', '').trim()}
+          </NextLink>
+        );
+      }
+      return <Link href={href ?? ''} underline {...props} />;
+    },
     ul: ({ children, ...props }) => {
       return (
         <ul

@@ -5,7 +5,10 @@ import remarkFrontmatter from 'remark-frontmatter';
 import rehypePrettyCode from 'rehype-pretty-code';
 import remarkEmoji from 'remark-emoji';
 import moonlight from './themes/moonlight-ii.json' assert { type: 'json' };
-import { transformerNotationFocus } from 'shikiji-transformers';
+import {
+  transformerNotationFocus,
+  transformerNotationDiff,
+} from 'shikiji-transformers';
 
 const prettyCodeOptions = {
   keepBackground: false,
@@ -14,7 +17,7 @@ const prettyCodeOptions = {
     light: 'github-light',
   },
   defaultLang: 'jsx',
-  transformers: [transformerNotationFocus()],
+  transformers: [transformerNotationFocus(), transformerNotationDiff()],
 };
 
 const withMDX = createMDX({

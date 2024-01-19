@@ -183,6 +183,22 @@ span[data-line][data-highlighted-line] {
   @apply !bg-primary-100 dark:!bg-background-700;
 }
 
+span[data-line].diff.remove {
+  @apply -mx-6 bg-red-600/[.16] px-6 opacity-70 dark:bg-red-400/[.16];
+}
+span[data-line].diff.remove:before {
+  content: '-';
+  @apply absolute text-red-500 dark:text-red-400;
+}
+
+span[data-line].diff.add {
+  @apply -mx-6 bg-green-400/[.16] px-6 dark:bg-green-400/[.16];
+}
+span[data-line].diff.add:before {
+  content: '+';
+  @apply absolute text-green-500 dark:text-green-400;
+}
+
 pre {
   overflow-x: auto;
   font-weight: 400;
