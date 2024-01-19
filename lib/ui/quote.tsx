@@ -20,7 +20,7 @@ export function Quote({
             ...child.props,
             className: cn(
               className,
-              'text-lg font-medium italic leading-relaxed text-black dark:text-white',
+              'text-md font-medium italic leading-relaxed text-primary-500 dark:text-primary-100',
               index !== 1 ? 'mt-8' : ''
             ),
           });

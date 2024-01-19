@@ -70,6 +70,8 @@ html:not(.dark) code {
     var(--color-accent-secondary-base) 10%,
     white
   );
+
+  @apply text-[10px] sm:text-xs;
 }
 
 [data-rehype-pretty-code-figure] > code > span[data-line] > span {

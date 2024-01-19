@@ -15,9 +15,9 @@ export function Callout({
   children: ReactNode;
 }) {
   const stylesByType: Record<CalloutType, any> = {
-    info: 'bg-sky-400 text-sky-700',
-    success: 'bg-lime-400 text-lime-700',
-    warning: 'bg-amber-300 text-amber-700',
+    info: 'bg-sky-300 text-sky-700',
+    success: 'bg-lime-200 bg-lime-400 text-lime-700',
+    warning: 'bg-amber-200 dark:bg-amber-300 text-amber-700',
     error: 'bg-red-400 text-red-700',
   };
 

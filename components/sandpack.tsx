@@ -54,10 +54,10 @@ export function CodeSandbox({ files }: { files: any }) {
           }}
           template='static'
         >
-          <div className='h-80 min-h-80 bg-background-300'>
+          <div className='mt-4 h-80 min-h-80 bg-background-300'>
             <SandpackPreview className='h-full' />
           </div>
-          <SandpackLayout>
+          <SandpackLayout className='mb-8'>
             <SandpackFileExplorer />
             <SandpackCodeEditor showTabs={false} />
           </SandpackLayout>

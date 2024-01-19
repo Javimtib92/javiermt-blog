@@ -30,7 +30,7 @@ const CSS = (animationStyles: boolean, topTrick: boolean) => `.navbar {
   
  ${
    animationStyles
-     ? `.navbar .inner-container {
+     ? `.navbar .navbar-content {
   transition: transform 0.3s ease;
   will-change: transform;
   transform: translateY(calc(0px - var(--navbar-shrink) * 12px));
@@ -41,13 +41,13 @@ const CSS = (animationStyles: boolean, topTrick: boolean) => `.navbar {
   transform: translateY(calc(0px - var(--navbar-shrink) * 24px));
 }
 
-.navbar svg {
+.navbar .logo {
   transition: transform 0.3s ease;
   will-change: transform;
   transform: scale(calc(1 - var(--navbar-shrink) * 0.2));
 }
 
-.navbar h1, .navbar p {
+.navbar .site-name > p {
   transition: opacity 0.3s ease;
   opacity: calc(1 - var(--navbar-shrink));
 }
@@ -76,7 +76,7 @@ const CSS = (animationStyles: boolean, topTrick: boolean) => `.navbar {
  `
      : ``
  } 
-.inner-container {
+.navbar-content {
   display: flex;
   z-index: 10;
   margin-left: 0;
@@ -101,7 +101,7 @@ const CSS = (animationStyles: boolean, topTrick: boolean) => `.navbar {
   flex-direction: column;
 }
 
-.site-name p {
+.site-name > p {
   color: white;
   margin: 0;
   font-size: 1.5rem;
@@ -114,7 +114,7 @@ const CSS = (animationStyles: boolean, topTrick: boolean) => `.navbar {
   }
 }
 
-.navigation-links {
+.navigation-links-container {
   display: flex;
   flex-direction: row-reverse;
   gap: 1.5rem;
@@ -124,7 +124,7 @@ const CSS = (animationStyles: boolean, topTrick: boolean) => `.navbar {
   }
 }
 
-.navigation-links-inner {
+.navigation-links {
   display: none;
   flex-direction: row;
   align-items: center;
@@ -134,7 +134,7 @@ const CSS = (animationStyles: boolean, topTrick: boolean) => `.navbar {
   }
 }
 
-.navigation-links-inner a {
+.navigation-links a {
   position: relative;
   padding: 0.25rem 0.5rem;
 }
@@ -174,7 +174,7 @@ const HTML = (
     <main>
       <nav class="navbar">
         <div class="backdrop"></div>
-        <div class="inner-container">
+        <div class="navbar-content">
           <a href="/" class="logo-link">
             <svg class="logo" width="48" height="48" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
             <path d="m80 40c0 22.091-17.909 40-40 40s-40-17.909-40-40 17.909-40 40-40 40 17.909 40 40z" fill="#1D2633"/>
@@ -200,8 +200,8 @@ const HTML = (
               <p>Your site</p>
             </div>
           </a>
-          <div class="navigation-links">
-            <div class="navigation-links-inner">
+          <div class="navigation-links-container">
+            <div class="navigation-links">
               <a>Home</a>
               <a>Blog</a>
             </div>

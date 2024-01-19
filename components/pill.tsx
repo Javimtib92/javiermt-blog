@@ -37,7 +37,7 @@ export function Pill({
           background: `repeating-linear-gradient(45deg, transparent, transparent 2px,${colors[color]['500']} 2px,${colors[color]['500']} 3px)`,
         }}
       ></span>
-      <span className='z-[1] bg-primary-50 dark:bg-background-500'>
+      <span className='z-[1] bg-primary-50 text-xs dark:bg-background-500'>
         {children}
       </span>
     </span>

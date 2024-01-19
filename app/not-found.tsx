@@ -47,7 +47,9 @@ export default async function NotFound() {
                 width={50}
                 height={50}
               />
-              <div>{frontMatter.title}</div>
+              <div className='sm:text-md max-w-56 text-xs sm:max-w-full'>
+                {frontMatter.title}
+              </div>
             </NextLink>
           );
         })}
