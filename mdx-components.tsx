@@ -29,7 +29,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ul: ({ children, ...props }) => {
       return (
         <ul
-          className='max-w-md list-inside list-disc space-y-1 text-primary-400 dark:text-primary-400'
+          className='list-inside list-disc space-y-1 border-y-[1px] border-background-50 py-4 dark:border-background-500'
           {...props}
         >
           {children}
