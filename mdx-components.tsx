@@ -1,7 +1,7 @@
 import type { MDXComponents } from 'mdx/types';
 import React from 'react';
 import { Paragraph } from './lib/ui/paragraph';
-import NextLink from 'next/link';
+import NextLink, { LinkProps } from 'next/link';
 import { Link } from './lib/ui/link';
 import { Quote } from './lib/ui/quote';
 import { TitleLink } from './components/title-link';
@@ -19,7 +19,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         props.children?.startsWith('#unstyled')
       ) {
         return (
-          <NextLink href={href ?? ''} {...props}>
+          <NextLink href={href ?? ''} {...(props as Omit<LinkProps, 'href'>)}>
             {props.children.replace('#unstyled', '').trim()}
           </NextLink>
         );

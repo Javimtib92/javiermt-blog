@@ -32,7 +32,7 @@ export function Pill({
         }}
       ></span>
       <span
-        className='absolute right-0 z-[2] h-full w-1/2 rounded-r-full border-[1px] border-none opacity-20 outline-none'
+        className='pointer-events-none absolute right-0 z-[2] h-full w-1/2 rounded-r-full border-[1px] border-none opacity-20 outline-none'
         style={{
           background: `repeating-linear-gradient(45deg, transparent, transparent 2px,${colors[color]['500']} 2px,${colors[color]['500']} 3px)`,
         }}
