@@ -13,7 +13,7 @@
     "prisma": "node --env-file=.env.local ./scripts/prisma.js"
   },
   "dependencies": {
-    "@codesandbox/sandpack-react": "^2.11.2",
+    "@codesandbox/sandpack-react": "^2.11.3",
     "@heroicons/react": "^2.1.1",
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",

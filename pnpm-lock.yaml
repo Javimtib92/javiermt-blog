@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@codesandbox/sandpack-react':
-    specifier: ^2.11.2
-    version: 2.11.2(@lezer/common@1.2.0)(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^2.11.3
+    version: 2.11.3(@lezer/common@1.2.0)(react-dom@18.2.0)(react@18.2.0)
   '@heroicons/react':
     specifier: ^2.1.1
     version: 2.1.1(react@18.2.0)
@@ -293,8 +293,8 @@ packages:
       static-browser-server: 1.0.3
     dev: false
 
-  /@codesandbox/sandpack-react@2.11.2(@lezer/common@1.2.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-Ni0nbGlT0g06Pq0ke6CcrupsWt/leAnfArWOUf7Yw2+ZhZFqYz1zlU9rT3xSTuUAkbHSh1gPC72G/5DN9xeyOg==}
+  /@codesandbox/sandpack-react@2.11.3(@lezer/common@1.2.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Syr/nb8bJYvlx6CoaXHlWDapVOp0ZJkXCZDWBCzKCR7Q1y7Bsx15LEuqSPzGQqJa/J8qyy/dRYlpKvPkZtOoFw==}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18
       react-dom: ^16.8.0 || ^17 || ^18
