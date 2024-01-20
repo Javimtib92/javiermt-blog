@@ -325,7 +325,7 @@ a {
 }
 
 .custom-wrapper .sp-syntax-property {
-  @apply text-primary-800 dark:!text-primary-100;
+  @apply !text-primary-800 dark:!text-primary-100;
 }
 
 .custom-wrapper .sp-syntax-keyword {
@@ -333,7 +333,7 @@ a {
 }
 
 .custom-wrapper .sp-syntax-punctuation {
-  @apply text-primary-800 dark:!text-primary-300;
+  @apply !text-primary-800 dark:!text-primary-300;
 }
 
 .custom-wrapper .sp-syntax-plain {
@@ -366,9 +366,9 @@ a {
 .custom-wrapper .sp-editor,
 .custom-wrapper .sp-cm,
 .custom-wrapper .cm-editor {
-  @apply dark:!bg-background-600;
+  @apply !bg-primary-50 dark:!bg-background-600;
 }
 
 .custom-wrapper .cm-activeLine {
-  @apply dark:!bg-background-400;
+  @apply !bg-primary-100 dark:!bg-background-400;
 }
