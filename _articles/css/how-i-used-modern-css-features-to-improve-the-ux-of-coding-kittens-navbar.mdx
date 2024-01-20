@@ -454,7 +454,7 @@ There is an issue with this approach, I didn't find it at first but then I spott
 
 I encourage you to play with the Code Sandbox to see if you can find it.
 
-The issue is that when there's no scrollable content the `animation-timeline: scroll()` triggers as if the content was scrolled completely.
+The issue is that when there's no scrollable content the animation triggers as if the content was scrolled completely.
 
 I prepared the same Code Sandbox as before but without content. Check this:
 
@@ -503,7 +503,7 @@ Lets try applying this changes to our code.
 }
 ```
 
-First we add a negative top positioning to our `.navbar` element and we make sure to apply `animation-timeline:scroll()` only on the `.navbar` that has the `.is-pinned` class.
+First we add a negative top positioning to our `.navbar` element and we make sure to apply the animation styles only on the `.navbar` that has the `.is-pinned` class.
 
 
 ```html title="index.html"
@@ -545,7 +545,7 @@ First we add a negative top positioning to our `.navbar` element and we make sur
 </script>/* [!code focus]*/
 ```
 
-Then when `animation-timeline: scroll()` **IS** supported, we add an `IntersectionObserver` to it. This will add the `is-pinned` class if we pass through a minimal threshold.
+Then if `animation-timeline` **IS** supported, we add an `IntersectionObserver` to it. This will add the `is-pinned` class if we pass through a minimal threshold.
 
 You can check the result in this Code Sandbox:
 
