@@ -19,6 +19,7 @@ const CSS = (animationStyles: boolean, topTrick: boolean) => `.navbar {
     min-width: 100%;
     height: 5rem;
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     left: -8px;
     right: -8px;
   
