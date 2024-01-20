@@ -1,11 +1,10 @@
 ---
-title: 'How I used animation-timeline:scroll to shrink a sticky navigation bar'
-createdAt: 2024-01-13
-draft: true
+title: 'How I used modern CSS features to improve the UX of Coding Kittens Navbar'
+createdAt: 2024-01-19
 thumbnail: /thumbnails/post_2.jpeg
-subtitle: '"Shrink my sticky navbar" sounded terrible'
+subtitle: 'CSSing like a wizard'
 shortDescription: >
-    A future CSS-only solution to shrink a stick navigation bar on scroll. JavaScript polyfill at the end of the post.
+  A practical example of how to use Scroll-Driven Animations to enhance your site.
 ---
 import { Callout } from '@/lib/ui/callout';
 import { Highlight } from '@/components/highlight';
@@ -79,7 +78,7 @@ For real though, this approach is the simplest, and probably a good option in al
 
 The problem is... where is the fun in doing it like this? Coding Kittens is my space to experiment and test new things. <Highlight>I wanted to find something more performant, extensible and CSS-only.</Highlight>
 
-What if I told you that there's a futuristic way of approaching this with only CSS? Would you take the <Pill>[#unstyled boring pill](#first-obvious-implementation)</Pill> or the <Pill color="red">[#unstyled future pill](#scroll-function-and-scrolltimeline-explained)</Pill>?
+What if I told you that there's a futuristic way of approaching this with only CSS? Would you take the <Pill>[#unstyled boring pill](#less-fun-implementation)</Pill> or the <Pill color="red">[#unstyled future pill](#scroll-function-and-scrolltimeline-explained)</Pill>?
 
 We'll use some experimental features that are not supported in all browsers. Most of the things we'll use have above 96% support according to [Can I use](https://caniuse.com/).
 
