@@ -16,7 +16,7 @@ export function ImageCard({ caption, ...props }: ImageCardProps) {
           alt={props.alt}
           className='m-auto h-auto w-full sepia-[.40]'
         />
-        <div className='bg-background-500 shadow-lg '>
+        <div className='bg-primary-50 shadow-lg dark:bg-background-500 '>
           {caption && (
             <Paragraph subtle className='m-0 p-4'>
               {caption.text}
