@@ -8,10 +8,18 @@ export default function Sitemap(): MetadataRoute.Sitemap {
 
   const articles = getAllArticles();
 
-  return articles.map(({ path, modifiedAt }) => ({
-    url: host + path,
-    lastModified: modifiedAt,
-    changeFrequency: 'monthly',
-    priority: 1,
-  }));
+  return [
+    {
+      url: 'https://' + host + '/',
+      lastModified: '2018-10-20T01:46:40.000Z',
+      changeFrequency: 'monthly' as const,
+      priority: 1,
+    },
+    ...articles.map(({ path, modifiedAt }) => ({
+      url: 'https://' + host + path,
+      lastModified: modifiedAt,
+      changeFrequency: 'monthly' as const,
+      priority: 1,
+    })),
+  ];
 }
