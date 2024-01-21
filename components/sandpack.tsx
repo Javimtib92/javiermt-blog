@@ -37,33 +37,31 @@ class ErrorBoundary extends React.Component<
 
 export function CodeSandbox({ files }: { files: any }) {
   return (
-    <Suspense fallback={null}>
-      <ErrorBoundary fallback={'There was an error loading the CodeSandbox.'}>
-        <SandpackProvider
-          files={files}
-          theme={'auto'}
-          options={{
-            bundlerURL: 'https://sandpack-static-server.codesandbox.io',
-            classes: {
-              'sp-wrapper': 'custom-wrapper',
-              'sp-preview': 'h-full dark:bg-background-400',
-              'sp-preview-iframe': 'dark:bg-background-400',
-              'sp-preview-container': 'dark:bg-background-400',
-              'sp-preview-actions': 'left-4 bottom-4',
-            },
-          }}
-          template='static'
-        >
-          <div className='mt-4 h-80 min-h-80 bg-background-300'>
-            <SandpackPreview className='h-full' />
-          </div>
-          <SandpackLayout className='mb-8'>
-            <SandpackFileExplorer />
-            <SandpackCodeEditor showTabs={false} />
-          </SandpackLayout>
-        </SandpackProvider>
-      </ErrorBoundary>
-    </Suspense>
+    <ErrorBoundary fallback={'There was an error loading the CodeSandbox.'}>
+      <SandpackProvider
+        files={files}
+        theme={'auto'}
+        options={{
+          bundlerURL: 'https://sandpack-static-server.codesandbox.io',
+          classes: {
+            'sp-wrapper': 'custom-wrapper',
+            'sp-preview': 'h-full dark:bg-background-400',
+            'sp-preview-iframe': 'dark:bg-background-400',
+            'sp-preview-container': 'dark:bg-background-400',
+            'sp-preview-actions': 'left-4 bottom-4',
+          },
+        }}
+        template='static'
+      >
+        <div className='mt-4 h-80 min-h-80 bg-background-300'>
+          <SandpackPreview className='h-full' />
+        </div>
+        <SandpackLayout className='mb-8'>
+          <SandpackFileExplorer />
+          <SandpackCodeEditor showTabs={false} />
+        </SandpackLayout>
+      </SandpackProvider>
+    </ErrorBoundary>
   );
 }
 
