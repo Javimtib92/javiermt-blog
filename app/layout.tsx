@@ -83,48 +83,6 @@ export default function RootLayout({
         <Footer />
 
         <script
-          id='noThemeFlash'
-          dangerouslySetInnerHTML={{
-            __html: `
-            (function() {
-              window.__onThemeChange = function() {};
-              function setTheme(newTheme) {
-                window.__theme = newTheme;
-                preferredTheme = newTheme;
-                document.documentElement.classList.add(newTheme);
-
-                if (newTheme === 'dark') {
-                  document.getElementById('moon-icon').classList.replace('hidden', 'block');
-                } else if (newTheme === 'light') {
-                  document.getElementById('sun-icon').classList.replace('hidden', 'block');
-                }
-                window.__onThemeChange(newTheme);
-              }
-
-              let preferredTheme;
-              try {
-                preferredTheme = localStorage.getItem('theme');
-              } catch (err) { }
-
-              window.__setPreferredTheme = function(newTheme) {
-                setTheme(newTheme);
-                try {
-                  localStorage.setItem('theme', newTheme);
-                } catch (err) {}
-              }
-
-              const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
-              darkQuery.addListener(function(e) {
-                window.__setPreferredTheme(e.matches ? 'dark' : 'light')
-              });
-
-              setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
-            })();
-          `,
-          }}
-        ></script>
-
-        <script
           id='accent-color-hsl-compute'
           dangerouslySetInnerHTML={{
             __html: `

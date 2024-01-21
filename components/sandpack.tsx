@@ -50,6 +50,8 @@ export function CodeSandbox({ files }: { files: any }) {
             'sp-preview-container': 'dark:bg-background-400',
             'sp-preview-actions': 'left-4 bottom-4',
           },
+          initMode: 'user-visible',
+          initModeObserverOptions: { rootMargin: `1000px 0px` },
         }}
         template='static'
       >
