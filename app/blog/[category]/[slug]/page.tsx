@@ -65,9 +65,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           {formatDate(frontMatter.createdAt)}
         </Paragraph>
         <Paragraph className='mb-0 mt-0' subtle mono>
-          <Suspense fallback={''}>
-            <ViewCount slug={slug} />
-          </Suspense>
+          {/* <ViewCount slug={slug} /> */}
         </Paragraph>
       </div>
 
