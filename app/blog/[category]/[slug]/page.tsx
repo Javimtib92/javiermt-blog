@@ -107,8 +107,9 @@ export async function generateMetadata(
     openGraph: {
       title,
       description,
-      type: 'website',
-      url: `https://coding-kittens/blog/${slug}`,
+      type: 'article',
+      publishedTime: frontMatter.createdAt,
+      url: `https://coding-kittens/blog/${category}/${slug}`,
       images: [
         {
           url: image,
@@ -118,7 +119,6 @@ export async function generateMetadata(
     twitter: {
       title,
       description,
-      site: 'Coding Kittens',
       card: 'summary_large_image',
       images: [image],
     },
