@@ -36,7 +36,7 @@ const withMDX = createMDX({
 const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   experimental: {
-    ppr: true,
+    ppr: false,
   },
 };
 
