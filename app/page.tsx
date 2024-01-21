@@ -54,7 +54,8 @@ export default function Home() {
         our tech community.
       </Paragraph>
       <Paragraph>
-        I&apos;m a Fullstack Software Engineer with over 8 years of experience.
+        I&apos;m a Fullstack Software Engineer with over{' '}
+        {getYearDiff(new Date('2015-05-01'), new Date())} years of experience.
         I&apos;m currently specialized in JavaScript, but I&apos;m a man of the
         world and I can “speak” many languages.
       </Paragraph>

@@ -25,9 +25,9 @@ const mono = Oxygen_Mono({
   variable: '--font-mono',
 });
 
-const title = 'Blog | Javier Muñoz Tous';
+const title = 'Coding Kittens - Javier Muñoz Tous Blog';
 const description =
-  "Explore a diverse range of topics, including technology, development, and personal insights on my blog. Join the online community and engage in discussions with me on subjects I'm passionate about.";
+  'Explore a diverse range of topics, including technology, development, and personal insights on my blog. From CSS, JavaScript and HTML to AI and ML.';
 const logo = 'https://coding-kittens.com/logo.png';
 
 export const metadata: Metadata = {
