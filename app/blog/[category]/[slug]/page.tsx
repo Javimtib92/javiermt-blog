@@ -54,8 +54,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     return notFound();
   }
 
-  // temporal disable
-  // await updateCounter(slug);
+  await updateCounter(slug);
 
   return (
     <section>
