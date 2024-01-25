@@ -15,7 +15,7 @@ export function SocialLink({
       <a
         href={link}
         target='_blank'
-        className='flex w-full items-center justify-between rounded border border-primary-200 bg-primary-50 px-4 py-4 dark:border-background-400 dark:bg-background-500 sm:w-auto'
+        className='flex w-full items-center justify-between rounded border border-primary-200 bg-primary-50 px-4 py-4 hover:bg-primary-100 dark:border-background-400 dark:bg-background-500 hover:dark:bg-background-600 sm:w-auto'
       >
         <div className='flex items-center space-x-3'>
           <div className='h-6 rounded-full bg-white'>

@@ -1,3 +1,4 @@
+import { LatestContent } from '@/components/latest-content';
 import { Heading } from '@/lib/ui/heading';
 import { Link } from '@/lib/ui/link';
 import { Paragraph } from '@/lib/ui/paragraph';
@@ -25,35 +26,7 @@ export default async function NotFound() {
       </div>
 
       <Heading level={2}>You may be looking for this:</Heading>
-      <div className='my-4'>
-        {posts.map(async (post) => {
-          const data = getArticleData(post.slug, post.category);
-
-          if (!data) {
-            return null;
-          }
-
-          const { frontMatter } = data;
-
-          return (
-            <NextLink
-              key={post.slug}
-              href={`/blog/${post.category}/${post.slug}`}
-              className='my-8 flex cursor-pointer flex-row items-center gap-4 bg-background-600 p-4 hover:bg-background-500'
-            >
-              <Image
-                src={frontMatter.thumbnail}
-                alt='post thumbnail'
-                width={50}
-                height={50}
-              />
-              <div className='sm:text-md max-w-56 text-xs sm:max-w-full'>
-                {frontMatter.title}
-              </div>
-            </NextLink>
-          );
-        })}
-      </div>
+      <LatestContent />
     </>
   );
 }

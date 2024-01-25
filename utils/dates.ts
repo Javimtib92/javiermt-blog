@@ -33,9 +33,27 @@ export function formatDate(inputDate: Date) {
 }
 
 export function getYearDiff(from: Date, to: Date) {
-  const ms = to.getTime() - from.getTime();
+  const diff = to.getTime() - from.getTime();
 
-  const date = new Date(ms);
+  const date = new Date(diff);
 
   return Math.abs(date.getFullYear() - 1970);
+}
+
+/**
+ * Compare the two dates and return 1 if the first date is after the second, -1 if the first date is before the second or 0 if dates are equal.
+ */
+export function compareAsc(dateLeft: Date, dateRight: Date) {
+  const diff = dateLeft.getTime() - dateRight.getTime();
+
+  return diff > 0 ? 1 : diff < 0 ? -1 : 0;
+}
+
+/**
+ * Compare the two dates and return -1 if the first date is after the second, 1 if the first date is before the second or 0 if dates are equal.
+ */
+export function compareDesc(dateLeft: Date, dateRight: Date) {
+  const diff = dateLeft.getTime() - dateRight.getTime();
+
+  return diff > 0 ? -1 : diff < 0 ? 1 : 0;
 }

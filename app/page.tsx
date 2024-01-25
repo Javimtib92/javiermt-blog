@@ -8,6 +8,9 @@ import LinkedinLogo from '/public/linkedin_logo.svg';
 import InstagramLogo from '/public/instagram_logo.svg';
 import GithubLogo from '/public/github_logo.svg';
 import { Highlight } from '@/components/highlight';
+import { LatestContent } from '@/components/latest-content';
+import { Link } from '@/lib/ui/link';
+import { ArrowRightIcon } from '@heroicons/react/24/solid';
 
 export default function Home() {
   return (
@@ -104,6 +107,19 @@ export default function Home() {
           name='Github'
           link='https://github.com/Javimtib92'
         ></SocialLink>
+      </div>
+
+      <div className='mt-12'>
+        <Heading level={3}>The Latest Coding Kittens Posts</Heading>
+
+        <LatestContent />
+
+        <div>
+          <Link href='/blog' className='flex flex-row items-center gap-2'>
+            Browse all posts
+            <ArrowRightIcon width={12} height={12} />
+          </Link>
+        </div>
       </div>
     </div>
   );
