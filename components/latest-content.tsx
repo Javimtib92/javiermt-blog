@@ -12,7 +12,7 @@ export async function LatestContent({
 
   return (
     <div className='my-4'>
-      {posts.map(async (post) => {
+      {posts.map((post) => {
         const data = getArticleData(post.slug, post.category);
 
         if (!data) {
