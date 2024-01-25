@@ -7,6 +7,8 @@ import { Analytics } from '@vercel/analytics/react';
 import { Navbar } from './navbar';
 import { Footer } from './footer';
 import { SandpackCSS } from '@/components/sandpack-css';
+import { getAccentBaseValue } from '@/utils/get-accent-base-value';
+import { hexToRgb, rgbToHsl } from '@/utils/colors';
 
 const display = Barlow_Condensed({
   subsets: ['latin'],
@@ -60,8 +62,22 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const accentColorBaseValue = getAccentBaseValue();
+
+  const color = hexToRgb(accentColorBaseValue || '#000000');
+
+  //@ts-expect-error
+  const [h] = rgbToHsl(...color);
+
   return (
-    <html lang='en' translate='no'>
+    <html
+      lang='en'
+      translate='no'
+      style={{
+        //@ts-expect-error
+        '--accent-hue': h,
+      }}
+    >
       <head>
         <SandpackCSS />
       </head>
@@ -82,55 +98,6 @@ export default function RootLayout({
 
         <Footer />
 
-        <script
-          id='accent-color-hsl-compute'
-          dangerouslySetInnerHTML={{
-            __html: `
-            function hexToRgb(color) {
-              const r = parseInt(color.substr(1, 2), 16);
-              const g = parseInt(color.substr(3, 2), 16);
-              const b = parseInt(color.substr(5, 2), 16);
-            
-              return [r, g, b];
-            }
-
-            function rgbToHsl(r, g, b) {
-              r /= 255;
-              g /= 255;
-              b /= 255;
-              const l = Math.max(r, g, b);
-              const s = l - Math.min(r, g, b);
-              const h = s
-                ? l === r
-                  ? (g - b) / s
-                  : l === g
-                  ? 2 + (b - r) / s
-                  : 4 + (r - g) / s
-                : 0;
-              return [
-                60 * h < 0 ? 60 * h + 360 : 60 * h,
-                100 * (s ? (l <= 0.5 ? s / (2 * l - s) : s / (2 - (2 * l - s))) : 0),
-                (100 * (2 * l - s)) / 2,
-              ];
-            }
-            
-            
-            (function() {
-              const colo = hexToRgb(
-                getComputedStyle(document.documentElement).getPropertyValue(
-                  '--color-accent-base'
-                )
-              );
-          
-              const [h,s,l] = rgbToHsl(...colo);
-              
-              document.documentElement.style.setProperty('--accent-hue', h);
-              document.documentElement.style.setProperty('--accent-saturation', s);
-              document.documentElement.style.setProperty('--accent-lightness', l);
-            })();
-            `,
-          }}
-        ></script>
         <SpeedInsights />
         <Analytics />
       </body>
