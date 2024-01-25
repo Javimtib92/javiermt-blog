@@ -1,4 +1,4 @@
-const CSS = (animationStyles: boolean, topTrick: boolean) => `.navbar {
+const CSS = (animationStyles: boolean) => `.navbar {
     display: flex;
     position: sticky;
     padding: 1rem 0.5rem;
@@ -6,7 +6,7 @@ const CSS = (animationStyles: boolean, topTrick: boolean) => `.navbar {
     margin-top: 5rem;
     flex-direction: row;
     align-items: flex-start;
-    ${topTrick ? `top: -1px;` : `top: 0;`}
+    top: 0;
   
     @media (min-width: 768px) {
       padding: 1rem 1.25rem;
@@ -54,13 +54,11 @@ const CSS = (animationStyles: boolean, topTrick: boolean) => `.navbar {
 }
 
 @supports (animation-timeline: scroll()) {
-  ${topTrick ? `.navbar.is-pinned` : `.navbar`} {
+  .navbar {
     --navbar-shrink: 1;
 
     animation: shrink;
-    animation-timeline: scroll(root block);
-    animation-range-start: 0%;
-    animation-range-end: 10%;
+    animation-timeline: scroll(nearest block);
     animation-timing-function: ease;
   }
 }
@@ -69,7 +67,7 @@ const CSS = (animationStyles: boolean, topTrick: boolean) => `.navbar {
   0% {
     --navbar-shrink: 0;
   }
-  50%,
+  10%,
   100% {
     --navbar-shrink: 1;
   }
@@ -160,10 +158,7 @@ body {
 }
 `;
 
-const HTML = (
-  topTrick: boolean,
-  noScrollableContent: boolean
-) => `<!DOCTYPE html>
+const HTML = (noScrollableContent: boolean) => `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -231,19 +226,7 @@ const HTML = (
                 navbar.style.setProperty("--navbar-shrink", "0");
               }
             }
-          }${
-            topTrick
-              ? ` else {
-              const observer = new IntersectionObserver(
-                ([e]) =>
-                  e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
-                { threshold: [1] }
-              );
-
-              observer.observe(navbar);
-            }`
-              : ``
-          } 
+          }
         })();
       </script>
       ${
@@ -367,17 +350,15 @@ const HTML = (
 export const getFiles = (
   options: {
     animationStyles: boolean;
-    topTrick: boolean;
     noScrollableContent: boolean;
   } = {
     animationStyles: false,
-    topTrick: false,
     noScrollableContent: false,
   }
 ) => ({
   '/styles.css': {
-    code: CSS(options.animationStyles, options.topTrick),
+    code: CSS(options.animationStyles),
     active: true,
   },
-  '/index.html': HTML(options.topTrick, options.noScrollableContent),
+  '/index.html': HTML(options.noScrollableContent),
 });

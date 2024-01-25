@@ -256,13 +256,11 @@ a {
 }
 
 @supports (animation-timeline: scroll()) {
-  .navbar.is-pinned {
-    --navbar-shrink: 1;
+  .navbar {
+    --navbar-shrink: 0;
 
     animation: shrink;
-    animation-timeline: scroll(root block);
-    animation-range-start: 0%;
-    animation-range-end: 10%;
+    animation-timeline: scroll(nearest block);
     animation-timing-function: ease;
   }
 }
@@ -294,7 +292,7 @@ a {
   0% {
     --navbar-shrink: 0;
   }
-  50%,
+  10%,
   100% {
     --navbar-shrink: 1;
   }

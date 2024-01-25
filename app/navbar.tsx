@@ -9,10 +9,7 @@ import { MobileNavMenu } from '@/components/mobile-nav-menu';
 export function Navbar() {
   return (
     <NavbarProvider>
-      {/* top-[1px] is a little hack for properly detect if element is pinned on
-      the top when scrolling // see:
-      https://css-tricks.com/how-to-detect-when-a-sticky-element-gets-pinned/ */}
-      <nav className='navbar sticky top-[-1px] z-10 mb-12 mt-20 flex flex-row items-start py-4 pl-2 pr-4 md:-mx-[28px] md:px-5'>
+      <nav className='navbar sticky top-0 z-10 mb-12 mt-20 flex flex-row items-start py-4 pl-2 pr-4 md:-mx-[28px] md:px-5'>
         <MobileNavMenu></MobileNavMenu>
 
         <div className='backdrop absolute left-[-8px] right-[-8px] top-0 h-20 min-w-full backdrop-blur md:-mx-[28px]'></div>
@@ -52,13 +49,6 @@ export function Navbar() {
                   navbar.style.setProperty('--navbar-shrink', '0');
                 }
               }
-            } else {
-              const observer = new IntersectionObserver( 
-                ([e]) => e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
-                { threshold: [1] }
-              );
-              
-              observer.observe(navbar);
             }
           })()`,
         }}
